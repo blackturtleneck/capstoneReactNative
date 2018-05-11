@@ -10,6 +10,5 @@ script:
 - npm run lint
 - npm test
 - npm run build
-- npm run lint-functions
  notifications:
     slack: blackturtleneck:K7yY5QCF1cKhXglMypLXJEYP
