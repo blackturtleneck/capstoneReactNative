@@ -1,6 +1,45 @@
 dependencies: \
   /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/capstoneReactNative/AppDelegate.m \
   /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/capstoneReactNative/AppDelegate.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Modules/module.modulemap \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Modules/module.modulemap \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFWebViewAppLinkResolver.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFURL.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFMeasurementEvent.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFAppLinkTarget.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFAppLinkReturnToRefererView.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFAppLinkReturnToRefererController.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFAppLinkResolving.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFAppLinkNavigation.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFAppLink.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFTaskCompletionSource.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFTask+Exceptions.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFTask.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFExecutor.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFCancellationTokenSource.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFCancellationTokenRegistration.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/BFCancellationToken.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/Bolts.framework/Headers/Bolts.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKProfilePictureView.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKProfile.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKMutableCopying.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKGraphErrorRecoveryProcessor.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKAppLinkUtility.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKAppLinkResolver.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKUtility.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKTestUsersManager.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKSettings.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKGraphRequestDataAttachment.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKGraphRequest.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKConstants.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKButton.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKApplicationDelegate.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKAppEvents.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKMacros.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKGraphRequestConnection.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKCopying.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKAccessToken.h \
+  /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/FBSDKCoreKit.framework/Headers/FBSDKCoreKit.h \
   /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBundleURLProvider.h \
   /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTRootView.h \
   /Users/sarahfeldmann/Desktop/capstoneReactNative/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \

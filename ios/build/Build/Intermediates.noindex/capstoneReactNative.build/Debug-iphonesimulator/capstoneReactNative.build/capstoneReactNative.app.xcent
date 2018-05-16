@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>application-identifier</key>
-	<string>46W36DZ9XU.org.reactjs.native.example.capstoneReactNative</string>
+	<string>623FM8P7D8.org.reactjs.native.example.capstoneReactNative</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>46W36DZ9XU.org.reactjs.native.example.capstoneReactNative</string>
+		<string>623FM8P7D8.org.reactjs.native.example.capstoneReactNative</string>
 	</array>
 </dict>
 </plist>

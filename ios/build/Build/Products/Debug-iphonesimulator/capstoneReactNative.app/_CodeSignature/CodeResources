@@ -6,7 +6,7 @@
 	<dict>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<data>
-		a3Ox5DfEleD6tKNbRe8iFCeR5CE=
+		4S0G9I5WOMv5+HYjv8GH0uz9wi0=
 		</data>
 		<key>Frameworks/IDEBundleInjection.framework/IDEBundleInjection</key>
 		<data>
@@ -51,7 +51,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		N+FXLOocqPHW/fvs2aUgWvJbPlY=
+		5SOA4oHgVvwGM7srooyGK/VTgyE=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -63,7 +63,7 @@
 		</data>
 		<key>PlugIns/capstoneReactNativeTests.xctest.dSYM/Contents/Resources/DWARF/capstoneReactNativeTests</key>
 		<data>
-		ojiSiT3Wbv44sgnN9JymJxqqiJc=
+		olcUVOIDlKNM/FT0caZ0a8In1vA=
 		</data>
 		<key>PlugIns/capstoneReactNativeTests.xctest/Info.plist</key>
 		<data>
@@ -75,7 +75,7 @@
 		</data>
 		<key>PlugIns/capstoneReactNativeTests.xctest/capstoneReactNativeTests</key>
 		<data>
-		zv8XnRExkiZt+zM5g2ybeXIawu0=
+		4o0MkGxbh2FepbXLdC6ytJ0zomE=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -84,11 +84,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			a3Ox5DfEleD6tKNbRe8iFCeR5CE=
+			4S0G9I5WOMv5+HYjv8GH0uz9wi0=
 			</data>
 			<key>hash2</key>
 			<data>
-			L7reb7Jx1Gr8JK4onDkbzHd9Dd2s2mvqjalDC67SUZQ=
+			IIrm+lOgnpUZlgep1ZniHEIOzY8SwPh4nqLMydvVGEY=
 			</data>
 		</dict>
 		<key>Frameworks/IDEBundleInjection.framework/IDEBundleInjection</key>
@@ -207,11 +207,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ojiSiT3Wbv44sgnN9JymJxqqiJc=
+			olcUVOIDlKNM/FT0caZ0a8In1vA=
 			</data>
 			<key>hash2</key>
 			<data>
-			JErBzGP52cTe1Bz5Ie9EbO1MKjGmeJE0eGI4eiyGdIs=
+			6fZj+IOd5zKQ4GL02mantpyBYU9FMtLXIlwawqE7vCE=
 			</data>
 		</dict>
 		<key>PlugIns/capstoneReactNativeTests.xctest/Info.plist</key>
@@ -240,11 +240,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zv8XnRExkiZt+zM5g2ybeXIawu0=
+			4o0MkGxbh2FepbXLdC6ytJ0zomE=
 			</data>
 			<key>hash2</key>
 			<data>
-			AqqmaRsensy942wNwAZVOUXiIIVxWqVFNvJjfBnB3IQ=
+			M3oFKnLgL6DM6Ix0EBWjpKNcgPNjJfFJWMfi39fMFlE=
 			</data>
 		</dict>
 	</dict>

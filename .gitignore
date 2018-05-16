@@ -39,7 +39,7 @@ yarn-error.log
 # BUCK
 buck-out/
 \.buckd/
-*.keystore
+*.keystorebut I had
 
 # fastlane
 #
@@ -71,3 +71,4 @@ yarn-debug.log*
 yarn-error.log*
 
 package-lock.json
+git git 
