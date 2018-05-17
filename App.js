@@ -15,30 +15,28 @@ import {
 import FBSDK, { LoginManager } from "react-native-fbsdk";
 
 export default class CapstoneReactNative extends Component {
-  _fbAuth() {
-    LoginManager.logInWithReadPermissions(["public_profile"]).then(
-      function(result) {
-        if (result.isCancelled) {
-          alert("Login cancelled");
-        } else {
-          alert(
-            "Login success with permissions: " +
-              result.grantedPermissions.toString()
-          );
-        }
-      },
-      function(error) {
-        alert("Login fail with error: " + error);
-      }
-    );
-  }
+  // _fbAuth() {
+  //   LoginManager.logInWithReadPermissions(["public_profile"]).then(
+  //     function(result) {
+  //       if (result.isCancelled) {
+  //         alert("Login cancelled");
+  //       } else {
+  //         alert(
+  //           "Login success with permissions: " +
+  //             result.grantedPermissions.toString()
+  //         );
+  //       }
+  //     },
+  //     function(error) {
+  //       alert("Login fail with error: " + error);
+  //     }
+  //   );
+  // }
 
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={this._fbAuth}>
-          <Text>Login with Facebook</Text>
-        </TouchableOpacity>
+        <Login />
       </View>
     );
   }
