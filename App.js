@@ -13,26 +13,9 @@ import {
   TouchableOpacity
 } from "react-native";
 import FBSDK, { LoginManager } from "react-native-fbsdk";
+import Login from "./Components/Login";
 
 export default class CapstoneReactNative extends Component {
-  // _fbAuth() {
-  //   LoginManager.logInWithReadPermissions(["public_profile"]).then(
-  //     function(result) {
-  //       if (result.isCancelled) {
-  //         alert("Login cancelled");
-  //       } else {
-  //         alert(
-  //           "Login success with permissions: " +
-  //             result.grantedPermissions.toString()
-  //         );
-  //       }
-  //     },
-  //     function(error) {
-  //       alert("Login fail with error: " + error);
-  //     }
-  //   );
-  // }
-
   render() {
     return (
       <View style={styles.container}>
