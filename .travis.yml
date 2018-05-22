@@ -1,15 +1,22 @@
-language: node_js
-node_js:
-- stable
-cache:
-  directories:
-  - node_modules
-install:
-  - npm install
-script:
-- npm run lint
-- npm test
-- npm run build
-- npm run lint-functions
+  language: objective-c
+      os: osx
+      osx_image: xcode8.3
+      cache:
+        bundler: true
+        cocoapods: true
+        yarn: true
+        directories:
+          - $HOME/Library/Caches/Homebrew
+      before_install:
+        - rvm install ruby-2.3.0
+        - nvm install 8
+        - brew install yarn --ignore-dependencies
+      install:
+        - cd examples/UXCamExample
+        - yarn
+        - cd ios
+        - bundle install
+      script:
+        - bundle exec fastlane test
  notifications:
     slack: blackturtleneck:K7yY5QCF1cKhXglMypLXJEYP
