@@ -5,10 +5,10 @@
  */
 
 import React, { Component } from "react";
-import { Tabs } from "./Components/router";
+import { Tabs, PageContentRouter } from "./Components/router";
 
 export default class CapstoneReactNative extends Component {
   render() {
-    return <Tabs />;
+    return <PageContentRouter />;
   }
 }

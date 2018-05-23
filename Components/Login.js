@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { Button, View, StyleSheet, Image } from "react-native";
 import {
   LoginManager,
-  LoginButton,
   AccessToken,
   GraphRequest,
   GraphRequestManager
 } from "react-native-fbsdk";
-import { firestore } from "../FirestoreConfig";
+import { firestore, auth } from "../FirestoreConfig";
 import logo from "./img/ampr-logo.png";
+import { firebase } from "@firebase/app";
 
 export default class Login extends Component {
   render() {
@@ -31,45 +31,27 @@ export default class Login extends Component {
             marginBottom: 30
           }}
         />
-        <View style={styles.container}>
-          <LoginButton
-            readPermissions={[
-              "public_profile",
-              "user_birthday",
-              "user_gender",
-              "user_photos"
-            ]}
-            onLoginFinished={(error, result) => {
-              if (error) {
-                alert("login has error: " + result.error);
-              } else if (result.isCancelled) {
-                alert("login is cancelled.");
-              } else {
-                console.log("AccessToken", AccessToken.getCurrentAccessToken());
-                AccessToken.getCurrentAccessToken().then(data => {
-                  const infoRequest = new GraphRequest(
-                    "/me?fields=name,email,picture,gender,photos,birthday",
-                    null,
-                    this._responseInfoCallback
-                  );
-                  // Start the graph request.
-                  new GraphRequestManager().addRequest(infoRequest).start();
-                });
-              }
-            }}
-            onLogoutFinished={() => console.log("logout.")}
-          />
-        </View>
+        <Button
+          containerStyle={{
+            padding: 10,
+            width: 150,
+            margin: 20,
+            borderRadius: 4,
+            backgoundColor: "rgb(73,104,173)"
+          }}
+          style={{ fontSize: 18, color: "white" }}
+          onPress={this._onLoginFacebook}
+          title="Login with Facebook"
+        />
       </View>
     );
   }
+
   //Create response callback.
   _responseInfoCallback = (error, result) => {
     if (error) {
       alert("Error fetching data: " + error.toString());
     } else {
-      console.log("result", result);
-      alert("Result Name: " + result.name);
       const user = firestore.collection("users").doc(result.email);
       let setWithMerge = user
         .set(
@@ -90,15 +72,42 @@ export default class Login extends Component {
           // eslint-disable-line no-console
           console.error("Error writing document: ", error);
         });
+      this.props.navigation.navigate("PageContent");
     }
   };
-}
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#4267b2",
-    borderRadius: 5,
-    justifyContent: "center",
-    alignItems: "center"
-  }
-});
+  _onLoginFacebook = () => {
+    LoginManager.logInWithReadPermissions([
+      "public_profile",
+      "user_birthday",
+      "user_gender",
+      "user_photos"
+    ])
+      .then(result => {
+        if (result.isCancelled) {
+          return Promise.reject(new Error("The user cancelled the request"));
+        }
+        console.log(
+          `Login success with permissions: ${result.grantedPermissions.toString()}`
+        );
+        return AccessToken.getCurrentAccessToken();
+      })
+      .then(data => {
+        const credential = firebase.auth.FacebookAuthProvider.credential(
+          data.accessToken
+        );
+        return auth.signInWithCredential(credential);
+      })
+      .then(currentUser => {
+        const infoRequest = new GraphRequest(
+          "/me?fields=name,email,picture,gender,photos,birthday",
+          null,
+          this._responseInfoCallback
+        );
+        new GraphRequestManager().addRequest(infoRequest).start();
+      })
+      .catch(error => {
+        console.log(`Error: ${error}`);
+      });
+  };
+}

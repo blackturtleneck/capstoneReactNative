@@ -1,35 +1,54 @@
 import React from "react";
-import { TabNavigator } from "react-navigation";
+import { TabNavigator, StackNavigator } from "react-navigation";
 import { Icon } from "react-native-elements";
 
-import Login from "./Login";
+// import PageContent from "./PageContent";
+import Profile from "./Profile";
 import Messenger from "./Messenger";
+import Login from "./Login";
 
-// import message from "./img/message-icon.png";
-// import profile from "./img/profile-icon.png";
-
-export const Tabs = TabNavigator({
-  Login: {
-    screen: Login,
-    navigationOptions: {
-      tabBarLabel: "SIGN IN",
-      tabBarIcon: ({ tintColor }) => (
-        <Icon name="md-person" type="ionicon" size={35} color={tintColor} />
-      )
+export const Tabs = TabNavigator(
+  {
+    Login: {
+      screen: Profile,
+      navigationOptions: {
+        tabBarLabel: " ",
+        tabBarIcon: ({ tintColor }) => (
+          <Icon name="md-person" type="ionicon" size={35} color={tintColor} />
+        )
+      }
+    },
+    Messenger: {
+      screen: Messenger,
+      navigationOptions: {
+        tabBarLabel: " ",
+        tabBarIcon: ({ tintColor }) => (
+          <Icon
+            name="message-square"
+            size={35}
+            color={tintColor}
+            type="feather"
+          />
+        )
+      }
     }
   },
-  Messenger: {
-    screen: Messenger,
-    navigationOptions: {
-      tabBarLabel: "MESSAGE",
-      tabBarIcon: ({ tintColor }) => (
-        <Icon
-          name="message-square"
-          size={35}
-          color={tintColor}
-          type="feather"
-        />
-      )
+  {
+    tabBarPosition: "top",
+    tabBarOptions: {
+      activeTintColor: "white",
+      inactiveTintColor: "black",
+      style: {
+        backgroundColor: "#9BA2FF",
+        borderTopWidth: 1,
+        borderTopColor: "white",
+        marginTop: 20
+      }
     }
   }
+);
+
+export const PageContentRouter = StackNavigator({
+  Signin: { screen: Login },
+  PageContentRoute: { screen: Tabs }
 });
