@@ -60,7 +60,8 @@ export default class Login extends Component {
             birthday: result.birthday,
             gender: result.gender,
             photos: result.photos,
-            photoURL: result.picture.data.url
+            photoURL: result.picture.data.url,
+            isVerified: true
           },
           { merge: true }
         )
@@ -72,7 +73,6 @@ export default class Login extends Component {
           // eslint-disable-line no-console
           console.error("Error writing document: ", error);
         });
-      this.props.navigation.navigate("PageContent");
     }
   };
 
