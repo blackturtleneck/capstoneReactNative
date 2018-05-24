@@ -6,7 +6,7 @@
 	<dict>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<data>
-		Z4tyecVpx941nKTM0noydVxluNM=
+		jyZGf/Cgq0VNRkq6H2Sy6XwnDW8=
 		</data>
 		<key>Entypo.ttf</key>
 		<data>
@@ -71,11 +71,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		bQmKADJAufvP6uWdSx+pYr5FeJ4=
+		becgxKMviojKP5KtKJm+0VVD2Uw=
 		</data>
 		<key>Ionicons.ttf</key>
 		<data>
 		D3lWcE/mG0nEHqGiIFEkD3AKK0Q=
+		</data>
+		<key>JosefinSans-Bold.ttf</key>
+		<data>
+		vZcHqtIipT+IoA2Diefg++7+qlI=
 		</data>
 		<key>MaterialCommunityIcons.ttf</key>
 		<data>
@@ -99,7 +103,7 @@
 		</data>
 		<key>PlugIns/capstoneReactNativeTests.xctest.dSYM/Contents/Resources/DWARF/capstoneReactNativeTests</key>
 		<data>
-		jBIrEQdcMjIj4uTnv7D8II1taF0=
+		6qxpkMDvC5uRUoCKvUfVRdo9mMs=
 		</data>
 		<key>PlugIns/capstoneReactNativeTests.xctest/Info.plist</key>
 		<data>
@@ -111,7 +115,7 @@
 		</data>
 		<key>PlugIns/capstoneReactNativeTests.xctest/capstoneReactNativeTests</key>
 		<data>
-		iiZsYifYa1Tgrp90cKbwRYPzqco=
+		GygfdvmhmzmYLcu8zhynVKL64Xw=
 		</data>
 		<key>SimpleLineIcons.ttf</key>
 		<data>
@@ -121,6 +125,10 @@
 		<data>
 		C9pZx7zT05J94EfgkYdaRCi/0as=
 		</data>
+		<key>ampr-logo.png</key>
+		<data>
+		w9W9lgHIon1p3tSacK8k3485RBo=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -128,11 +136,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Z4tyecVpx941nKTM0noydVxluNM=
+			jyZGf/Cgq0VNRkq6H2Sy6XwnDW8=
 			</data>
 			<key>hash2</key>
 			<data>
-			1HTM/QYaMIzGIocPahruN/fhfOr12EHN+ba5YIOjzzc=
+			ANtSuP4X7H0zvoNos8rsjT5GGl70h+dL6xD/4Le7Tpw=
 			</data>
 		</dict>
 		<key>Entypo.ttf</key>
@@ -302,6 +310,17 @@
 			u0dnmwuuuEgbf1HGitM65aUmc2y1CxcXzGD/a2X5CKM=
 			</data>
 		</dict>
+		<key>JosefinSans-Bold.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			vZcHqtIipT+IoA2Diefg++7+qlI=
+			</data>
+			<key>hash2</key>
+			<data>
+			WhOJBW+HkDocIXaijMdUWHNCrGXIYKS3nnxfwl7nMBg=
+			</data>
+		</dict>
 		<key>MaterialCommunityIcons.ttf</key>
 		<dict>
 			<key>hash</key>
@@ -350,11 +369,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jBIrEQdcMjIj4uTnv7D8II1taF0=
+			6qxpkMDvC5uRUoCKvUfVRdo9mMs=
 			</data>
 			<key>hash2</key>
 			<data>
-			wWe764nS1ybc9DOl3opLhyDXSdTt+fKkQ/8YEgZNnKA=
+			EA9aYA8kDusyt/udTHmFPiAlqD/n+m7kRUCmNLFV3N0=
 			</data>
 		</dict>
 		<key>PlugIns/capstoneReactNativeTests.xctest/Info.plist</key>
@@ -383,11 +402,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			iiZsYifYa1Tgrp90cKbwRYPzqco=
+			GygfdvmhmzmYLcu8zhynVKL64Xw=
 			</data>
 			<key>hash2</key>
 			<data>
-			tppt96pjs2o15HBSjdVLXCtlZ0Zb1wjrujd5fuHDq5s=
+			oCtD9auYpU/yiYpJT7GY4afre+VaszplCi+Pu28g20Q=
 			</data>
 		</dict>
 		<key>SimpleLineIcons.ttf</key>
@@ -410,6 +429,17 @@
 			<key>hash2</key>
 			<data>
 			17EKHr4YMOWi8I9JA7moDiwZEsDdL3O5P88r+DIhZgI=
+			</data>
+		</dict>
+		<key>ampr-logo.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			w9W9lgHIon1p3tSacK8k3485RBo=
+			</data>
+			<key>hash2</key>
+			<data>
+			g8gmVtu20eBmOWTuYFoCRhtPvsx3ByOaaH28SNHmdQM=
 			</data>
 		</dict>
 	</dict>

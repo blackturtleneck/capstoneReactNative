@@ -16,54 +16,31 @@ export default class CapstoneReactNative extends Component {
     super(props);
 
     this.state = {
-      authenticated: false,
-      user: null
+      loading: true
     };
   }
 
   componentDidMount() {
-    console.log("component did mount");
-    // check whether user is logged in
-    auth
-      .onAuthStateChanged(user => {
-        console.log("wtf");
-        if (user) {
-          console.log("user", user);
-          this.setState({
-            authenticated: true,
-            user: {
-              displayName: user.displayName,
-              email: user.email
-            }
-          });
-        } else {
-          console.log("hi");
-          this.setState({
-            authenticated: true,
-            user: null
-          });
-        }
-        console.log("past");
-      })
-      .bind(this);
-    console.log("after");
+    this.authSubscription = auth.onAuthStateChanged(user => {
+      this.setState({
+        loading: false,
+        user
+      });
+    });
+    console.log("authSub", this.authSubscription);
+  }
+
+  componentWillUnmount() {
+    console.log("component did unmount");
+    this.authSubscription();
   }
 
   render() {
-    console.log("state", this.state);
-    return (
-      <View>
-        {// this.state.authenticated ? (
-        this.state.user ? (
-          <Profile user={this.state.user} />
-        ) : (
-          <Login />
-          // )
-          // )
-          // : (
-          //   <Text>Loading</Text>
-        )}
-      </View>
-    );
+    // The application is initialising
+    if (this.state.loading) return null;
+    // The user is an Object, so they're logged in
+    if (this.state.user) return <Tabs />;
+    // The user is null, so they're logged out
+    return <Login />;
   }
 }
