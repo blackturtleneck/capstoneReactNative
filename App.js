@@ -5,60 +5,42 @@
  */
 
 import React, { Component } from "react";
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity
-} from "react-native";
-import FBSDK, { LoginManager } from "react-native-fbsdk";
+import { View, Text } from "react-native";
+import { auth } from "./FirestoreConfig";
+import { Tabs, PageContentRouter } from "./Components/router";
+import Login from "./Components/Login";
+import Profile from "./Components/Profile";
 
 export default class CapstoneReactNative extends Component {
-  // _fbAuth() {
-  //   LoginManager.logInWithReadPermissions(["public_profile"]).then(
-  //     function(result) {
-  //       if (result.isCancelled) {
-  //         alert("Login cancelled");
-  //       } else {
-  //         alert(
-  //           "Login success with permissions: " +
-  //             result.grantedPermissions.toString()
-  //         );
-  //       }
-  //     },
-  //     function(error) {
-  //       alert("Login fail with error: " + error);
-  //     }
-  //   );
-  // }
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: true
+    };
+  }
+
+  componentDidMount() {
+    this.authSubscription = auth.onAuthStateChanged(user => {
+      this.setState({
+        loading: false,
+        user
+      });
+    });
+    console.log("authSub", this.authSubscription);
+  }
+
+  componentWillUnmount() {
+    console.log("component did unmount");
+    this.authSubscription();
+  }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <Login />
-      </View>
-    );
+    // The application is initialising
+    if (this.state.loading) return null;
+    // The user is an Object, so they're logged in
+    if (this.state.user) return <Tabs />;
+    // The user is null, so they're logged out
+    return <Login />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
-  },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
-  }
-});
-
-AppRegistry.registerComponent("CapstoneReactNative", () => CapstoneReactNative);
