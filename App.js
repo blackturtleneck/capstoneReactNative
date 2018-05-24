@@ -7,7 +7,7 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
 import { auth } from "./FirestoreConfig";
-import { Tabs, PageContentRouter } from "./Components/router";
+import { Tabs } from "./Components/router";
 import Login from "./Components/Login";
 import Profile from "./Components/Profile";
 
@@ -36,10 +36,11 @@ export default class CapstoneReactNative extends Component {
   }
 
   render() {
+    console.log("this.state.user", this.state.user);
     // The application is initialising
     if (this.state.loading) return null;
     // The user is an Object, so they're logged in
-    if (this.state.user) return <Tabs />;
+    if (this.state.user) return <Tabs user={this.state.user} />;
     // The user is null, so they're logged out
     return <Login />;
   }

@@ -4,8 +4,10 @@ import { Icon } from "react-native-elements";
 
 // import PageContent from "./PageContent";
 import Profile from "./Profile";
+import UserList from "./UserList";
 import Messenger from "./Messenger";
 import Login from "./Login";
+import { Stack } from "react-native-router-flux";
 
 export const Tabs = TabNavigator(
   {
@@ -19,7 +21,7 @@ export const Tabs = TabNavigator(
       }
     },
     Messenger: {
-      screen: Messenger,
+      screen: UserList,
       navigationOptions: {
         tabBarLabel: " ",
         tabBarIcon: ({ tintColor }) => (
@@ -48,7 +50,14 @@ export const Tabs = TabNavigator(
   }
 );
 
-export const PageContentRouter = StackNavigator({
-  Signin: { screen: Login },
-  PageContentRoute: { screen: Tabs }
+export const UserListStack = StackNavigator({
+  UserList: {
+    screen: UserList
+  },
+  Messenger: {
+    screen: Messenger,
+    navigationOptions: {
+      title: ({ state }) => `$(state.params.name`
+    }
+  }
 });
