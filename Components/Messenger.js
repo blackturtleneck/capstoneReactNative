@@ -1,6 +1,6 @@
 import React from "react";
 // import "./Messaging.css";
-import { View, Text, TextInput, Button } from "react-native";
+import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import List from "react-native-elements";
 import { firestore } from "../FirestoreConfig";
 
@@ -151,12 +151,8 @@ export default class Messenger extends React.Component {
       console.log("message", message);
       return (
         <Text
-        // className={
-        //   this.state.user === message.from
-        //     ? "me message-bubble"
-        //     : "them message-bubble"
-        // }
-        // key={message.id}
+          style={this.state.user === message.from ? styles.me : styles.them}
+          key={message.id}
         >
           {message.text}
         </Text>
@@ -165,9 +161,6 @@ export default class Messenger extends React.Component {
 
     return (
       <View className="messenger-wrapper">
-        {/* {this.state.otherUser !== undefined && this.state.otherUser !== null ? (
-          <View className="messenger">
-            <Text>{this.state.otherUserName}</Text> */}
         <View className="messages" id="message-list">
           {currentMessage}
         </View>
@@ -182,18 +175,32 @@ export default class Messenger extends React.Component {
           value={this.state.message}
           onSubmitEditing={this.submitMessage}
         />
-        {/* <Button className="submit-button" onPress={this.submitMessage}>
-            Send
-          </Button>
-        </View> */}
-
-        {/* </View>
-        // ) : (
-        //   <View className="messenger">
-        //     <Text className="select">Select a match to start messaging!</Text>
-        //   </View>
-        // )}  */}
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  them: {
+    marginRight: 40,
+    backgroundColor: "lightgray",
+    marginBottom: 5,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "lightgray",
+    padding: 5,
+    overflow: "hidden"
+  },
+  me: {
+    backgroundColor: "#9ba2ff",
+    marginLeft: "auto",
+    textAlign: "right",
+    color: "white",
+    marginBottom: 5,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#9ba2ff",
+    padding: 5,
+    overflow: "hidden"
+  }
+});
