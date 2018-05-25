@@ -1,11 +1,26 @@
 import React from "react";
 import { TabNavigator, StackNavigator } from "react-navigation";
 import { Icon } from "react-native-elements";
-
-// import PageContent from "./PageContent";
 import Profile from "./Profile";
+import UserList from "./UserList";
 import Messenger from "./Messenger";
 import Login from "./Login";
+
+export const UserListStack = StackNavigator({
+  UserList: {
+    screen: UserList,
+    headerMode: "none",
+    navigationOptions: {
+      headerVisible: false
+    }
+  },
+  Messenger: {
+    screen: Messenger,
+    navigationOptions: ({ navigation }) => ({
+      title: `${navigation.state.params.otherUser.name} `
+    })
+  }
+});
 
 export const Tabs = TabNavigator(
   {
@@ -18,8 +33,8 @@ export const Tabs = TabNavigator(
         )
       }
     },
-    Messenger: {
-      screen: Messenger,
+    UserList: {
+      screen: UserListStack,
       navigationOptions: {
         tabBarLabel: " ",
         tabBarIcon: ({ tintColor }) => (
@@ -47,8 +62,3 @@ export const Tabs = TabNavigator(
     }
   }
 );
-
-export const PageContentRouter = StackNavigator({
-  Signin: { screen: Login },
-  PageContentRoute: { screen: Tabs }
-});
