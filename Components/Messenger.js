@@ -169,6 +169,7 @@ export default class Messenger extends React.Component {
     return (
       <View className="messenger-wrapper">
         <ScrollView
+          style={{ height: 500 }}
           scrollEnabled={true}
           ref={ref => (this.scrollView = ref)}
           onContentSizeChange={(contentWidth, contentHeight) => {
