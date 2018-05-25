@@ -1,6 +1,13 @@
 import React from "react";
 // import "./Messaging.css";
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import {
+  ScrollView,
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet
+} from "react-native";
 import List from "react-native-elements";
 import { firestore } from "../FirestoreConfig";
 
@@ -161,9 +168,17 @@ export default class Messenger extends React.Component {
 
     return (
       <View className="messenger-wrapper">
-        <View className="messages" id="message-list">
+        <ScrollView
+          scrollEnabled={true}
+          ref={ref => (this.scrollView = ref)}
+          onContentSizeChange={(contentWidth, contentHeight) => {
+            this.scrollView.scrollToEnd({ animated: true });
+          }}
+          className="messages"
+          id="message-list"
+        >
           {currentMessage}
-        </View>
+        </ScrollView>
 
         {/* <View className="button-input-wrapper"> */}
         <TextInput
