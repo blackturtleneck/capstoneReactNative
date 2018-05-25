@@ -6,6 +6,7 @@ import { List, ListItem } from "react-native-elements";
 export default class UserList extends React.Component {
   constructor(props) {
     super(props);
+    console.log("props", this.props)
     this.state = {};
   }
 
@@ -31,9 +32,10 @@ export default class UserList extends React.Component {
       });
   }
 
-  chooseUser(curOtherUser) {
-    this.props.chooseUser(curOtherUser);
-  }
+  chooseUser = user => {
+    console.log("hi");
+    this.props.navigation.navigate('Messenger', { ...user });
+  };
 
   render() {
     let listItems = [];
@@ -44,6 +46,7 @@ export default class UserList extends React.Component {
             title={user.name}
             roundAvatar
             avatar={{ uri: user.photoURL }}
+            onPress={() => this.chooseUser(user)}
           />
         )));
     }
