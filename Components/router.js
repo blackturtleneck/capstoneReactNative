@@ -9,6 +9,10 @@ import Login from "./Login";
 export const UserListStack = StackNavigator({
   UserList: {
     screen: UserList,
+    headerMode: "none",
+    navigationOptions: {
+      headerVisible: false
+    }
   },
   Messenger: {
     screen: Messenger,
@@ -30,8 +34,8 @@ export const Tabs = TabNavigator(
       }
     },
     UserList: {
-       screen: UserListStack,
-        navigationOptions: {
+      screen: UserListStack,
+      navigationOptions: {
         tabBarLabel: " ",
         tabBarIcon: ({ tintColor }) => (
           <Icon

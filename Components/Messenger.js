@@ -169,7 +169,7 @@ export default class Messenger extends React.Component {
     return (
       <View className="messenger-wrapper">
         <ScrollView
-          style={{ height: 500 }}
+          style={{ height: 500, backgroundColor: "white" }}
           scrollEnabled={true}
           ref={ref => (this.scrollView = ref)}
           onContentSizeChange={(contentWidth, contentHeight) => {
@@ -183,10 +183,17 @@ export default class Messenger extends React.Component {
 
         {/* <View className="button-input-wrapper"> */}
         <TextInput
-          style={{ marginLeft: 10 }}
+          style={{
+            paddingLeft: 10,
+            paddingTop: 5,
+            paddingBottom: 5,
+            backgroundColor: "white",
+            borderTopWidth: 0.5,
+            borderTopColor: "black"
+          }}
           onChangeText={message => this.setState({ message })}
           type="text"
-          placeholder="message"
+          placeholder="Say hello and something more..."
           value={this.state.message}
           onSubmitEditing={this.submitMessage}
         />
