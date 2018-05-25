@@ -1,23 +1,26 @@
 import React from "react";
-import { db } from "../FirestoreConfig";
 // import "./Messaging.css";
-import { View, Text, TextInput, ListView } from "react-native";
+import { View, Text, TextInput, Button } from "react-native";
+import List from "react-native-elements";
+import { firestore } from "../FirestoreConfig";
 
 export default class Messenger extends React.Component {
   constructor(props, context) {
     super(props, context);
+    console.log("props", this.props);
+    console.log("get params messenger", this.props.navigation.state.params);
     this.state = {
       message: "",
       messages: [],
-      user: this.props.user,
-      userEmail: this.props.userEmail,
-      otherUser: this.props.otherUser,
-      otherUserName: this.props.otherUserName
+      user: this.props.navigation.state.params.user.name,
+      userEmail: this.props.navigation.state.params.user.email,
+      otherUser: this.props.navigation.state.params.otherUser.email,
+      otherUserName: this.props.navigation.state.params.otherUser.name
     };
 
-    this.updateMessage = this.updateMessage.bind(this);
+    // this.updateMessage = this.updateMessage.bind(this);
     this.submitMessage = this.submitMessage.bind(this);
-    this.submitMessageEnter = this.submitMessageEnter.bind(this);
+    console.log("this.state", this.state);
   }
 
   // componentDidMount() {
@@ -29,39 +32,34 @@ export default class Messenger extends React.Component {
   //   }
   // }
 
-  componentWillReceiveProps(newProps) {
-    this.setState({
-      otherUser: newProps.otherUser
-    });
-    if (newProps.otherUser !== this.props.otherUser) {
-      let currentComponent = this;
-      db
-        .collection("users")
-        .doc(this.props.userEmail)
-        .collection("messages")
-        .doc(newProps.otherUser)
-        .collection("messages")
-        .onSnapshot(function(querySnapshot) {
-          var curMessages = [];
-          querySnapshot.forEach(function(doc) {
-            curMessages.push(doc.data());
-          });
-          currentComponent.setState({ messages: curMessages });
+  componentWillMount() {
+    // this.setState({
+    //   otherUser: newProps.otherUser
+    // });
+    // if (newProps.otherUser !== this.state.otherUser) {
+    let currentComponent = this;
+    firestore
+      .collection("users")
+      .doc(this.state.userEmail)
+      .collection("messages")
+      .doc(this.state.otherUser)
+      .collection("messages")
+      .onSnapshot(function(querySnapshot) {
+        var curMessages = [];
+        querySnapshot.forEach(function(doc) {
+          curMessages.push(doc.data());
+          console.log("in curMessages", doc.data());
         });
-    }
+        currentComponent.setState({ messages: curMessages });
+      });
+    // }
   }
 
-  updateMessage(event) {
-    this.setState({
-      message: event.target.value
-    });
-  }
-
-  submitMessageEnter(event) {
-    if (event.key === "Enter") {
-      this.submitMessage();
-    }
-  }
+  // updateMessage(event) {
+  //   this.setState({
+  //     message: event.target.value
+  //   });
+  // }
 
   submitMessage(event) {
     const time = new Date();
@@ -125,36 +123,40 @@ export default class Messenger extends React.Component {
       text: this.state.message,
       from: this.state.user
     };
-    db
+    firestore
       .collection("users")
-      .doc(this.props.userEmail)
+      .doc(this.state.userEmail)
       .collection("messages")
       .doc(this.state.otherUser)
       .collection("messages")
       .doc(timeStamp)
       .set(nextMessage);
-    db
+    firestore
       .collection("users")
-      .doc(this.props.otherUser)
+      .doc(this.state.otherUser)
       .collection("messages")
       .doc(this.state.userEmail)
       .collection("messages")
       .doc(timeStamp)
       .set(nextMessage);
 
-    document.getElementById("message-box").value = "";
+    this.setState({
+      message: ""
+    });
   }
 
   render() {
+    console.log("this.state.messages", this.state.messages);
     const currentMessage = this.state.messages.map((message, i) => {
+      console.log("message", message);
       return (
         <Text
-          className={
-            this.state.user === message.from
-              ? "me message-bubble"
-              : "them message-bubble"
-          }
-          key={message.id}
+        // className={
+        //   this.state.user === message.from
+        //     ? "me message-bubble"
+        //     : "them message-bubble"
+        // }
+        // key={message.id}
         >
           {message.text}
         </Text>
@@ -163,35 +165,34 @@ export default class Messenger extends React.Component {
 
     return (
       <View className="messenger-wrapper">
-        {this.state.otherUser !== undefined && this.state.otherUser !== null ? (
+        {/* {this.state.otherUser !== undefined && this.state.otherUser !== null ? (
           <View className="messenger">
-            <Text>{this.state.otherUserName}</Text>
-            <ListView
-              className="messages"
-              id="message-list"
-              renderRow={currentMessage}
-            />
+            <Text>{this.state.otherUserName}</Text> */}
+        <View className="messages" id="message-list">
+          {currentMessage}
+        </View>
 
-            <View className="button-input-wrapper">
-              <TextInput
-                id="message-box"
-                className="send-text"
-                onChange={this.updateMessage}
-                type="text"
-                placeholder="message"
-                onKeyPress={this.submitMessageEnter}
-              />
-              <Button className="submit-button" onClick={this.submitMessage}>
-                Send
-              </Button>
-            </View>
-            {/* <br /> */}
-          </View>
-        ) : (
-          <View className="messenger">
-            <Text className="select">Select a match to start messaging!</Text>
-          </View>
-        )}
+        {/* <View className="button-input-wrapper"> */}
+        <TextInput
+          id="message-box"
+          className="send-text"
+          onChangeText={message => this.setState({ message })}
+          type="text"
+          placeholder="message"
+          value={this.state.message}
+          onSubmitEditing={this.submitMessage}
+        />
+        {/* <Button className="submit-button" onPress={this.submitMessage}>
+            Send
+          </Button>
+        </View> */}
+
+        {/* </View>
+        // ) : (
+        //   <View className="messenger">
+        //     <Text className="select">Select a match to start messaging!</Text>
+        //   </View>
+        // )}  */}
       </View>
     );
   }

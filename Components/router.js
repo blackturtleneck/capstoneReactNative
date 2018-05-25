@@ -9,14 +9,11 @@ import Login from "./Login";
 export const UserListStack = StackNavigator({
   UserList: {
     screen: UserList,
-    navigationOptions: {
-      title: "Matches"
-    }
   },
   Messenger: {
     screen: Messenger,
     navigationOptions: ({ navigation }) => ({
-      title: `${navigation.state.params.name} `
+      title: `${navigation.state.params.otherUser.name} `
     })
   }
 });

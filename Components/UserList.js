@@ -6,8 +6,16 @@ import { List, ListItem } from "react-native-elements";
 export default class UserList extends React.Component {
   constructor(props) {
     super(props);
-    console.log("props", this.props)
-    this.state = {};
+    console.log("props", this.props);
+    console.log("screen props", this.props.screenProps);
+
+    this.state = {
+      user: {
+        name: this.props.screenProps.user.displayName,
+        email: this.props.screenProps.user.email
+      }
+    };
+    console.log("this.state", this.state);
   }
 
   componentDidMount() {
@@ -19,7 +27,7 @@ export default class UserList extends React.Component {
       .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
           // doc.data() is never undefined for query doc snapshots
-          if (doc.get("name") !== currentComponent.state.user) {
+          if (doc.get("name") !== currentComponent.state.user.name) {
             curUserList.push({
               email: doc.id,
               name: doc.get("name"),
@@ -34,7 +42,10 @@ export default class UserList extends React.Component {
 
   chooseUser = user => {
     console.log("hi");
-    this.props.navigation.navigate('Messenger', { ...user });
+    this.props.navigation.navigate("Messenger", {
+      otherUser: user,
+      user: this.state.user
+    });
   };
 
   render() {
