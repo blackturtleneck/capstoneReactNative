@@ -183,8 +183,7 @@ export default class Messenger extends React.Component {
 
         {/* <View className="button-input-wrapper"> */}
         <TextInput
-          id="message-box"
-          className="send-text"
+          style={{ marginLeft: 10 }}
           onChangeText={message => this.setState({ message })}
           type="text"
           placeholder="message"
@@ -198,7 +197,8 @@ export default class Messenger extends React.Component {
 
 const styles = StyleSheet.create({
   them: {
-    marginRight: 40,
+    marginRight: "auto",
+    marginLeft: 10,
     backgroundColor: "lightgray",
     marginBottom: 5,
     borderRadius: 10,
@@ -210,6 +210,8 @@ const styles = StyleSheet.create({
   me: {
     backgroundColor: "#9ba2ff",
     marginLeft: "auto",
+    marginRight: 10,
+
     textAlign: "right",
     color: "white",
     marginBottom: 5,
