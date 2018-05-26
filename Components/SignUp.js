@@ -8,12 +8,6 @@ export default class SignUp extends Component {
     this.state = {};
   }
   render() {
-    const genderData = [
-      { key: index++, section: true, label: "Gender" },
-      { key: index++, label: "MALE" },
-      { key: index++, label: "FEMALE" },
-      { key: index++, label: "BOTH" }
-    ];
     return (
       <View style={styles.view}>
         <Image source={require("./img/signup-header.png")} />
