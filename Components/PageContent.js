@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Tabs } from "./router";
-import SignUp from "./SignUp";
+// import SignUp from "./SignUp";
 import { firestore } from "../FirestoreConfig";
+import SignUpController from "./SignUp/SignUpController";
 
 export default class PageContent extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ export default class PageContent extends Component {
     if (this.state.onBoarding) {
       return <Tabs screenProps={{ user: this.props.user }} />;
     } else {
-      return <SignUp user={this.props.user} />;
+      return <SignUpController user={this.props.user} />;
     }
   }
 }

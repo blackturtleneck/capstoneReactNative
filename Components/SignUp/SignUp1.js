@@ -5,24 +5,24 @@ import {
   TextInput,
   Text,
   StyleSheet,
-  Picker,
-  Item
+  Item,
+  Button
 } from "react-native";
 import DropdownMenu from "react-native-dropdown-menu";
 
-export default class SignUp extends Component {
+export default class SignUp1 extends Component {
   constructor(props) {
     console.log("props", props);
     super(props);
     this.state = {
-      name: this.props.user.displayName,
-      gender: "",
-      birthday: this.props.user.birthday,
-      location: this.props.user.location
+      name: this.props.fieldValues.name,
+      gender: this.props.fieldValues.gender,
+      birthday: this.props.fieldValues.birthday,
+      location: this.props.fieldValues.location
     };
   }
   render() {
-    var genderData = [["MALE", "FEMALE", "BOTH"]];
+    var genderData = [["MALE", "FEMALE"]];
     var birthdayData = [
       [
         "",
@@ -117,7 +117,7 @@ export default class SignUp extends Component {
     ];
     return (
       <View style={styles.view}>
-        <Image source={require("./img/signup-header.png")} />
+        <Image source={require("../img/signup-header.png")} />
         <Text style={styles.label}>NAME</Text>
         <TextInput value={this.state.name} />
         <Text style={styles.label}>GENDER</Text>
@@ -169,8 +169,24 @@ export default class SignUp extends Component {
         <TextInput style={styles.textInput} value={this.state.occupation} />
         <Text style={styles.label}>LOCATION</Text>
         <TextInput style={styles.textInput} value={this.state.location} />
+        <Button onPress={this.nextStep.bind(this)} title="NEXT" />
       </View>
     );
+  }
+  nextStep(e) {
+    // e.preventDefault();
+    let data = {
+      name: this.state.name,
+      gender: this.state.gender,
+      occupation: this.state.occupation,
+      education: this.state.education,
+      religion: this.state.religion,
+      location: this.state.location,
+      birthday: this.state.birthday
+    };
+
+    this.props.saveValues(data);
+    this.props.nextStep();
   }
 }
 const styles = StyleSheet.create({
