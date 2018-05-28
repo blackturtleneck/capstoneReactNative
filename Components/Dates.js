@@ -8,6 +8,7 @@ import {
     StyleSheet,
     TouchableOpacity
   } from "react-native"; 
+  import DateMap from './DateMap';
 
 export default class Dates extends Component {
     constructor(props, context) {
@@ -15,7 +16,8 @@ export default class Dates extends Component {
         this.state = {
             userEmail : this.props.navigation.state.params.userEmail,
             otherUser : this.props.navigation.state.params.userEmail,
-            location : ''
+            location : '',
+            showMap : false
         }
     }
 
@@ -55,8 +57,9 @@ export default class Dates extends Component {
     }
 
     _renderMap = () => {
-        console.log("SHOULD GO TO SCREEN WITH MAP")
-        navigate('DateMap')
+        this.setState(prevState =>({
+            showMap : !prevState.showMap
+        }));
     }
 
   render() {
@@ -86,7 +89,9 @@ export default class Dates extends Component {
         
                 <TouchableOpacity style = {styles.button} onPress = {this._renderMap} >
                     <Text>View on Map</Text>
-                </TouchableOpacity>                                              
+                </TouchableOpacity>     
+
+                {this.state.showMap && <DateMap/> }                                        
         
 
                 <TouchableOpacity style = {styles.nextbutton} >
