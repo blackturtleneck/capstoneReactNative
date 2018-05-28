@@ -10,8 +10,6 @@ import {
   Slider,
   TouchableHighlight
 } from "react-native";
-// import Slider from "react-native-slider";
-// import Slider from "react-native-multi-slider";
 import DropdownMenu from "react-native-dropdown-menu";
 import MultiSlider from "@ptomasroos/react-native-multi-slider";
 
@@ -55,14 +53,7 @@ export default class SignUp2 extends Component {
           </View>
         </DropdownMenu>
         <Text style={styles.label}>AGE</Text>
-        {/* <Slider
-          minimumValue={18}
-          maximumValue={55}
-          step={1}
-          value={this.state.matchAge}
-          onValueChange={matchAge => this.setState({ matchAge })}
-        /> */}
-        {/* <Slider /> */}
+
         <MultiSlider
           values={[21, 26]}
           sliderLength={280}
