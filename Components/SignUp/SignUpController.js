@@ -3,14 +3,14 @@ import { View } from "react-native";
 import { firestore } from "../../FirestoreConfig";
 import SignUp1 from "./SignUp1";
 import SignUp2 from "./SignUp2";
-// import SignUp3 from "./SignUp3";
+import SignUp3 from "./SignUp3";
 // import SignUpComplete from "./SignUpComplete";
 
 export default class SignUpController extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 1,
+      step: 3,
       fieldValues: {
         name: this.props.user.displayName,
         gender: null, //this.props.user.gender,
@@ -118,15 +118,16 @@ export default class SignUpController extends Component {
             fieldValues={this.state.fieldValues}
           />
         );
-      //   case 3:
-      //     return (
-      //       <SignUp3
-      //         submitRegistration={this.submitRegistration}
-      //         previousStep={this.previousStep}
-      //         saveValues={this.saveValues}
-      //         fieldValues={this.state.fieldValues}
-      //       />
-      //     );
+      case 3:
+        return (
+          <SignUp3
+            // submitRegistration={this.submitRegistration}
+            nextStep={this.nextStep}
+            previousStep={this.previousStep}
+            saveValues={this.saveValues}
+            fieldValues={this.state.fieldValues}
+          />
+        );
 
       case 4:
         return <SignUpComplete nextStep={this.nextStep} />;
