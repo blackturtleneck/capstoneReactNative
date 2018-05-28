@@ -22,7 +22,8 @@ export default class SignUp5 extends Component {
       datePrice: this.props.fieldValues.datePrice,
       neighborhoodPreferences: this.props.fieldValues.neighborhoodPreferences,
       cuisinePreferences: this.props.fieldValues.cuisinePreferences,
-      cuisineDislikes: this.props.fieldValues.cuisineDislikes
+      cuisineDislikes: this.props.fieldValues.cuisineDislikes,
+      musicPreferences: this.props.fieldValues.musicPreferences
     };
   }
   render() {
@@ -797,16 +798,16 @@ export default class SignUp5 extends Component {
           <View style={styles.row}>
             <TouchableOpacity
               style={
-                this.state.cuisineDislikes.american
+                this.state.musicPreferences.american
                   ? styles.buttonActive
                   : styles.buttonInactive
               }
               onPress={() => {
-                if (this.state.cuisineDislikes.american === null) {
-                  this.state.cuisineDislikes.american = true;
+                if (this.state.musicPreferences.american === null) {
+                  this.state.musicPreferences.american = true;
                 } else {
-                  this.state.cuisineDislikes.american = !this.state
-                    .cuisineDislikes.american;
+                  this.state.musicPreferences.american = !this.state
+                    .musicPreferences.american;
                 }
                 this.forceUpdate();
               }}
@@ -833,16 +834,16 @@ export default class SignUp5 extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={
-                this.state.cuisineDislikes.chinese
+                this.state.musicPreferences.chinese
                   ? styles.buttonActive
                   : styles.buttonInactive
               }
               onPress={() => {
-                if (this.state.cuisineDislikes.chinese === null) {
-                  this.state.cuisineDislikes.chinese = true;
+                if (this.state.musicPreferences.chinese === null) {
+                  this.state.musicPreferences.chinese = true;
                 } else {
-                  this.state.cuisineDislikes.chinese = !this.state
-                    .cuisineDislikes.chinese;
+                  this.state.musicPreferences.chinese = !this.state
+                    .musicPreferences.chinese;
                 }
                 this.forceUpdate();
               }}
@@ -853,16 +854,16 @@ export default class SignUp5 extends Component {
           <View style={styles.row}>
             <TouchableOpacity
               style={
-                this.state.cuisineDislikes.dessert
+                this.state.musicPreferences.dessert
                   ? styles.buttonActive
                   : styles.buttonInactive
               }
               onPress={() => {
-                if (this.state.cuisineDislikes.dessert === null) {
-                  this.state.cuisineDislikes.dessert = true;
+                if (this.state.musicPreferences.dessert === null) {
+                  this.state.musicPreferences.dessert = true;
                 } else {
-                  this.state.cuisineDislikes.dessert = !this.state
-                    .cuisineDislikes.dessert;
+                  this.state.musicPreferences.dessert = !this.state
+                    .musicPreferences.dessert;
                 }
                 this.forceUpdate();
               }}
@@ -871,16 +872,16 @@ export default class SignUp5 extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={
-                this.state.cuisineDislikes.greek
+                this.state.musicPreferences.greek
                   ? styles.buttonActive
                   : styles.buttonInactive
               }
               onPress={() => {
-                if (this.state.cuisineDislikes.greek === null) {
-                  this.state.cuisineDislikes.greek = true;
+                if (this.state.musicPreferences.greek === null) {
+                  this.state.musicPreferences.greek = true;
                 } else {
-                  this.state.cuisineDislikes.greek = !this.state.cuisineDislikes
-                    .greek;
+                  this.state.musicPreferences.greek = !this.state
+                    .musicPreferences.greek;
                 }
                 this.forceUpdate();
               }}
@@ -889,16 +890,16 @@ export default class SignUp5 extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={
-                this.state.cuisineDislikes.halal
+                this.state.musicPreferences.halal
                   ? styles.buttonActive
                   : styles.buttonInactive
               }
               onPress={() => {
-                if (this.state.cuisineDislikes.halal === null) {
-                  this.state.cuisineDislikes.halal = true;
+                if (this.state.musicPreferences.halal === null) {
+                  this.state.musicPreferences.halal = true;
                 } else {
-                  this.state.cuisineDislikes.halal = !this.state.cuisineDislikes
-                    .halal;
+                  this.state.musicPreferences.halal = !this.state
+                    .musicPreferences.halal;
                 }
                 this.forceUpdate();
               }}
@@ -910,16 +911,16 @@ export default class SignUp5 extends Component {
           <View style={styles.row}>
             <TouchableOpacity
               style={
-                this.state.cuisineDislikes.indian
+                this.state.musicPreferences.indian
                   ? styles.buttonActive
                   : styles.buttonInactive
               }
               onPress={() => {
-                if (this.state.cuisineDislikes.indian === null) {
-                  this.state.cuisineDislikes.indian = true;
+                if (this.state.musicPreferences.indian === null) {
+                  this.state.musicPreferences.indian = true;
                 } else {
-                  this.state.cuisineDislikes.indian = !this.state
-                    .cuisineDislikes.indian;
+                  this.state.musicPreferences.indian = !this.state
+                    .musicPreferences.indian;
                 }
                 this.forceUpdate();
               }}
@@ -928,16 +929,16 @@ export default class SignUp5 extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={
-                this.state.cuisineDislikes.italian
+                this.state.musicPreferences.italian
                   ? styles.buttonActive
                   : styles.buttonInactive
               }
               onPress={() => {
-                if (this.state.cuisineDislikes.italian === null) {
-                  this.state.cuisineDislikes.italian = true;
+                if (this.state.musicPreferences.italian === null) {
+                  this.state.musicPreferences.italian = true;
                 } else {
-                  this.state.cuisineDislikes.italian = !this.state
-                    .cuisineDislikes.italian;
+                  this.state.musicPreferences.italian = !this.state
+                    .musicPreferences.italian;
                 }
                 this.forceUpdate();
               }}
@@ -946,16 +947,16 @@ export default class SignUp5 extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={
-                this.state.cuisineDislikes.japanese
+                this.state.musicPreferences.japanese
                   ? styles.buttonActive
                   : styles.buttonInactive
               }
               onPress={() => {
-                if (this.state.cuisineDislikes.japanese === null) {
-                  this.state.cuisineDislikes.japanese = true;
+                if (this.state.musicPreferences.japanese === null) {
+                  this.state.musicPreferences.japanese = true;
                 } else {
-                  this.state.cuisineDislikes.japanese = !this.state
-                    .cuisineDislikes.japanese;
+                  this.state.musicPreferences.japanese = !this.state
+                    .musicPreferences.japanese;
                 }
                 this.forceUpdate();
               }}
@@ -967,16 +968,16 @@ export default class SignUp5 extends Component {
           <View style={styles.row}>
             <TouchableOpacity
               style={
-                this.state.cuisineDislikes.korean
+                this.state.musicPreferences.korean
                   ? styles.buttonActive
                   : styles.buttonInactive
               }
               onPress={() => {
-                if (this.state.cuisineDislikes.korean === null) {
-                  this.state.cuisineDislikes.korean = true;
+                if (this.state.musicPreferences.korean === null) {
+                  this.state.musicPreferences.korean = true;
                 } else {
-                  this.state.cuisineDislikes.korean = !this.state
-                    .cuisineDislikes.korean;
+                  this.state.musicPreferences.korean = !this.state
+                    .musicPreferences.korean;
                 }
                 this.forceUpdate();
               }}
@@ -985,16 +986,16 @@ export default class SignUp5 extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={
-                this.state.cuisineDislikes.mediterranean
+                this.state.musicPreferences.mediterranean
                   ? styles.buttonActive
                   : styles.buttonInactive
               }
               onPress={() => {
-                if (this.state.cuisineDislikes.mediterranean === null) {
-                  this.state.cuisineDislikes.mediterranean = true;
+                if (this.state.musicPreferences.mediterranean === null) {
+                  this.state.musicPreferences.mediterranean = true;
                 } else {
-                  this.state.cuisineDislikes.mediterranean = !this.state
-                    .cuisineDislikes.mediterranean;
+                  this.state.musicPreferences.mediterranean = !this.state
+                    .musicPreferences.mediterranean;
                 }
                 this.forceUpdate();
               }}
@@ -1003,16 +1004,16 @@ export default class SignUp5 extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={
-                this.state.cuisineDislikes.mexican
+                this.state.musicPreferences.mexican
                   ? styles.buttonActive
                   : styles.buttonInactive
               }
               onPress={() => {
-                if (this.state.cuisineDislikes.mexican === null) {
-                  this.state.cuisineDislikes.mexican = true;
+                if (this.state.musicPreferences.mexican === null) {
+                  this.state.musicPreferences.mexican = true;
                 } else {
-                  this.state.cuisineDislikes.mexican = !this.state
-                    .cuisineDislikes.mexican;
+                  this.state.musicPreferences.mexican = !this.state
+                    .musicPreferences.mexican;
                 }
                 this.forceUpdate();
               }}
@@ -1024,16 +1025,16 @@ export default class SignUp5 extends Component {
           <View style={styles.row}>
             <TouchableOpacity
               style={
-                this.state.cuisineDislikes.middleEastern
+                this.state.musicPreferences.middleEastern
                   ? styles.buttonActive
                   : styles.buttonInactive
               }
               onPress={() => {
-                if (this.state.cuisineDislikes.middleEastern === null) {
-                  this.state.cuisineDislikes.middleEastern = true;
+                if (this.state.musicPreferences.middleEastern === null) {
+                  this.state.musicPreferences.middleEastern = true;
                 } else {
-                  this.state.cuisineDislikes.middleEastern = !this.state
-                    .cuisineDislikes.middleEastern;
+                  this.state.musicPreferences.middleEastern = !this.state
+                    .musicPreferences.middleEastern;
                 }
                 this.forceUpdate();
               }}
@@ -1042,16 +1043,16 @@ export default class SignUp5 extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={
-                this.state.cuisineDislikes.pizza
+                this.state.musicPreferences.pizza
                   ? styles.buttonActive
                   : styles.buttonInactive
               }
               onPress={() => {
-                if (this.state.cuisineDislikes.pizza === null) {
-                  this.state.cuisineDislikes.pizza = true;
+                if (this.state.musicPreferences.pizza === null) {
+                  this.state.musicPreferences.pizza = true;
                 } else {
-                  this.state.cuisineDislikes.pizza = !this.state.cuisineDislikes
-                    .pizza;
+                  this.state.musicPreferences.pizza = !this.state
+                    .musicPreferences.pizza;
                 }
                 this.forceUpdate();
               }}
@@ -1060,21 +1061,308 @@ export default class SignUp5 extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={
-                this.state.cuisineDislikes.thai
+                this.state.musicPreferences.thai
                   ? styles.buttonActive
                   : styles.buttonInactive
               }
               onPress={() => {
-                if (this.state.cuisineDislikes.thai === null) {
-                  this.state.cuisineDislikes.thai = true;
+                if (this.state.musicPreferences.thai === null) {
+                  this.state.musicPreferences.thai = true;
                 } else {
-                  this.state.cuisineDislikes.thai = !this.state.cuisineDislikes
-                    .thai;
+                  this.state.musicPreferences.thai = !this.state
+                    .musicPreferences.thai;
                 }
                 this.forceUpdate();
               }}
             >
               <Text>THAI</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View>
+          <Text>MUSIC PREFERENCES</Text>
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.musicPreferences.hiphop
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.musicPreferences.hiphop === null) {
+                  this.state.musicPreferences.hiphop = true;
+                } else {
+                  this.state.musicPreferences.hiphop = !this.state
+                    .musicPreferences.hiphop;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>HIP HOP</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.pop
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.pop === null) {
+                  this.state.cuisinePreferences.pop = true;
+                } else {
+                  this.state.cuisinePreferences.pop = !this.state
+                    .cuisinePreferences.pop;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>POP</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.musicPreferences.country
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.musicPreferences.country === null) {
+                  this.state.musicPreferences.country = true;
+                } else {
+                  this.state.musicPreferences.country = !this.state
+                    .musicPreferences.country;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>COUNTRY</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.musicPreferences.latin
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.musicPreferences.latin === null) {
+                  this.state.musicPreferences.latin = true;
+                } else {
+                  this.state.musicPreferences.latin = !this.state
+                    .musicPreferences.latin;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>LATIN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.musicPreferences.alternative
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.musicPreferences.alternative === null) {
+                  this.state.musicPreferences.alternative = true;
+                } else {
+                  this.state.musicPreferences.alternative = !this.state
+                    .musicPreferences.alternative;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>ALTERNATIVE</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.musicPreferences.rb
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.musicPreferences.rb === null) {
+                  this.state.musicPreferences.rb = true;
+                } else {
+                  this.state.musicPreferences.rb = !this.state.musicPreferences
+                    .rb;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>R&B</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.musicPreferences.rock
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.musicPreferences.rock === null) {
+                  this.state.musicPreferences.rock = true;
+                } else {
+                  this.state.musicPreferences.rock = !this.state
+                    .musicPreferences.rock;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>ROCK</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.musicPreferences.edm
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.musicPreferences.edm === null) {
+                  this.state.musicPreferences.edm = true;
+                } else {
+                  this.state.musicPreferences.edm = !this.state.musicPreferences
+                    .edm;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>EDM</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.musicPreferences.classical
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.musicPreferences.classical === null) {
+                  this.state.musicPreferences.classical = true;
+                } else {
+                  this.state.musicPreferences.classical = !this.state
+                    .musicPreferences.classical;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>CLASSICAL</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.musicPreferences.jazz
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.musicPreferences.jazz === null) {
+                  this.state.musicPreferences.jazz = true;
+                } else {
+                  this.state.musicPreferences.jazz = !this.state
+                    .musicPreferences.jazz;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>JAZZ</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.musicPreferences.indie
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.musicPreferences.indie === null) {
+                  this.state.musicPreferences.indie = true;
+                } else {
+                  this.state.musicPreferences.indie = !this.state
+                    .musicPreferences.indie;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>indie</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.musicPreferences.folk
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.musicPreferences.folk === null) {
+                  this.state.musicPreferences.folk = true;
+                } else {
+                  this.state.musicPreferences.folk = !this.state
+                    .musicPreferences.folk;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>FOLK</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.musicPreferences.reggae
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.musicPreferences.reggae === null) {
+                  this.state.musicPreferences.reggae = true;
+                } else {
+                  this.state.musicPreferences.reggae = !this.state
+                    .musicPreferences.reggae;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>REGGAE</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.musicPreferences.soul
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.musicPreferences.soul === null) {
+                  this.state.musicPreferences.soul = true;
+                } else {
+                  this.state.musicPreferences.soul = !this.state
+                    .musicPreferences.soul;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>SOUL</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.musicPreferences.punk
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.musicPreferences.punk === null) {
+                  this.state.musicPreferences.punk = true;
+                } else {
+                  this.state.musicPreferences.punk = !this.state
+                    .musicPreferences.punk;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>PUNK</Text>
             </TouchableOpacity>
           </View>
         </View>
