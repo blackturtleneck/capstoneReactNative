@@ -20,7 +20,8 @@ export default class SignUp2 extends Component {
     super(props);
     this.state = {
       matchGender: this.props.fieldValues.matchGender,
-      matchAge: [18, 25],
+      matchAgeMin: this.props.fieldValues.matchAgeMin,
+      matchAgeMax: this.props.fieldValues.matchAgeMax,
       matchDistance: this.props.fieldValues.matchDistance
     };
   }
@@ -43,13 +44,20 @@ export default class SignUp2 extends Component {
           onSelect={value => this.setState({ matchGender: genderData[value] })}
         />
         <Text style={styles.label}>AGE</Text>
-
+        <Text>
+          {this.state.matchAgeMin} - {this.state.matchAgeMax}
+        </Text>
         <MultiSlider
-          values={[21, 26]}
+          values={
+            this.state.matchAgeMax && this.state.matchAgeMin
+              ? [this.state.matchAgeMin, this.state.matchAgeMax]
+              : [21, 26]
+          }
           sliderLength={280}
           onValuesChange={value =>
             this.setState({
-              matchAge: value
+              matchAgeMin: value[0],
+              matchAgeMax: value[1]
             })
           }
           min={18}
@@ -57,10 +65,6 @@ export default class SignUp2 extends Component {
           step={1}
           snapped
         />
-
-        <Text>
-          Value: {this.state.matchAge[0]} - {this.state.matchAge[1]}
-        </Text>
 
         <Text style={styles.label}>DISTANCE</Text>
         <Slider
@@ -81,7 +85,8 @@ export default class SignUp2 extends Component {
     // e.preventDefault();
     let data = {
       matchGender: this.state.matchGender,
-      matchAge: this.state.matchAge,
+      matchAgeMin: this.state.matchAgeMin,
+      matchAgeMax: this.state.matchAgeMax,
       matchDistance: this.state.matchDistance
     };
 

@@ -117,9 +117,15 @@ export default class SignUp1 extends Component {
     };
     return (
       <View style={styles.view}>
-        <Image source={require("../img/signup-header.png")} />
+        <View style={styles.img}>
+          <Image source={require("../img/signup-header.png")} />
+        </View>
         <Text style={styles.label}>NAME</Text>
-        <TextInput value={this.state.name} />
+        <TextInput
+          style={styles.textInput}
+          value={this.state.name}
+          onChangeText={name => this.setState({ name })}
+        />
         <Text style={styles.label}>GENDER</Text>
         <ModalDropdown
           style={styles.textInput}
@@ -130,7 +136,7 @@ export default class SignUp1 extends Component {
         <Text style={styles.label}>BIRTHDAY</Text>
         <View style={styles.row}>
           <ModalDropdown
-            style={styles.textInput}
+            style={styles.birthday}
             options={birthdayData.month}
             defaultValue={
               this.state.birthday && this.state.birthday.month
@@ -152,7 +158,7 @@ export default class SignUp1 extends Component {
             }}
           />
           <ModalDropdown
-            style={styles.textInput}
+            style={styles.birthday}
             options={birthdayData.day}
             defaultValue={
               this.state.birthday && this.state.birthday.day
@@ -177,7 +183,7 @@ export default class SignUp1 extends Component {
             }}
           />
           <ModalDropdown
-            style={styles.textInput}
+            style={styles.birthday}
             options={birthdayData.year}
             defaultValue={
               this.state.birthday && this.state.birthday.year
@@ -247,23 +253,38 @@ export default class SignUp1 extends Component {
 }
 const styles = StyleSheet.create({
   view: {
-    alignContent: "center",
-    alignItems: "center",
-    justifyContent: "center",
+    marginLeft: 25,
     marginTop: 40
   },
   label: {
-    marginTop: 40,
-    fontWeight: "bold"
+    marginTop: 20,
+    fontWeight: "bold",
+    marginLeft: 5
   },
   textInput: {
     backgroundColor: "#F2F2F2",
-    width: 100
+    width: 300,
+    marginTop: 5,
+    marginLeft: 5,
+    marginRight: 5,
+    padding: 5
+  },
+  birthday: {
+    backgroundColor: "#F2F2F2",
+    width: 95,
+    marginTop: 5,
+    marginLeft: 5,
+    marginRight: 5,
+    padding: 5
   },
   row: {
     flexWrap: "wrap",
     alignItems: "flex-start",
-    flexDirection: "row",
-    marginLeft: 10
+    flexDirection: "row"
+  },
+  img: {
+    alignContent: "center",
+    alignItems: "center",
+    justifyContent: "center"
   }
 });
