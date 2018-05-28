@@ -9,6 +9,7 @@ import {
   Button
 } from "react-native";
 import DropdownMenu from "react-native-dropdown-menu";
+import ModalDropdown from "react-native-modal-dropdown";
 
 export default class SignUp1 extends Component {
   constructor(props) {
@@ -18,12 +19,30 @@ export default class SignUp1 extends Component {
       name: this.props.fieldValues.name,
       gender: this.props.fieldValues.gender,
       birthday: this.props.fieldValues.birthday,
-      location: this.props.fieldValues.location
+      location: this.props.fieldValues.location,
+      education: this.props.fieldValues.education,
+      occupation: this.props.fieldValues.occupation,
+      religion: this.props.fieldValues.religion
     };
   }
   render() {
-    var genderData = [["MALE", "FEMALE"]];
+    var genderData = ["MALE", "FEMALE"];
     var birthdayData = [
+      [
+        "",
+        "JANUARY",
+        "FEBRUARY",
+        "MARCH",
+        "APRIL",
+        "MAY",
+        "JUNE",
+        "JULY",
+        "AUGUST",
+        "SEPTEMEBER",
+        "OCTOBER",
+        "NOVEMBER",
+        "DECEMEBER"
+      ],
       [
         "",
         "1",
@@ -58,21 +77,7 @@ export default class SignUp1 extends Component {
         "30",
         "31"
       ],
-      [
-        "",
-        "JANUARY",
-        "FEBRUARY",
-        "MARCH",
-        "APRIL",
-        "MAY",
-        "JUNE",
-        "JULY",
-        "AUGUST",
-        "SEPTEMEBER",
-        "OCTOBER",
-        "NOVEMBER",
-        "DECEMEBER"
-      ],
+
       [
         "",
         "1963",
@@ -121,7 +126,14 @@ export default class SignUp1 extends Component {
         <Text style={styles.label}>NAME</Text>
         <TextInput value={this.state.name} />
         <Text style={styles.label}>GENDER</Text>
-        <DropdownMenu
+        <ModalDropdown
+          style={styles.textInput}
+          options={genderData}
+          defaultValue={this.state.gender !== null ? this.state.gender : ""}
+          onSelect={value => this.setState({ gender: genderData[value] })}
+        />
+
+        {/* <DropdownMenu
           style={{ flex: 1, backgroundColor: "#F2F2F2" }}
           bgColor={"#F2F2F2"}
           tintColor={"#666666"}
@@ -132,14 +144,14 @@ export default class SignUp1 extends Component {
           // titleStyle={{color: '#333333'}}
           // maxHeight={300}
           handler={(selection, row) =>
-            this.setState({ birthday: genderData[selection][row] })
+            this.setState({ gender: genderData[selection][row] })
           }
           data={genderData}
         >
           <View style={{ flex: 1 }}>
             <Text>{this.state.gender} is the best language in the world</Text>
           </View>
-        </DropdownMenu>
+        </DropdownMenu> */}
 
         <Text style={styles.label}>BIRTHDAY</Text>
         <DropdownMenu
@@ -162,13 +174,29 @@ export default class SignUp1 extends Component {
           </View>
         </DropdownMenu>
         <Text style={styles.label}>EDUCATION</Text>
-        <TextInput style={styles.textInput} value={this.state.education} />
+        <TextInput
+          style={styles.textInput}
+          value={this.state.education}
+          onChangeText={education => this.setState({ education })}
+        />
         <Text style={styles.label}>RELIGION</Text>
-        <TextInput style={styles.textInput} value={this.state.religion} />
+        <TextInput
+          style={styles.textInput}
+          value={this.state.religion}
+          onChangeText={religion => this.setState({ religion })}
+        />
         <Text style={styles.label}>OCCUPATION</Text>
-        <TextInput style={styles.textInput} value={this.state.occupation} />
+        <TextInput
+          style={styles.textInput}
+          value={this.state.occupation}
+          onChangeText={occupation => this.setState({ occupation })}
+        />
         <Text style={styles.label}>LOCATION</Text>
-        <TextInput style={styles.textInput} value={this.state.location} />
+        <TextInput
+          style={styles.textInput}
+          value={this.state.location}
+          onChangeText={location => this.setState({ location })}
+        />
         <Button onPress={this.nextStep.bind(this)} title="NEXT" />
       </View>
     );
@@ -184,6 +212,7 @@ export default class SignUp1 extends Component {
       location: this.state.location,
       birthday: this.state.birthday
     };
+    console.log("data", data);
 
     this.props.saveValues(data);
     this.props.nextStep();
@@ -201,6 +230,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   textInput: {
-    backgroundColor: "#F2F2F2"
+    backgroundColor: "#F2F2F2",
+    width: 100
   }
 });
