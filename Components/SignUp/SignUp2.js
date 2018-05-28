@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Item,
   Button,
-  PanResponder
+  Slider
 } from "react-native";
 // import Slider from "react-native-slider";
 // import Slider from "react-native-multi-slider";
@@ -78,13 +78,13 @@ export default class SignUp2 extends Component {
         </Text>
 
         <Text style={styles.label}>DISTANCE</Text>
-        {/* <Slider
+        <Slider
           minimumValue={0}
           maximumValue={30}
           step={1}
           value={this.state.matchDistance}
           onValueChange={matchDistance => this.setState({ matchDistance })}
-        /> */}
+        />
 
         <Text>Value: {this.state.matchDistance}</Text>
       </View>
