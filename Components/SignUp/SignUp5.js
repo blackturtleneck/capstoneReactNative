@@ -20,7 +20,9 @@ export default class SignUp5 extends Component {
     this.state = {
       foodPreferences: this.props.fieldValues.foodPreferences,
       datePrice: this.props.fieldValues.datePrice,
-      neighborhoodPreferences: this.props.fieldValues.neighborhoodPreferences
+      neighborhoodPreferences: this.props.fieldValues.neighborhoodPreferences,
+      cuisinePreferences: this.props.fieldValues.cuisinePreferences,
+      cuisineDislikes: this.props.fieldValues.cuisineDislikes
     };
   }
   render() {
@@ -500,6 +502,579 @@ export default class SignUp5 extends Component {
               }}
             >
               <Text>WEST SEATTLE</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View>
+          <Text>CUISINES I LIKE</Text>
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.american
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.american === null) {
+                  this.state.cuisinePreferences.american = true;
+                } else {
+                  this.state.cuisinePreferences.american = !this.state
+                    .cuisinePreferences.american;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>AMERICAN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.french
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.french === null) {
+                  this.state.cuisinePreferences.french = true;
+                } else {
+                  this.state.cuisinePreferences.french = !this.state
+                    .cuisinePreferences.french;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>FRENCH</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.chinese
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.chinese === null) {
+                  this.state.cuisinePreferences.chinese = true;
+                } else {
+                  this.state.cuisinePreferences.chinese = !this.state
+                    .cuisinePreferences.chinese;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>CHINESE</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.dessert
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.dessert === null) {
+                  this.state.cuisinePreferences.dessert = true;
+                } else {
+                  this.state.cuisinePreferences.dessert = !this.state
+                    .cuisinePreferences.dessert;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>DESSERT</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.greek
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.greek === null) {
+                  this.state.cuisinePreferences.greek = true;
+                } else {
+                  this.state.cuisinePreferences.greek = !this.state
+                    .cuisinePreferences.greek;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>GREEK</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.halal
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.halal === null) {
+                  this.state.cuisinePreferences.halal = true;
+                } else {
+                  this.state.cuisinePreferences.halal = !this.state
+                    .cuisinePreferences.halal;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>HALAL</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.indian
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.indian === null) {
+                  this.state.cuisinePreferences.indian = true;
+                } else {
+                  this.state.cuisinePreferences.indian = !this.state
+                    .cuisinePreferences.indian;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>INDIAN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.italian
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.italian === null) {
+                  this.state.cuisinePreferences.italian = true;
+                } else {
+                  this.state.cuisinePreferences.italian = !this.state
+                    .cuisinePreferences.italian;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>ITALIAN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.japanese
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.japanese === null) {
+                  this.state.cuisinePreferences.japanese = true;
+                } else {
+                  this.state.cuisinePreferences.japanese = !this.state
+                    .cuisinePreferences.japanese;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>JAPANESE</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.korean
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.korean === null) {
+                  this.state.cuisinePreferences.korean = true;
+                } else {
+                  this.state.cuisinePreferences.korean = !this.state
+                    .cuisinePreferences.korean;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>KOREAN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.mediterranean
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.mediterranean === null) {
+                  this.state.cuisinePreferences.mediterranean = true;
+                } else {
+                  this.state.cuisinePreferences.mediterranean = !this.state
+                    .cuisinePreferences.mediterranean;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>MEDITERRANEAN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.mexican
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.mexican === null) {
+                  this.state.cuisinePreferences.mexican = true;
+                } else {
+                  this.state.cuisinePreferences.mexican = !this.state
+                    .cuisinePreferences.mexican;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>MEXICAN</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.middleEastern
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.middleEastern === null) {
+                  this.state.cuisinePreferences.middleEastern = true;
+                } else {
+                  this.state.cuisinePreferences.middleEastern = !this.state
+                    .cuisinePreferences.middleEastern;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>MIDDLE EASTERN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.pizza
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.pizza === null) {
+                  this.state.cuisinePreferences.pizza = true;
+                } else {
+                  this.state.cuisinePreferences.pizza = !this.state
+                    .cuisinePreferences.pizza;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>PIZZA</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.thai
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.thai === null) {
+                  this.state.cuisinePreferences.thai = true;
+                } else {
+                  this.state.cuisinePreferences.thai = !this.state
+                    .cuisinePreferences.thai;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>THAI</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View>
+          <Text>CUISINES I HATE</Text>
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.cuisineDislikes.american
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisineDislikes.american === null) {
+                  this.state.cuisineDislikes.american = true;
+                } else {
+                  this.state.cuisineDislikes.american = !this.state
+                    .cuisineDislikes.american;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>AMERICAN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisinePreferences.french
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisinePreferences.french === null) {
+                  this.state.cuisinePreferences.french = true;
+                } else {
+                  this.state.cuisinePreferences.french = !this.state
+                    .cuisinePreferences.french;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>FRENCH</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisineDislikes.chinese
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisineDislikes.chinese === null) {
+                  this.state.cuisineDislikes.chinese = true;
+                } else {
+                  this.state.cuisineDislikes.chinese = !this.state
+                    .cuisineDislikes.chinese;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>CHINESE</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.cuisineDislikes.dessert
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisineDislikes.dessert === null) {
+                  this.state.cuisineDislikes.dessert = true;
+                } else {
+                  this.state.cuisineDislikes.dessert = !this.state
+                    .cuisineDislikes.dessert;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>DESSERT</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisineDislikes.greek
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisineDislikes.greek === null) {
+                  this.state.cuisineDislikes.greek = true;
+                } else {
+                  this.state.cuisineDislikes.greek = !this.state.cuisineDislikes
+                    .greek;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>GREEK</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisineDislikes.halal
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisineDislikes.halal === null) {
+                  this.state.cuisineDislikes.halal = true;
+                } else {
+                  this.state.cuisineDislikes.halal = !this.state.cuisineDislikes
+                    .halal;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>HALAL</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.cuisineDislikes.indian
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisineDislikes.indian === null) {
+                  this.state.cuisineDislikes.indian = true;
+                } else {
+                  this.state.cuisineDislikes.indian = !this.state
+                    .cuisineDislikes.indian;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>INDIAN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisineDislikes.italian
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisineDislikes.italian === null) {
+                  this.state.cuisineDislikes.italian = true;
+                } else {
+                  this.state.cuisineDislikes.italian = !this.state
+                    .cuisineDislikes.italian;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>ITALIAN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisineDislikes.japanese
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisineDislikes.japanese === null) {
+                  this.state.cuisineDislikes.japanese = true;
+                } else {
+                  this.state.cuisineDislikes.japanese = !this.state
+                    .cuisineDislikes.japanese;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>JAPANESE</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.cuisineDislikes.korean
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisineDislikes.korean === null) {
+                  this.state.cuisineDislikes.korean = true;
+                } else {
+                  this.state.cuisineDislikes.korean = !this.state
+                    .cuisineDislikes.korean;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>KOREAN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisineDislikes.mediterranean
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisineDislikes.mediterranean === null) {
+                  this.state.cuisineDislikes.mediterranean = true;
+                } else {
+                  this.state.cuisineDislikes.mediterranean = !this.state
+                    .cuisineDislikes.mediterranean;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>MEDITERRANEAN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisineDislikes.mexican
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisineDislikes.mexican === null) {
+                  this.state.cuisineDislikes.mexican = true;
+                } else {
+                  this.state.cuisineDislikes.mexican = !this.state
+                    .cuisineDislikes.mexican;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>MEXICAN</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.cuisineDislikes.middleEastern
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisineDislikes.middleEastern === null) {
+                  this.state.cuisineDislikes.middleEastern = true;
+                } else {
+                  this.state.cuisineDislikes.middleEastern = !this.state
+                    .cuisineDislikes.middleEastern;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>MIDDLE EASTERN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisineDislikes.pizza
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisineDislikes.pizza === null) {
+                  this.state.cuisineDislikes.pizza = true;
+                } else {
+                  this.state.cuisineDislikes.pizza = !this.state.cuisineDislikes
+                    .pizza;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>PIZZA</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.cuisineDislikes.thai
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.cuisineDislikes.thai === null) {
+                  this.state.cuisineDislikes.thai = true;
+                } else {
+                  this.state.cuisineDislikes.thai = !this.state.cuisineDislikes
+                    .thai;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>THAI</Text>
             </TouchableOpacity>
           </View>
         </View>
