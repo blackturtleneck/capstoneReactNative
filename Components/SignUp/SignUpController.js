@@ -5,14 +5,14 @@ import SignUp1 from "./SignUp1";
 import SignUp2 from "./SignUp2";
 import SignUp3 from "./SignUp3";
 import SignUp4 from "./SignUp4";
-
+import SignUp5 from "./SignUp5";
 // import SignUpComplete from "./SignUpComplete";
 
 export default class SignUpController extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 4,
+      step: 5,
       fieldValues: {
         name: this.props.user.displayName,
         gender: null, //this.props.user.gender,
@@ -26,6 +26,44 @@ export default class SignUpController extends Component {
         matchAgeMin: null,
         matchAgeMax: null,
         matchDistance: null,
+
+        availability: {
+          sun: {
+            morning: null,
+            afternoon: null,
+            evening: null
+          },
+          mon: {
+            morning: null,
+            afternoon: null,
+            evening: null
+          },
+          tue: {
+            morning: null,
+            afternoon: null,
+            evening: null
+          },
+          wed: {
+            morning: null,
+            afternoon: null,
+            evening: null
+          },
+          thu: {
+            morning: null,
+            afternoon: null,
+            evening: null
+          },
+          fri: {
+            morning: null,
+            afternoon: null,
+            evening: null
+          },
+          sat: {
+            morning: null,
+            afternoon: null,
+            evening: null
+          }
+        },
 
         dates: {
           coffee: null,
@@ -45,6 +83,86 @@ export default class SignUpController extends Component {
           nature: null,
           animals: null,
           tech: null
+        },
+
+        foodPreferences: {
+          vegetarian: null,
+          glutenFree: null,
+          vegan: null,
+          dairyFree: null,
+          noRedMeat: null,
+          kosher: null,
+          paleo: null,
+          raw: null
+        },
+        datePrice: null,
+        neighborhoodPreferences: {
+          ballard: null,
+          belltown: null,
+          capitolHill: null,
+          downtown: null,
+          eastside: null,
+          firstHill: null,
+          fremont: null,
+          georgetown: null,
+          pioneerSquare: null,
+          queenAnne: null,
+          sodo: null,
+          slu: null,
+          uDistrict: null,
+          wallingford: null,
+          westSeattle: null
+        },
+        cuisinePreferences: {
+          american: null,
+          french: null,
+          chinese: null,
+          dessert: null,
+          greek: null,
+          halal: null,
+          indian: null,
+          italian: null,
+          japanese: null,
+          korean: null,
+          mediterranean: null,
+          mexican: null,
+          middleEastern: null,
+          pizza: null,
+          thai: null
+        },
+        cuisineDislikes: {
+          american: null,
+          french: null,
+          chinese: null,
+          dessert: null,
+          greek: null,
+          halal: null,
+          indian: null,
+          italian: null,
+          japanese: null,
+          korean: null,
+          mediterranean: null,
+          mexican: null,
+          middleEastern: null,
+          pizza: null,
+          thai: null
+        },
+        musicPreferences: {
+          hiphop: null,
+          pop: null,
+          country: null,
+          latin: null,
+          edm: null,
+          rb: null,
+          rock: null,
+          alternative: null,
+          classical: null,
+          jazz: null,
+          indie: null,
+          folk: null,
+          reggae: null,
+          soul: null,
+          punk: null
         }
       }
     };
@@ -140,7 +258,16 @@ export default class SignUpController extends Component {
           />
         );
       case 5:
-        return <SignUpComplete nextStep={this.nextStep} />;
+        return (
+          <SignUp5
+            nextStep={this.nextStep}
+            previousStep={this.previousStep}
+            saveValues={this.saveValues}
+            fieldValues={this.state.fieldValues}
+          />
+        );
+      // case 6:
+      //   return <SignUpComplete nextStep={this.nextStep} />;
     }
   }
   render() {
