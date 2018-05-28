@@ -4,13 +4,15 @@ import { firestore } from "../../FirestoreConfig";
 import SignUp1 from "./SignUp1";
 import SignUp2 from "./SignUp2";
 import SignUp3 from "./SignUp3";
+import SignUp4 from "./SignUp4";
+
 // import SignUpComplete from "./SignUpComplete";
 
 export default class SignUpController extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 3,
+      step: 4,
       fieldValues: {
         name: this.props.user.displayName,
         gender: null, //this.props.user.gender,
@@ -121,6 +123,15 @@ export default class SignUpController extends Component {
       case 3:
         return (
           <SignUp3
+            nextStep={this.nextStep}
+            previousStep={this.previousStep}
+            saveValues={this.saveValues}
+            fieldValues={this.state.fieldValues}
+          />
+        );
+      case 4:
+        return (
+          <SignUp4
             // submitRegistration={this.submitRegistration}
             nextStep={this.nextStep}
             previousStep={this.previousStep}
@@ -128,11 +139,8 @@ export default class SignUpController extends Component {
             fieldValues={this.state.fieldValues}
           />
         );
-
-      case 4:
-        return <SignUpComplete nextStep={this.nextStep} />;
       case 5:
-        return <Redirect to={"/messenger"} />;
+        return <SignUpComplete nextStep={this.nextStep} />;
     }
   }
   render() {
