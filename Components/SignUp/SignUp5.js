@@ -8,7 +8,9 @@ import {
   Item,
   Button,
   Slider,
-  TouchableHighlight
+  TouchableHighlight,
+  TouchableOpacity,
+  ScrollView
 } from "react-native";
 
 export default class SignUp5 extends Component {
@@ -16,13 +18,15 @@ export default class SignUp5 extends Component {
     console.log("props", props);
     super(props);
     this.state = {
-      foodPreferences: this.props.fieldValues.foodPreferences
+      foodPreferences: this.props.fieldValues.foodPreferences,
+      datePrice: this.props.fieldValues.datePrice,
+      neighborhoodPreferences: this.props.fieldValues.neighborhoodPreferences
     };
   }
   render() {
     console.log("signup5 fieldvalues", this.props.fieldValues);
     return (
-      <View style={styles.view}>
+      <ScrollView style={styles.view}>
         <TouchableHighlight onPress={this.props.previousStep}>
           <Image source={require("../img/back-arrow.png")} />
         </TouchableHighlight>
@@ -166,38 +170,340 @@ export default class SignUp5 extends Component {
           >
             <Text style={styles.foodLabel}>PALEO</Text>
           </TouchableHighlight>
-          <Text style={styles.foodLabel}>RAW</Text>
-          <TouchableHighlight
-            style={
-              this.state.foodPreferences.raw
-                ? styles.radioButtonActive
-                : styles.radioButtonInactive
-            }
-            onPress={() => {
-              if (this.state.foodPreferences.raw === null) {
-                this.state.foodPreferences.raw = true;
-              } else {
-                this.state.foodPreferences.raw = !this.state.foodPreferences
-                  .raw;
-              }
-              this.forceUpdate();
-            }}
-          >
+          <View styles={{ flexDirection: "row", flexWrap: "wrap" }}>
             <Text style={styles.foodLabel}>RAW</Text>
-          </TouchableHighlight>
+            <TouchableHighlight
+              style={
+                this.state.foodPreferences.raw
+                  ? styles.radioButtonActive
+                  : styles.radioButtonInactive
+              }
+              onPress={() => {
+                if (this.state.foodPreferences.raw === null) {
+                  this.state.foodPreferences.raw = true;
+                } else {
+                  this.state.foodPreferences.raw = !this.state.foodPreferences
+                    .raw;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text style={styles.foodLabel}>RAW</Text>
+            </TouchableHighlight>
+          </View>
         </View>
         <View>
           <Text>DATE PRICE PREFERENCE</Text>
           <View style={{ backgroundColor: "#F2F2F2" }}>
             <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-              <Text style={{ margin: 50 }}>$ </Text>
-              <Text style={{ margin: 50 }}>$$ </Text>
-              <Text style={{ margin: 50 }}>$$$ </Text>
+              <Text style={{ marginRight: 50 }}>$ </Text>
+              <Text style={{ marginRight: 50 }}>$$ </Text>
+              <Text style={{ marginRight: 50 }}>$$$ </Text>
             </View>
-            <Slider step={1} maximumValue={3} minimumValue={1} />
+            <Slider
+              step={1}
+              maximumValue={3}
+              minimumValue={1}
+              value={this.state.datePrice ? this.state.datePrice : 1}
+              onValueChange={datePrice => this.setState({ datePrice })}
+            />
           </View>
         </View>
-      </View>
+        <View>
+          <Text>NEIGHBORHOODS I LIKE</Text>
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.neighborhoodPreferences.ballard
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                console.log(
+                  "this.state.neighbo",
+                  this.state.neighborhoodPreferences
+                );
+                if (this.state.neighborhoodPreferences.ballard === null) {
+                  this.state.neighborhoodPreferences.ballard = true;
+                } else {
+                  this.state.neighborhoodPreferences.ballard = !this.state
+                    .neighborhoodPreferences.ballard;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>BALLARD</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.neighborhoodPreferences.belltown
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.neighborhoodPreferences.belltown === null) {
+                  this.state.neighborhoodPreferences.belltown = true;
+                } else {
+                  this.state.neighborhoodPreferences.ballard = !this.state
+                    .neighborhoodPreferences.belltown;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>BELLTOWN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.neighborhoodPreferences.capitolHill
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.neighborhoodPreferences.capitolHill === null) {
+                  this.state.neighborhoodPreferences.capitolHill = true;
+                } else {
+                  this.state.neighborhoodPreferences.capitolHill = !this.state
+                    .neighborhoodPreferences.capitolHill;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>CAPITOL HILL</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.neighborhoodPreferences.downtown
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                console.log(
+                  "this.state.neighbo",
+                  this.state.neighborhoodPreferences
+                );
+                if (this.state.neighborhoodPreferences.downtown === null) {
+                  this.state.neighborhoodPreferences.downtown = true;
+                } else {
+                  this.state.neighborhoodPreferences.downtown = !this.state
+                    .neighborhoodPreferences.downtown;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>DOWNTOWN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.neighborhoodPreferences.eastside
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.neighborhoodPreferences.eastside === null) {
+                  this.state.neighborhoodPreferences.eastside = true;
+                } else {
+                  this.state.neighborhoodPreferences.eastside = !this.state
+                    .neighborhoodPreferences.eastside;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>EASTSIDE</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.neighborhoodPreferences.firstHill
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.neighborhoodPreferences.firstHill === null) {
+                  this.state.neighborhoodPreferences.firstHill = true;
+                } else {
+                  this.state.neighborhoodPreferences.firstHill = !this.state
+                    .neighborhoodPreferences.firstHill;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>FIRST HILL</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.neighborhoodPreferences.fremont
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.neighborhoodPreferences.fremont === null) {
+                  this.state.neighborhoodPreferences.fremont = true;
+                } else {
+                  this.state.neighborhoodPreferences.fremont = !this.state
+                    .neighborhoodPreferences.fremont;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>FREMONT</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.neighborhoodPreferences.georgetown
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.neighborhoodPreferences.georgetown === null) {
+                  this.state.neighborhoodPreferences.georgetown = true;
+                } else {
+                  this.state.neighborhoodPreferences.georgetown = !this.state
+                    .neighborhoodPreferences.georgetown;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>GEORGETOWN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.neighborhoodPreferences.pioneerSquare
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.neighborhoodPreferences.pioneerSquare === null) {
+                  this.state.neighborhoodPreferences.pioneerSquare = true;
+                } else {
+                  this.state.neighborhoodPreferences.pioneerSquare = !this.state
+                    .neighborhoodPreferences.pioneerSquare;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>PIONEER SQUARE</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.neighborhoodPreferences.queenAnne
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.neighborhoodPreferences.queenAnne === null) {
+                  this.state.neighborhoodPreferences.queenAnne = true;
+                } else {
+                  this.state.neighborhoodPreferences.queenAnne = !this.state
+                    .neighborhoodPreferences.queenAnne;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>QUEEN ANNE</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.neighborhoodPreferences.sodo
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.neighborhoodPreferences.sodo === null) {
+                  this.state.neighborhoodPreferences.sodo = true;
+                } else {
+                  this.state.neighborhoodPreferences.sodo = !this.state
+                    .neighborhoodPreferences.sodo;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>SODO</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.neighborhoodPreferences.slu
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.neighborhoodPreferences.slu === null) {
+                  this.state.neighborhoodPreferences.slu = true;
+                } else {
+                  this.state.neighborhoodPreferences.slu = !this.state
+                    .neighborhoodPreferences.slu;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>SLU</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={
+                this.state.neighborhoodPreferences.uDistrict
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.neighborhoodPreferences.uDistrict === null) {
+                  this.state.neighborhoodPreferences.uDistrict = true;
+                } else {
+                  this.state.neighborhoodPreferences.uDistrict = !this.state
+                    .neighborhoodPreferences.uDistrict;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>UDISTRICT</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.neighborhoodPreferences.wallingford
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.neighborhoodPreferences.wallingford === null) {
+                  this.state.neighborhoodPreferences.wallingford = true;
+                } else {
+                  this.state.neighborhoodPreferences.wallingford = !this.state
+                    .neighborhoodPreferences.wallingford;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>WALLINGFORD</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                this.state.neighborhoodPreferences.westSeattle
+                  ? styles.buttonActive
+                  : styles.buttonInactive
+              }
+              onPress={() => {
+                if (this.state.neighborhoodPreferences.westSeattle === null) {
+                  this.state.neighborhoodPreferences.westSeattle = true;
+                } else {
+                  this.state.neighborhoodPreferences.westSeattle = !this.state
+                    .neighborhoodPreferences.westSeattle;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text>WEST SEATTLE</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
     );
   }
 
@@ -251,5 +557,25 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     flexDirection: "row",
     marginLeft: 10
+  },
+  buttonActive: {
+    backgroundColor: "#9BA2FF",
+    borderColor: "#9BA2FF",
+    borderWidth: 1,
+    borderRadius: 6,
+    padding: 5,
+    width: 100
+  },
+  buttonInactive: {
+    backgroundColor: "white",
+    borderColor: "black",
+    borderWidth: 1,
+    borderRadius: 6,
+    padding: 5,
+    width: 100
+  },
+  row: {
+    flexDirection: "row",
+    flexWrap: "wrap"
   }
 });
