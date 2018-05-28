@@ -6,8 +6,9 @@ import {
   Text,
   TextInput,
   Button,
-  StyleSheet
-} from "react-native";
+  StyleSheet,
+  TouchableOpacity
+} from "react-native"; 
 import List from "react-native-elements";
 import { firestore } from "../FirestoreConfig";
 
@@ -152,7 +153,14 @@ export default class Messenger extends React.Component {
     });
   }
 
+  onPress = () => {
+    console.log("requestDatePress", this.state.userEmail)
+    console.log("requestDatePress", this.state.otherUser)
+    navigate('Dates', {userEmail : this.state.userEmail})
+  }
+
   render() {
+    const {navigate } = this.props.navigation
     console.log("this.state.messages", this.state.messages);
     const currentMessage = this.state.messages.map((message, i) => {
       console.log("message", message);
@@ -168,6 +176,7 @@ export default class Messenger extends React.Component {
 
     return (
       <View className="messenger-wrapper">
+
         <ScrollView
           style={{ height: 500, backgroundColor: "white" }}
           scrollEnabled={true}
@@ -179,9 +188,16 @@ export default class Messenger extends React.Component {
           id="message-list"
         >
           {currentMessage}
+
+        <TouchableOpacity style = {styles.button} onPress={() => {
+          navigate('Dates', {userEmail : this.state.userEmail, otherUser : this.state.otherUser})
+  }}  >
+            <Text>Request a Date</Text>
+        </TouchableOpacity>
         </ScrollView>
 
         {/* <View className="button-input-wrapper"> */}
+
         <TextInput
           style={{
             paddingLeft: 10,
@@ -197,6 +213,7 @@ export default class Messenger extends React.Component {
           value={this.state.message}
           onSubmitEditing={this.submitMessage}
         />
+
       </View>
     );
   }
@@ -227,5 +244,10 @@ const styles = StyleSheet.create({
     borderColor: "#9ba2ff",
     padding: 5,
     overflow: "hidden"
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: "#DDDDDD",
+    padding: 10
   }
 });

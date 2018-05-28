@@ -5,6 +5,8 @@ import Profile from "./Profile";
 import UserList from "./UserList";
 import Messenger from "./Messenger";
 import Login from "./Login";
+import Dates from "./Dates";
+import DateMap from "./DateMap";
 
 export const UserListStack = StackNavigator({
   UserList: {
@@ -19,7 +21,14 @@ export const UserListStack = StackNavigator({
     navigationOptions: ({ navigation }) => ({
       title: `${navigation.state.params.otherUser.name} `
     })
+  },
+  Dates: {
+    screen: Dates
+  },
+  DateMap: {
+    screen: DateMap
   }
+
 });
 
 export const Tabs = TabNavigator(

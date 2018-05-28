@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/sarahfeldmann/Desktop/capstoneReactNative/node_modules/react-native/React/Views/RCTActivityIndicatorView.m \
-  /Users/sarahfeldmann/Desktop/capstoneReactNative/node_modules/react-native/React/Views/RCTActivityIndicatorView.h
+  /Users/zhannavoloshina/Documents/mobile2/capstoneReactNative/node_modules/react-native/React/Views/RCTActivityIndicatorView.m \
+  /Users/zhannavoloshina/Documents/mobile2/capstoneReactNative/node_modules/react-native/React/Views/RCTActivityIndicatorView.h

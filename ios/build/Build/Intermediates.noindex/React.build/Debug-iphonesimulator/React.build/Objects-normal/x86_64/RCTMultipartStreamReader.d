@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/sarahfeldmann/Desktop/capstoneReactNative/node_modules/react-native/React/Base/RCTMultipartStreamReader.m \
-  /Users/sarahfeldmann/Desktop/capstoneReactNative/node_modules/react-native/React/Base/RCTMultipartStreamReader.h
+  /Users/zhannavoloshina/Documents/mobile2/capstoneReactNative/node_modules/react-native/React/Base/RCTMultipartStreamReader.m \
+  /Users/zhannavoloshina/Documents/mobile2/capstoneReactNative/node_modules/react-native/React/Base/RCTMultipartStreamReader.h

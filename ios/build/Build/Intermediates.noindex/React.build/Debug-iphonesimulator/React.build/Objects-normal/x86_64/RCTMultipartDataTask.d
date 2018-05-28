@@ -1,4 +1,4 @@
 dependencies: \
-  /Users/sarahfeldmann/Desktop/capstoneReactNative/node_modules/react-native/React/Base/RCTMultipartDataTask.m \
-  /Users/sarahfeldmann/Desktop/capstoneReactNative/node_modules/react-native/React/Base/RCTMultipartDataTask.h \
-  /Users/sarahfeldmann/Desktop/capstoneReactNative/node_modules/react-native/React/Base/RCTMultipartStreamReader.h
+  /Users/zhannavoloshina/Documents/mobile2/capstoneReactNative/node_modules/react-native/React/Base/RCTMultipartDataTask.m \
+  /Users/zhannavoloshina/Documents/mobile2/capstoneReactNative/node_modules/react-native/React/Base/RCTMultipartDataTask.h \
+  /Users/zhannavoloshina/Documents/mobile2/capstoneReactNative/node_modules/react-native/React/Base/RCTMultipartStreamReader.h
