@@ -6,7 +6,8 @@ import {
   Text,
   StyleSheet,
   Item,
-  Button
+  Button,
+  Slider
 } from "react-native";
 import DropdownMenu from "react-native-dropdown-menu";
 
@@ -48,42 +49,9 @@ export default class SignUp2 extends Component {
           </View>
         </DropdownMenu>
         <Text style={styles.label}>AGE</Text>
-        {/* <Range
-                            min={18}
-                            max={55}
-                            defaultValue={this.state.ageRange}
-                            handle={handle}
-                            trackStyle={[
-                                { backgroundColor: '#828282' },
-                                { backgroundColor: '#828282' }
-                            ]}
-                            handleStyle={[
-                                {
-                                    backgroundColor: '#9BA2FF',
-                                    borderColor: '#9BA2FF'
-                                },
-                                {
-                                    backgroundColor: '#9BA2FF',
-                                    borderColor: '#9BA2FF'
-                                }
-                            ]}
-                            onChange={this.onRangeChange}
-                        />
+        <Text style={styles.label}>DISTANCE</Text>
 
-                        <Slider
-                            min={0}
-                            max={50}
-                            defaultValue={this.state.distance}
-                            handle={handle}
-                            trackStyle={[{ backgroundColor: '#828282' }]}
-                            handleStyle={[
-                                {
-                                    backgroundColor: '#9BA2FF',
-                                    borderColor: '#9BA2FF'
-                                }
-                            ]}
-                            onChange={this.onSliderChange}
-                        /> */}
+        <Slider />
       </View>
     );
   }
