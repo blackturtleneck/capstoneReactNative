@@ -12,6 +12,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import FontAwesome, { Icons } from "react-native-fontawesome";
+import { Icon } from "react-native-elements";
 
 export default class SignUp4 extends React.Component {
   constructor(props) {
@@ -121,143 +122,177 @@ export default class SignUp4 extends React.Component {
 
   render() {
     return (
-      <View>
-        <TouchableHighlight onPress={this.props.previousStep}>
-          <Image source={require("../img/back-arrow.png")} />
-        </TouchableHighlight>
-        <Text>PICK YOUR DATE PREFERENCES</Text>
-        <Text>ON A FIRST DATE I'D LIKE TO...</Text>
-        <TouchableOpacity onPress={this.toggleCoffee}>
-          <FontAwesome
-            style={
-              this.state.coffee ? styles.activeButton : styles.inactiveButton
-            }
-          >
-            {Icons.coffee}
-          </FontAwesome>
-        </TouchableOpacity>
-        {/* <br />
-            GET COFFEE
-          <div
-            className={this.state.drinks ? "date-type active" : "date-type"}
-            onClick={this.toggleDrinks}
-          >
-            <i className="fas fa-glass-martini date-icon">{""}</i>
-            <br />
-            GET DRINKS
-          </div>
-          <div
-            className={this.state.dinner ? "date-type active" : "date-type"}
-            onClick={this.toggleDinner}
-          >
-            <i className="fas fa-utensils date-icon">{""}</i>
-            <br />
-            GET DINNER
-          </div>
-        </div>
-        <div className="date-row">
-          <div
-            className={this.state.museum ? "date-type active" : "date-type"}
-            onClick={this.toggleMuseum}
-          >
-            <i className="fas fa-university date-icon">{""}</i>
-            <br />
-            GO TO A MUSEUM
-          </div>
-          <div
-            className={this.state.show ? "date-type active" : "date-type"}
-            onClick={this.toggleShow}
-          >
-            <i className="fas fa-ticket-alt date-icon">{""}</i>
-            <br />
-            GO TO A SHOW{" "}
-          </div>
-          <div
-            className={this.state.park ? "date-type active" : "date-type"}
-            onClick={this.togglePark}
-          >
-            {" "}
-            <i className="fas fa-tree date-icon">{""}</i>
-            <br />
-            GO TO A PARK
-          </div>
-        </div>
-        <div className="date-header">TALK TO ME ABOUT</div>
-        <div className="date-row">
-          <div
-            className={this.state.animals ? "date-type active" : "date-type"}
-            onClick={this.toggleAnimals}
-          >
-            <i className="fas fa-paw date-icon">{""}</i>
-            <br />
-            ANIMALS
-          </div>
-          <div
-            className={this.state.travel ? "date-type active" : "date-type"}
-            onClick={this.toggleTravel}
-          >
-            <i className="fas fa-plane date-icon">{""}</i>
-            <br />TRAVELS
-          </div>
-          <div
-            className={this.state.food ? "date-type active" : "date-type"}
-            onClick={this.toggleFood}
-          >
-            {" "}
-            <i className="fas fa-utensils date-icon">{""}</i>
-            <br />FOOD
-          </div>
-        </div>
-        <div className="date-row">
-          <div
-            className={this.state.music ? "date-type active" : "date-type"}
-            onClick={this.toggleMusic}
-          >
-            {" "}
-            <i className="fas fa-music date-icon">{""}</i>
-            <br />MUSIC
-          </div>
-          <div
-            className={this.state.sports ? "date-type active" : "date-type"}
-            onClick={this.toggleSports}
-          >
-            {" "}
-            <i className="fas fa-futbol date-icon">{""}</i>
-            <br />SPORTS
-          </div>
-          <div
-            className={this.state.movies ? "date-type active" : "date-type"}
-            onClick={this.toggleMovies}
-          >
-            {" "}
-            <i className="fas fa-film date-icon">{""}</i>
-            <br />MOVIES
-          </div>
-        </div>
-        <div className="date-row">
-          <div
-            className={this.state.tech ? "date-type active" : "date-type"}
-            onClick={this.toggleTech}
-          >
-            {" "}
-            <i className="fas fa-mobile date-icon">{""}</i>
-            <br />TECH
-          </div>
-          <div
-            className={this.state.gaming ? "date-type active" : "date-type"}
-            onClick={this.toggleGaming}
-          >
-            {" "}
-            <i className="fas fa-gamepad date-icon">{""}</i>
-            <br />GAMING
-          </div>
-          <div
-            className={this.state.nature ? "date-type active" : "date-type"}
-            onClick={this.toggleNature}
-          >
-            {" "}
-            <i className="fas fa-tree date-icon">{""}</i>
-            <Text>NATURE</Text> */}
+      <View style={styles.view}>
+        <View style={styles.row}>
+          <TouchableHighlight onPress={this.props.previousStep}>
+            <Image source={require("../img/back-arrow.png")} />
+          </TouchableHighlight>
+          <Text>PICK YOUR DATE PREFERENCES</Text>
+          <Text>ON A FIRST DATE I'D LIKE TO...</Text>
+          <TouchableOpacity onPress={this.toggleCoffee}>
+            <FontAwesome
+              style={
+                this.state.coffee ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              {Icons.coffee}
+            </FontAwesome>
+            <Text> GET COFFEE</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.toggleDrinks}>
+            <FontAwesome
+              style={
+                this.state.drinks ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              {Icons.glass}
+            </FontAwesome>
+            <Text>GET DRINKS</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.toggleDinner}>
+            <FontAwesome
+              style={
+                this.state.dinner ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              {Icons.cutlery}{" "}
+            </FontAwesome>
+            <Text>GET DINNER</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.row}>
+          <TouchableOpacity onPress={this.toggleMuseum}>
+            <FontAwesome
+              style={
+                this.state.museum ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              {Icons.university}
+            </FontAwesome>
+            <Text>GO TO A MUSEUM</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.toggleShow}>
+            <FontAwesome
+              style={
+                this.state.show ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              {Icons.ticket}
+            </FontAwesome>
+            <Text>GO TO A SHOW</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.togglePark}>
+            <FontAwesome
+              style={
+                this.state.park ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              {Icons.tree}
+            </FontAwesome>
+            <Text>GO TO A PARK</Text>
+          </TouchableOpacity>
+        </View>
+        <Text>TALK TO ME ABOUT...</Text>
+
+        <View style={styles.row}>
+          <TouchableOpacity onPress={this.toggleAnimals}>
+            <FontAwesome
+              style={
+                this.state.animals ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              {Icons.paw}
+            </FontAwesome>
+            <Text>ANIMALS</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.toggleTravel}>
+            <FontAwesome
+              style={
+                this.state.travel ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              {Icons.plane}
+            </FontAwesome>
+            <Text>TRAVELS</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.toggleFood}>
+            <FontAwesome
+              style={
+                this.state.food ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              {Icons.cutlery}
+            </FontAwesome>
+            <Text>FOOD</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.row}>
+          <TouchableOpacity onPress={this.toggleMusic}>
+            <FontAwesome
+              style={
+                this.state.music ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              {Icons.music}
+            </FontAwesome>
+            <Text>MUSIC</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.toggleSports}>
+            <FontAwesome
+              style={
+                this.state.sports ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              {Icons.futbolO}
+            </FontAwesome>
+            <Text>SPORTS</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.toggleMovies}>
+            <FontAwesome
+              style={
+                this.state.movies ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              {Icons.film}
+            </FontAwesome>
+            <Text>MOVIES</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.row}>
+          <TouchableOpacity onPress={this.toggleTech}>
+            <FontAwesome
+              style={
+                this.state.tech ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              {Icons.mobile}
+            </FontAwesome>
+            <Text>TECH</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.toggleGaming}>
+            <FontAwesome
+              style={
+                this.state.gaming ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              {Icons.gamepad}
+            </FontAwesome>
+            <Text>SPORTS</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.toggleNature}>
+            <FontAwesome
+              style={
+                this.state.nature ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              {Icons.tree}
+            </FontAwesome>
+            <Text>NATURE</Text>
+          </TouchableOpacity>
+        </View>
+        <Button onPress={this.nextStep.bind(this)} title={"NEXT"} />
       </View>
     );
   }
@@ -291,12 +326,21 @@ export default class SignUp4 extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  view: {
+    marginTop: 40
+  },
   activeButton: {
     color: "#9BA2FF",
-    height: 30
+    fontSize: 30
   },
   inactiveButton: {
     color: "#C4C4C4",
-    height: 30
+    fontSize: 30
+  },
+  row: {
+    flexWrap: "wrap",
+    alignItems: "flex-start",
+    flexDirection: "row",
+    marginLeft: 10
   }
 });
