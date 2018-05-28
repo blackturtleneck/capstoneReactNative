@@ -11,7 +11,6 @@ import {
 } from "react-native";
 // import Slider from "react-native-slider";
 // import Slider from "react-native-multi-slider";
-import RangeSlider from "../RangeSlider";
 import DropdownMenu from "react-native-dropdown-menu";
 import MultiSlider from "@ptomasroos/react-native-multi-slider";
 
@@ -21,8 +20,7 @@ export default class SignUp2 extends Component {
     super(props);
     this.state = {
       matchGender: this.props.fieldValues.matchGender,
-      matchAgeMin: this.props.fieldValues.gender,
-      matchAgeMax: this.props.fieldValues.matchAgeMax,
+      matchAge: [18, 25],
       matchDistance: this.props.fieldValues.matchDistance
     };
   }
@@ -64,14 +62,20 @@ export default class SignUp2 extends Component {
         <MultiSlider
           values={[21, 26]}
           sliderLength={280}
-          onValuesChange={this.multiSliderValuesChange}
+          onValuesChange={value =>
+            this.setState({
+              matchAge: value
+            })
+          }
           min={18}
           max={55}
           step={1}
           snapped
         />
 
-        <Text>Value: {this.state.matchAge}</Text>
+        <Text>
+          Value: {this.state.matchAge[0]} - {this.state.matchAge[1]}
+        </Text>
 
         <Text style={styles.label}>DISTANCE</Text>
         {/* <Slider
