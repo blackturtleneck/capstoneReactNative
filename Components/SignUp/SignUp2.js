@@ -6,10 +6,14 @@ import {
   Text,
   StyleSheet,
   Item,
-  Button
+  Button,
+  PanResponder
 } from "react-native";
-import Slider from "react-native-slider";
+// import Slider from "react-native-slider";
+// import Slider from "react-native-multi-slider";
+import RangeSlider from "../RangeSlider";
 import DropdownMenu from "react-native-dropdown-menu";
+import MultiSlider from "@ptomasroos/react-native-multi-slider";
 
 export default class SignUp2 extends Component {
   constructor(props) {
@@ -49,16 +53,35 @@ export default class SignUp2 extends Component {
           </View>
         </DropdownMenu>
         <Text style={styles.label}>AGE</Text>
-        <Slider
+        {/* <Slider
+          minimumValue={18}
+          maximumValue={55}
+          step={1}
           value={this.state.matchAge}
           onValueChange={matchAge => this.setState({ matchAge })}
+        /> */}
+        {/* <Slider /> */}
+        <MultiSlider
+          values={[21, 26]}
+          sliderLength={280}
+          onValuesChange={this.multiSliderValuesChange}
+          min={18}
+          max={55}
+          step={1}
+          snapped
         />
+
         <Text>Value: {this.state.matchAge}</Text>
+
         <Text style={styles.label}>DISTANCE</Text>
-        <Slider
+        {/* <Slider
+          minimumValue={0}
+          maximumValue={30}
+          step={1}
           value={this.state.matchDistance}
           onValueChange={matchDistance => this.setState({ matchDistance })}
-        />
+        /> */}
+
         <Text>Value: {this.state.matchDistance}</Text>
       </View>
     );
