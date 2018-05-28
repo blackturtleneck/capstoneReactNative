@@ -1,10 +1,11 @@
 import React from "react";
+import { Image } from "react-native";
 import { TabNavigator, StackNavigator } from "react-navigation";
-import { Icon } from "react-native-elements";
 import Profile from "./Profile";
 import UserList from "./UserList";
 import Messenger from "./Messenger";
 import Login from "./Login";
+import Match from "./Match";
 
 export const UserListStack = StackNavigator({
   UserList: {
@@ -24,12 +25,21 @@ export const UserListStack = StackNavigator({
 
 export const Tabs = TabNavigator(
   {
-    Login: {
+    Profile: {
       screen: Profile,
       navigationOptions: {
         tabBarLabel: " ",
-        tabBarIcon: ({ tintColor }) => (
-          <Icon name="md-person" type="ionicon" size={35} color={tintColor} />
+        tabBarIcon: () => (
+          <Image size={35} source={require("./img/profile-icon.png")} />
+        )
+      }
+    },
+    Match: {
+      screen: Match,
+      navigationOptions: {
+        tabBarLabel: " ",
+        tabBarIcon: () => (
+          <Image source={require("./img/nav-icon.png")} size={35} />
         )
       }
     },
@@ -38,12 +48,7 @@ export const Tabs = TabNavigator(
       navigationOptions: {
         tabBarLabel: " ",
         tabBarIcon: ({ tintColor }) => (
-          <Icon
-            name="message-square"
-            size={35}
-            color={tintColor}
-            type="feather"
-          />
+          <Image source={require("./img/message-icon.png")} size={35} />
         )
       }
     }
@@ -54,7 +59,7 @@ export const Tabs = TabNavigator(
       activeTintColor: "white",
       inactiveTintColor: "black",
       style: {
-        backgroundColor: "#9BA2FF",
+        backgroundColor: "white",
         borderTopWidth: 1,
         borderTopColor: "white",
         marginTop: 20
