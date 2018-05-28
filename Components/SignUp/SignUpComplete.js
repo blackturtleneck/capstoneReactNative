@@ -16,7 +16,7 @@ export default class SignUpComplete extends Component {
         <Text>REGISTRATION COMPLETE!</Text>
 
         <Text>TIME TO START MATCHING</Text>
-        <Button title={"OK"} onPress={this.props.nextStep} />
+        <Button title={"OK"} onPress={this.props.signupComplete} />
       </View>
     );
   }

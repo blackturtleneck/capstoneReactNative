@@ -28,11 +28,23 @@ export default class PageContent extends Component {
         }
       });
   }
+
+  signupComplete() {
+    console.log("signup completetetete");
+    this.setState({
+      onBoarding: true
+    });
+  }
   render() {
     if (this.state.onBoarding) {
       return <Tabs screenProps={{ user: this.props.user }} />;
     } else {
-      return <SignUpController user={this.props.user} />;
+      return (
+        <SignUpController
+          user={this.props.user}
+          signupComplete={this.signupComplete.bind(this)}
+        />
+      );
     }
   }
 }

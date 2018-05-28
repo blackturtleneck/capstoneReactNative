@@ -269,7 +269,7 @@ export default class SignUpController extends Component {
           />
         );
       case 6:
-        return <SignUpComplete />;
+        return <SignUpComplete signupComplete={this.props.signupComplete} />;
     }
   }
   render() {
