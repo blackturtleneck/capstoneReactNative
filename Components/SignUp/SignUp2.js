@@ -10,8 +10,9 @@ import {
   Slider,
   TouchableHighlight
 } from "react-native";
-import DropdownMenu from "react-native-dropdown-menu";
+import ModalDropdown from "react-native-modal-dropdown";
 import MultiSlider from "@ptomasroos/react-native-multi-slider";
+import { Modal } from "react-native-router-flux";
 
 export default class SignUp2 extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ export default class SignUp2 extends Component {
     };
   }
   render() {
-    var genderData = [["MALE", "FEMALE", "BOTH"]];
+    var genderData = ["MALE", "FEMALE", "BOTH"];
 
     return (
       <View style={styles.view}>
@@ -33,25 +34,14 @@ export default class SignUp2 extends Component {
         </TouchableHighlight>
         <Text>TELL US WHO YOU'RE LOOKING FOR</Text>
         <Text style={styles.label}>I'M LOOKING FOR...</Text>
-        <DropdownMenu
-          style={{ flex: 1, backgroundColor: "#F2F2F2" }}
-          bgColor={"#F2F2F2"}
-          tintColor={"#666666"}
-          activityTintColor={"green"}
-          // arrowImg={}
-          // checkImage={}
-          // optionTextStyle={{color: '#333333'}}
-          // titleStyle={{color: '#333333'}}
-          // maxHeight={300}
-          handler={(selection, row) =>
-            this.setState({ birthday: genderData[selection][row] })
+        <ModalDropdown
+          style={styles.textInput}
+          options={genderData}
+          defaultValue={
+            this.state.matchGender !== null ? this.state.matchGender : ""
           }
-          data={genderData}
-        >
-          <View style={{ flex: 1 }}>
-            <Text>{this.state.gender} is the best language in the world</Text>
-          </View>
-        </DropdownMenu>
+          onSelect={value => this.setState({ matchGender: genderData[value] })}
+        />
         <Text style={styles.label}>AGE</Text>
 
         <MultiSlider
@@ -108,6 +98,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   textInput: {
-    backgroundColor: "#F2F2F2"
+    backgroundColor: "#F2F2F2",
+    width: 100
   }
 });

@@ -8,7 +8,6 @@ import {
   Item,
   Button
 } from "react-native";
-import DropdownMenu from "react-native-dropdown-menu";
 import ModalDropdown from "react-native-modal-dropdown";
 
 export default class SignUp1 extends Component {
@@ -27,9 +26,8 @@ export default class SignUp1 extends Component {
   }
   render() {
     var genderData = ["MALE", "FEMALE"];
-    var birthdayData = [
-      [
-        "",
+    var birthdayData = {
+      month: [
         "JANUARY",
         "FEBRUARY",
         "MARCH",
@@ -43,8 +41,7 @@ export default class SignUp1 extends Component {
         "NOVEMBER",
         "DECEMEBER"
       ],
-      [
-        "",
+      day: [
         "1",
         "2",
         "3",
@@ -77,9 +74,7 @@ export default class SignUp1 extends Component {
         "30",
         "31"
       ],
-
-      [
-        "",
+      year: [
         "1963",
         "1964",
         "1965",
@@ -119,7 +114,7 @@ export default class SignUp1 extends Component {
         "1999",
         "2000"
       ]
-    ];
+    };
     return (
       <View style={styles.view}>
         <Image source={require("../img/signup-header.png")} />
@@ -132,47 +127,79 @@ export default class SignUp1 extends Component {
           defaultValue={this.state.gender !== null ? this.state.gender : ""}
           onSelect={value => this.setState({ gender: genderData[value] })}
         />
-
-        {/* <DropdownMenu
-          style={{ flex: 1, backgroundColor: "#F2F2F2" }}
-          bgColor={"#F2F2F2"}
-          tintColor={"#666666"}
-          activityTintColor={"green"}
-          // arrowImg={}
-          // checkImage={}
-          // optionTextStyle={{color: '#333333'}}
-          // titleStyle={{color: '#333333'}}
-          // maxHeight={300}
-          handler={(selection, row) =>
-            this.setState({ gender: genderData[selection][row] })
-          }
-          data={genderData}
-        >
-          <View style={{ flex: 1 }}>
-            <Text>{this.state.gender} is the best language in the world</Text>
-          </View>
-        </DropdownMenu> */}
-
         <Text style={styles.label}>BIRTHDAY</Text>
-        <DropdownMenu
-          style={{ flex: 1, backgroundColor: "white" }}
-          bgColor={"#F2F2F2"}
-          tintColor={"#666666"}
-          activityTintColor={"green"}
-          // arrowImg={}
-          // checkImage={}
-          // optionTextStyle={{color: '#333333'}}
-          // titleStyle={{color: '#333333'}}
-          maxHeight={200}
-          handler={(selection, row) =>
-            this.setState({ birthday: birthdayData[selection][row] })
-          }
-          data={birthdayData}
-        >
-          <View style={{ flex: 1 }}>
-            <Text>{this.state.birthday} is the best language in the world</Text>
-          </View>
-        </DropdownMenu>
+        <View style={styles.row}>
+          <ModalDropdown
+            style={styles.textInput}
+            options={birthdayData.month}
+            defaultValue={
+              this.state.birthday && this.state.birthday.month
+                ? this.state.birthday.month
+                : ""
+            }
+            onSelect={value => {
+              this.state.birthday
+                ? (this.state.birthday = {
+                    month: birthdayData.month[value],
+                    day: this.state.birthday.day,
+                    year: this.state.birthday.year
+                  })
+                : (this.state.birthday = {
+                    month: birthdayData.month[value],
+                    day: "",
+                    year: ""
+                  });
+            }}
+          />
+          <ModalDropdown
+            style={styles.textInput}
+            options={birthdayData.day}
+            defaultValue={
+              this.state.birthday && this.state.birthday.day
+                ? this.state.birthday.day
+                : ""
+            }
+            onSelect={value => {
+              {
+                this.state.birthday
+                  ? (this.state.birthday = {
+                      day: birthdayData.day[value],
+                      month: this.state.birthday.month,
+                      year: this.state.birthday.year
+                    })
+                  : (this.state.birthday = {
+                      day: birthdayData.day[value],
+                      month: "",
+                      year: ""
+                    });
+              }
+              this.forceUpdate();
+            }}
+          />
+          <ModalDropdown
+            style={styles.textInput}
+            options={birthdayData.year}
+            defaultValue={
+              this.state.birthday && this.state.birthday.year
+                ? this.state.birthday.year
+                : ""
+            }
+            onSelect={value => {
+              this.state.birthday
+                ? (this.state.birthday = {
+                    year: birthdayData.year[value],
+                    day: this.state.birthday.day,
+                    month: this.state.birthday.month
+                  })
+                : (this.state.birthday = {
+                    year: birthdayData.year[value],
+                    month: "",
+                    year: ""
+                  });
+            }}
+          />
+        </View>
+
         <Text style={styles.label}>EDUCATION</Text>
         <TextInput
           style={styles.textInput}
@@ -232,5 +259,11 @@ const styles = StyleSheet.create({
   textInput: {
     backgroundColor: "#F2F2F2",
     width: 100
+  },
+  row: {
+    flexWrap: "wrap",
+    alignItems: "flex-start",
+    flexDirection: "row",
+    marginLeft: 10
   }
 });
