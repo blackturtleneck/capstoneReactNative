@@ -67,6 +67,7 @@ export default class SignUpController extends Component {
   }
 
   previousStep() {
+    console.log("prev");
     this.setState(prevState => {
       return { step: prevState.step - 1 };
     });

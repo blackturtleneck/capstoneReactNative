@@ -7,7 +7,8 @@ import {
   StyleSheet,
   Item,
   Button,
-  Slider
+  Slider,
+  TouchableHighlight
 } from "react-native";
 // import Slider from "react-native-slider";
 // import Slider from "react-native-multi-slider";
@@ -29,6 +30,9 @@ export default class SignUp2 extends Component {
 
     return (
       <View style={styles.view}>
+        <TouchableHighlight onPress={this.props.previousStep}>
+          <Image source={require("../img/back-arrow.png")} />
+        </TouchableHighlight>
         <Text>TELL US WHO YOU'RE LOOKING FOR</Text>
         <Text style={styles.label}>I'M LOOKING FOR...</Text>
         <DropdownMenu
@@ -87,6 +91,7 @@ export default class SignUp2 extends Component {
         />
 
         <Text>Value: {this.state.matchDistance}</Text>
+        <Button onPress={this.nextStep.bind(this)} title={"NEXT"} />
       </View>
     );
   }
@@ -94,10 +99,9 @@ export default class SignUp2 extends Component {
   nextStep(e) {
     // e.preventDefault();
     let data = {
-      name: this.state.matchGender,
-      gender: this.state.matchAgeMin,
-      occupation: this.state.matchAgeMax,
-      education: this.state.matchDistance
+      matchGender: this.state.matchGender,
+      matchAge: this.state.matchAge,
+      matchDistance: this.state.matchDistance
     };
 
     this.props.saveValues(data);
@@ -106,9 +110,6 @@ export default class SignUp2 extends Component {
 }
 const styles = StyleSheet.create({
   view: {
-    // alignContent: "center",
-    // alignItems: "center",
-    // justifyContent: "center",
     marginTop: 40
   },
   label: {
