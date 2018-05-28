@@ -9,7 +9,6 @@ import {
   Button
 } from "react-native";
 import DropdownMenu from "react-native-dropdown-menu";
-// import MultiSlider from "@ptomasroos/react-native-multi-slider";
 
 export default class SignUp2 extends Component {
   constructor(props) {
@@ -17,20 +16,11 @@ export default class SignUp2 extends Component {
     super(props);
     this.state = {
       matchGender: this.props.fieldValues.matchGender,
-      matchAge: [
-        this.props.fieldValues.gender,
-        this.props.fieldValues.matchAgeMax
-      ],
+      matchAgeMin: this.props.fieldValues.gender,
+      matchAgeMax: this.props.fieldValues.matchAgeMax,
       matchDistance: this.props.fieldValues.matchDistance
     };
   }
-
-  multiSliderValuesChange = values => {
-    this.setState({
-      matchAge: values
-    });
-  };
-
   render() {
     var genderData = [["MALE", "FEMALE", "BOTH"]];
 
@@ -58,17 +48,42 @@ export default class SignUp2 extends Component {
           </View>
         </DropdownMenu>
         <Text style={styles.label}>AGE</Text>
-        {/* <MultiSlider
-          values={this.state.sliderOneValue}
-          values={[this.state.matchAge[0], this.state.matchAge[1]]}
-          sliderLength={280}
-          onValuesChange={this.multiSliderValuesChange}
-          min={0}
-          max={10}
-          step={1}
-          allowOverlap
-          snapped
-        /> */}
+        {/* <Range
+                            min={18}
+                            max={55}
+                            defaultValue={this.state.ageRange}
+                            handle={handle}
+                            trackStyle={[
+                                { backgroundColor: '#828282' },
+                                { backgroundColor: '#828282' }
+                            ]}
+                            handleStyle={[
+                                {
+                                    backgroundColor: '#9BA2FF',
+                                    borderColor: '#9BA2FF'
+                                },
+                                {
+                                    backgroundColor: '#9BA2FF',
+                                    borderColor: '#9BA2FF'
+                                }
+                            ]}
+                            onChange={this.onRangeChange}
+                        />
+
+                        <Slider
+                            min={0}
+                            max={50}
+                            defaultValue={this.state.distance}
+                            handle={handle}
+                            trackStyle={[{ backgroundColor: '#828282' }]}
+                            handleStyle={[
+                                {
+                                    backgroundColor: '#9BA2FF',
+                                    borderColor: '#9BA2FF'
+                                }
+                            ]}
+                            onChange={this.onSliderChange}
+                        /> */}
       </View>
     );
   }
