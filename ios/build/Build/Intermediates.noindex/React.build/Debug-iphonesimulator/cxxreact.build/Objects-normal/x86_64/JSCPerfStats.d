@@ -1,5 +1,0 @@
-dependencies: \
-  /Users/zhannavoloshina/Documents/mobile2/capstoneReactNative/node_modules/react-native/ReactCommon/cxxreact/JSCPerfStats.cpp \
-  /Users/zhannavoloshina/Documents/mobile2/capstoneReactNative/node_modules/react-native/ReactCommon/cxxreact/JSCPerfStats.h \
-  /Users/zhannavoloshina/Documents/mobile2/capstoneReactNative/ios/build/Build/Products/Debug-iphonesimulator/include/jschelpers/JavaScriptCore.h \
-  /Users/zhannavoloshina/Documents/mobile2/capstoneReactNative/ios/build/Build/Products/Debug-iphonesimulator/include/jschelpers/JSCWrapper.h

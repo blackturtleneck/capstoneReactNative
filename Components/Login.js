@@ -49,6 +49,7 @@ export default class Login extends Component {
 
   //Create response callback.
   _responseInfoCallback = (error, result) => {
+    const currComponent = this;
     if (error) {
       alert("Error fetching data: " + error.toString());
     } else {
