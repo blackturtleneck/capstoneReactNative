@@ -6,9 +6,9 @@ import {
   Text,
   StyleSheet,
   Item,
-  Button,
-  Slider
+  Button
 } from "react-native";
+import Slider from "react-native-slider";
 import DropdownMenu from "react-native-dropdown-menu";
 
 export default class SignUp2 extends Component {
@@ -49,9 +49,17 @@ export default class SignUp2 extends Component {
           </View>
         </DropdownMenu>
         <Text style={styles.label}>AGE</Text>
+        <Slider
+          value={this.state.matchAge}
+          onValueChange={matchAge => this.setState({ matchAge })}
+        />
+        <Text>Value: {this.state.matchAge}</Text>
         <Text style={styles.label}>DISTANCE</Text>
-
-        <Slider />
+        <Slider
+          value={this.state.matchDistance}
+          onValueChange={matchDistance => this.setState({ matchDistance })}
+        />
+        <Text>Value: {this.state.matchDistance}</Text>
       </View>
     );
   }
