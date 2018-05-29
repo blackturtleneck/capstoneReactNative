@@ -3,6 +3,7 @@ import { View, Text, ListView, FlatList } from "react-native";
 import { firestore } from "../FirestoreConfig";
 import MatchProfile from "./MatchProfile";
 import MatchListController from "./MatchListController";
+import NoMatches from "./NoMatches";
 
 export default class Match extends Component {
   constructor(props) {
@@ -32,14 +33,16 @@ export default class Match extends Component {
   }
   getItemLayout = (data, index) => ({
     length: 500,
-    offset: 400,
+    offset: 400 * index,
     index
   });
 
   scrollToIndex = () => {
     this.flatListRef.scrollToIndex({ animated: true, index: this.state.index });
     this.setState(prevState => {
-      return { index: prevState.index + 1 };
+      if (prevState.matches && prevState.matches.length > prevState.index) {
+        return { index: prevState.index + 1 };
+      }
     });
   };
 
@@ -142,9 +145,11 @@ export default class Match extends Component {
           }}
           getItemLayout={this.getItemLayout}
           keyExtractor={item => item}
-          initialScrollIndex={0}
+          // initialScrollIndex={this.state.index}
+          initialNumToRender={this.state.index + 1}
           horizontal={true}
           data={this.state.matches}
+          onScrollToIndexFailed={() => {}}
           renderItem={({ item }) => (
             <MatchProfile
               interested={this.interested.bind(this)}
