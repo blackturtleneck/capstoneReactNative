@@ -30,150 +30,168 @@ export default class SignUp5 extends Component {
     console.log("signup5 fieldvalues", this.props.fieldValues);
     return (
       <ScrollView style={styles.view}>
-        <TouchableHighlight onPress={this.props.previousStep}>
-          <Image source={require("../img/back-arrow.png")} />
-        </TouchableHighlight>
-        <Text>TELL US MORE AND GET BETTER DATES</Text>
+        <View style={styles.row}>
+          <TouchableHighlight onPress={this.props.previousStep}>
+            <Image source={require("../img/back-arrow.png")} />
+          </TouchableHighlight>
+          <Text style={styles.header}>TELL US MORE AND GET BETTER DATES</Text>
+        </View>
         <Button
           onPress={this.props.submitRegistration}
           title={"SKIP & START DATING"}
+          color={"#9BA2FF"}
         />
-        <Text>FOOD PREFERENCES / ALLERGIES</Text>
-        <View>
-          <Text style={styles.foodLabel}>VEGETARIAN</Text>
-          <TouchableHighlight
-            style={
-              this.state.foodPreferences.vegetarian
-                ? styles.radioButtonActive
-                : styles.radioButtonInactive
-            }
-            onPress={() => {
-              if (this.state.foodPreferences.vegetarian === null) {
-                this.state.foodPreferences.vegetarian = true;
-              } else {
-                this.state.foodPreferences.vegetarian = !this.state
-                  .foodPreferences.vegetarian;
-              }
-              this.forceUpdate();
-            }}
-          >
+        <View style={styles.foodPref}>
+          <Text style={styles.subheader}>FOOD PREFERENCES / ALLERGIES</Text>
+          <View style={styles.row}>
             <Text style={styles.foodLabel}>VEGETARIAN</Text>
-          </TouchableHighlight>
-          <Text style={styles.foodLabel}>GLUTEN FREE</Text>
-          <TouchableHighlight
-            style={
-              this.state.foodPreferences.glutenFree
-                ? styles.radioButtonActive
-                : styles.radioButtonInactive
-            }
-            onPress={() => {
-              if (this.state.foodPreferences.glutenFree === null) {
-                this.state.foodPreferences.glutenFree = true;
-              } else {
-                this.state.foodPreferences.glutenFree = !this.state
-                  .foodPreferences.glutenFree;
+            <TouchableHighlight
+              style={
+                this.state.foodPreferences.vegetarian
+                  ? styles.radioButtonActive
+                  : styles.radioButtonInactive
               }
-              this.forceUpdate();
-            }}
-          >
+              onPress={() => {
+                if (this.state.foodPreferences.vegetarian === null) {
+                  this.state.foodPreferences.vegetarian = true;
+                } else {
+                  this.state.foodPreferences.vegetarian = !this.state
+                    .foodPreferences.vegetarian;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text style={styles.foodLabel}>VEGETARIAN</Text>
+            </TouchableHighlight>
+          </View>
+          <View style={styles.row}>
             <Text style={styles.foodLabel}>GLUTEN FREE</Text>
-          </TouchableHighlight>
-          <Text style={styles.foodLabel}>VEGAN</Text>
-          <TouchableHighlight
-            style={
-              this.state.foodPreferences.vegan
-                ? styles.radioButtonActive
-                : styles.radioButtonInactive
-            }
-            onPress={() => {
-              if (this.state.foodPreferences.vegan === null) {
-                this.state.foodPreferences.vegan = true;
-              } else {
-                this.state.foodPreferences.vegan = !this.state.foodPreferences
-                  .vegan;
+            <TouchableHighlight
+              style={
+                this.state.foodPreferences.glutenFree
+                  ? styles.radioButtonActive
+                  : styles.radioButtonInactive
               }
-              this.forceUpdate();
-            }}
-          >
+              onPress={() => {
+                if (this.state.foodPreferences.glutenFree === null) {
+                  this.state.foodPreferences.glutenFree = true;
+                } else {
+                  this.state.foodPreferences.glutenFree = !this.state
+                    .foodPreferences.glutenFree;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text style={styles.foodLabel}>GLUTEN FREE</Text>
+            </TouchableHighlight>
+          </View>
+          <View style={styles.row}>
             <Text style={styles.foodLabel}>VEGAN</Text>
-          </TouchableHighlight>
-          <Text style={styles.foodLabel}>DAIRY-FREE</Text>
-          <TouchableHighlight
-            style={
-              this.state.foodPreferences.dairyFree
-                ? styles.radioButtonActive
-                : styles.radioButtonInactive
-            }
-            onPress={() => {
-              if (this.state.foodPreferences.dairyFree === null) {
-                this.state.foodPreferences.dairyFree = true;
-              } else {
-                this.state.foodPreferences.dairyFree = !this.state
-                  .foodPreferences.dairyFree;
+            <TouchableHighlight
+              style={
+                this.state.foodPreferences.vegan
+                  ? styles.radioButtonActive
+                  : styles.radioButtonInactive
               }
-              this.forceUpdate();
-            }}
-          >
-            <Text style={styles.foodLabel}>dairy free</Text>
-          </TouchableHighlight>
-          <Text style={styles.foodLabel}>NO RED MEAT</Text>
-          <TouchableHighlight
-            style={
-              this.state.foodPreferences.noRedMeat
-                ? styles.radioButtonActive
-                : styles.radioButtonInactive
-            }
-            onPress={() => {
-              if (this.state.foodPreferences.noRedMeat === null) {
-                this.state.foodPreferences.noRedMeat = true;
-              } else {
-                this.state.foodPreferences.noRedMeat = !this.state
-                  .foodPreferences.noRedMeat;
+              onPress={() => {
+                if (this.state.foodPreferences.vegan === null) {
+                  this.state.foodPreferences.vegan = true;
+                } else {
+                  this.state.foodPreferences.vegan = !this.state.foodPreferences
+                    .vegan;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text style={styles.foodLabel}>VEGAN</Text>
+            </TouchableHighlight>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.foodLabel}>DAIRY-FREE</Text>
+            <TouchableHighlight
+              style={
+                this.state.foodPreferences.dairyFree
+                  ? styles.radioButtonActive
+                  : styles.radioButtonInactive
               }
-              this.forceUpdate();
-            }}
-          >
+              onPress={() => {
+                if (this.state.foodPreferences.dairyFree === null) {
+                  this.state.foodPreferences.dairyFree = true;
+                } else {
+                  this.state.foodPreferences.dairyFree = !this.state
+                    .foodPreferences.dairyFree;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text style={styles.foodLabel}>dairy free</Text>
+            </TouchableHighlight>
+          </View>
+          <View style={styles.row}>
             <Text style={styles.foodLabel}>NO RED MEAT</Text>
-          </TouchableHighlight>
-          <Text style={styles.foodLabel}>KOSHER</Text>
-          <TouchableHighlight
-            style={
-              this.state.foodPreferences.kosher
-                ? styles.radioButtonActive
-                : styles.radioButtonInactive
-            }
-            onPress={() => {
-              if (this.state.foodPreferences.kosher === null) {
-                this.state.foodPreferences.kosher = true;
-              } else {
-                this.state.foodPreferences.kosher = !this.state.foodPreferences
-                  .kosher;
+            <TouchableHighlight
+              style={
+                this.state.foodPreferences.noRedMeat
+                  ? styles.radioButtonActive
+                  : styles.radioButtonInactive
               }
-              this.forceUpdate();
-            }}
-          >
+              onPress={() => {
+                if (this.state.foodPreferences.noRedMeat === null) {
+                  this.state.foodPreferences.noRedMeat = true;
+                } else {
+                  this.state.foodPreferences.noRedMeat = !this.state
+                    .foodPreferences.noRedMeat;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text style={styles.foodLabel}>NO RED MEAT</Text>
+            </TouchableHighlight>
+          </View>
+          <View style={styles.row}>
             <Text style={styles.foodLabel}>KOSHER</Text>
-          </TouchableHighlight>
-          <Text style={styles.foodLabel}>PALEO</Text>
-          <TouchableHighlight
-            style={
-              this.state.foodPreferences.paleo
-                ? styles.radioButtonActive
-                : styles.radioButtonInactive
-            }
-            onPress={() => {
-              if (this.state.foodPreferences.paleo === null) {
-                this.state.foodPreferences.paleo = true;
-              } else {
-                this.state.foodPreferences.paleo = !this.state.foodPreferences
-                  .paleo;
+            <TouchableHighlight
+              style={
+                this.state.foodPreferences.kosher
+                  ? styles.radioButtonActive
+                  : styles.radioButtonInactive
               }
-              this.forceUpdate();
-            }}
-          >
+              onPress={() => {
+                if (this.state.foodPreferences.kosher === null) {
+                  this.state.foodPreferences.kosher = true;
+                } else {
+                  this.state.foodPreferences.kosher = !this.state
+                    .foodPreferences.kosher;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text style={styles.foodLabel}>KOSHER</Text>
+            </TouchableHighlight>
+          </View>
+          <View style={styles.row}>
             <Text style={styles.foodLabel}>PALEO</Text>
-          </TouchableHighlight>
-          <View styles={{ flexDirection: "row", flexWrap: "wrap" }}>
+            <TouchableHighlight
+              style={
+                this.state.foodPreferences.paleo
+                  ? styles.radioButtonActive
+                  : styles.radioButtonInactive
+              }
+              onPress={() => {
+                if (this.state.foodPreferences.paleo === null) {
+                  this.state.foodPreferences.paleo = true;
+                } else {
+                  this.state.foodPreferences.paleo = !this.state.foodPreferences
+                    .paleo;
+                }
+                this.forceUpdate();
+              }}
+            >
+              <Text style={styles.foodLabel}>PALEO</Text>
+            </TouchableHighlight>
+          </View>
+
+          <View style={styles.row}>
             <Text style={styles.foodLabel}>RAW</Text>
             <TouchableHighlight
               style={
@@ -1366,7 +1384,11 @@ export default class SignUp5 extends Component {
             </TouchableOpacity>
           </View>
         </View>
-        <Button onPress={this.nextStep.bind(this)} title={"FINISH"} />
+        <Button
+          color={"#9BA2FF"}
+          onPress={this.nextStep.bind(this)}
+          title={"FINISH"}
+        />
       </ScrollView>
     );
   }
@@ -1402,28 +1424,18 @@ const styles = StyleSheet.create({
     height: 10,
     width: 10,
     borderWidth: 1,
-    borderColor: "black",
-    flexWrap: "wrap",
-    alignItems: "flex-start",
-    flexDirection: "row",
-    marginLeft: 10
+    borderColor: "black"
   },
   radioButtonInactive: {
     backgroundColor: "white",
     height: 10,
     width: 10,
     borderWidth: 1,
-    borderColor: "black",
-    flexWrap: "wrap",
-    alignItems: "flex-start",
-    flexDirection: "row",
-    marginLeft: 10
+    borderColor: "black"
   },
   foodLabel: {
-    flexWrap: "wrap",
-    alignItems: "flex-start",
-    flexDirection: "row",
-    marginLeft: 10
+    marginRight: 50,
+    marginBottom: 10
   },
   buttonActive: {
     backgroundColor: "#9BA2FF",
@@ -1431,7 +1443,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 6,
     padding: 5,
-    width: 100
+    width: 100,
+    marginTop: 20
   },
   buttonInactive: {
     backgroundColor: "white",
@@ -1439,10 +1452,28 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 6,
     padding: 5,
-    width: 100
+    width: 100,
+    marginTop: 20
   },
   row: {
+    flexWrap: "wrap",
+    alignItems: "flex-start",
     flexDirection: "row",
-    flexWrap: "wrap"
+    marginLeft: 10
+  },
+  header: {
+    fontSize: 15,
+    marginTop: 20,
+    marginLeft: 15,
+    fontWeight: "bold",
+    marginBottom: 5
+  },
+  subheader: {
+    fontWeight: "bold",
+    marginTop: 20,
+    marginBottom: 5
+  },
+  foodPref: {
+    marginLeft: 50
   }
 });

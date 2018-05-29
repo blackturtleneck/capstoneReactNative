@@ -381,7 +381,6 @@ const styles = StyleSheet.create({
     marginBottom: 5
   },
   wrapper: {
-    // marginLeft: 50,
     justifyContent: "center",
     alignItems: "center"
   },
