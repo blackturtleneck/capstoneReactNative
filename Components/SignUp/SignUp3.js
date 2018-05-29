@@ -65,17 +65,19 @@ export default class SignUp3 extends Component {
 
     return (
       <View style={styles.view}>
-        <TouchableHighlight onPress={this.props.previousStep}>
-          <Image source={require("../img/back-arrow.png")} />
-        </TouchableHighlight>
-        <Text>I'M GENERALLY AVAILABLE...</Text>
         <View style={styles.row}>
-          <Text style={styles.labelItem}>MORNING</Text>
-          <Text style={styles.labelItem}>AFTERNOON</Text>
-          <Text style={styles.labelItem}>NIGHT</Text>
+          <TouchableHighlight onPress={this.props.previousStep}>
+            <Image source={require("../img/back-arrow.png")} />
+          </TouchableHighlight>
+          <Text style={styles.header}>I'M GENERALLY AVAILABLE...</Text>
         </View>
         <View style={styles.row}>
-          <Text>SUN</Text>
+          <Text style={styles.firstLabel}>MORNING</Text>
+          <Text style={styles.secondLabel}>AFTERNOON</Text>
+          <Text style={styles.thirdLabel}>EVENING</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.dayLabel}>SUN</Text>
           <TouchableOpacity
             style={
               this.state.availability.sun.morning
@@ -120,7 +122,7 @@ export default class SignUp3 extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <Text>MON</Text>
+          <Text style={styles.dayLabel}>MON</Text>
           <TouchableOpacity
             style={
               this.state.availability.mon.morning
@@ -165,7 +167,7 @@ export default class SignUp3 extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <Text>TUE</Text>
+          <Text style={styles.dayLabel}>TUE</Text>
           <TouchableOpacity
             style={
               this.state.availability.tue.morning
@@ -210,7 +212,7 @@ export default class SignUp3 extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <Text>WED</Text>
+          <Text style={styles.dayLabel}>WED</Text>
           <TouchableOpacity
             style={
               this.state.availability.wed.morning
@@ -255,7 +257,7 @@ export default class SignUp3 extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <Text>THU</Text>
+          <Text style={styles.dayLabel}>THU</Text>
           <TouchableOpacity
             style={
               this.state.availability.thu.morning
@@ -300,7 +302,7 @@ export default class SignUp3 extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <Text>FRI</Text>
+          <Text style={styles.dayLabel}>FRI</Text>
           <TouchableOpacity
             style={
               this.state.availability.fri.morning
@@ -345,7 +347,7 @@ export default class SignUp3 extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <Text>SAT</Text>
+          <Text style={styles.dayLabel}>SAT</Text>
           <TouchableOpacity
             style={
               this.state.availability.sat.morning
@@ -389,7 +391,13 @@ export default class SignUp3 extends Component {
             <Text> </Text>
           </TouchableOpacity>
         </View>
-        <Button onPress={this.nextStep.bind(this)} title={"NEXT"} />
+        <View style={styles.nextButton}>
+          <Button
+            onPress={this.nextStep.bind(this)}
+            title={"NEXT"}
+            color={"#9BA2FF"}
+          />
+        </View>
       </View>
     );
   }
@@ -437,8 +445,33 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginLeft: 10
   },
-  labelItem: {
+  thirdLabel: {
+    marginLeft: 20,
+    fontSize: 10
+  },
+  secondLabel: {
     marginLeft: 30,
     fontSize: 10
+  },
+  firstLabel: {
+    marginLeft: 80,
+    fontSize: 10
+  },
+  header: {
+    fontSize: 15,
+    marginTop: 5,
+    marginLeft: 30,
+    fontWeight: "bold",
+    marginBottom: 50
+  },
+  dayLabel: {
+    fontSize: 10,
+    marginTop: 20,
+    marginLeft: 30,
+    marginRight: 20
+  },
+  nextButton: {
+    marginTop: 200,
+    bottom: "10%"
   }
 });
