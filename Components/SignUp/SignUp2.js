@@ -116,21 +116,9 @@ export default class SignUp2 extends Component {
   }
 
   nextStep(e) {
-    // e.preventDefault();
-    if (
-      this.state.matchDistance === undefined ||
-      this.state.matchDistance === null
-    ) {
-      this.setState({ matchDistance: 10 });
+    if (!this.state.matchAgeMax) {
+      this.setState({ matchAgeMax: 26, matchAgeMin: 21 });
     }
-
-    if (
-      this.state.matchGender === undefined ||
-      this.state.matchGender === null
-    ) {
-      this.setState({ matchGender: "both" });
-    }
-
     let data = {
       matchGender: this.state.matchGender,
       matchAgeMin: this.state.matchAgeMin,
