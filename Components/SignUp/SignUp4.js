@@ -127,172 +127,200 @@ export default class SignUp4 extends React.Component {
           <TouchableHighlight onPress={this.props.previousStep}>
             <Image source={require("../img/back-arrow.png")} />
           </TouchableHighlight>
-          <Text>PICK YOUR DATE PREFERENCES</Text>
-          <Text>ON A FIRST DATE I'D LIKE TO...</Text>
-          <TouchableOpacity onPress={this.toggleCoffee}>
-            <FontAwesome
-              style={
-                this.state.coffee ? styles.activeButton : styles.inactiveButton
-              }
-            >
-              {Icons.coffee}
-            </FontAwesome>
-            <Text> GET COFFEE</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.toggleDrinks}>
-            <FontAwesome
-              style={
-                this.state.drinks ? styles.activeButton : styles.inactiveButton
-              }
-            >
-              {Icons.glass}
-            </FontAwesome>
-            <Text>GET DRINKS</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.toggleDinner}>
-            <FontAwesome
-              style={
-                this.state.dinner ? styles.activeButton : styles.inactiveButton
-              }
-            >
-              {Icons.cutlery}{" "}
-            </FontAwesome>
-            <Text>GET DINNER</Text>
-          </TouchableOpacity>
+          <Text style={styles.header}>PICK YOUR DATE PREFERENCES</Text>
         </View>
-        <View style={styles.row}>
-          <TouchableOpacity onPress={this.toggleMuseum}>
-            <FontAwesome
-              style={
-                this.state.museum ? styles.activeButton : styles.inactiveButton
-              }
-            >
-              {Icons.university}
-            </FontAwesome>
-            <Text>GO TO A MUSEUM</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.toggleShow}>
-            <FontAwesome
-              style={
-                this.state.show ? styles.activeButton : styles.inactiveButton
-              }
-            >
-              {Icons.ticket}
-            </FontAwesome>
-            <Text>GO TO A SHOW</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.togglePark}>
-            <FontAwesome
-              style={
-                this.state.park ? styles.activeButton : styles.inactiveButton
-              }
-            >
-              {Icons.tree}
-            </FontAwesome>
-            <Text>GO TO A PARK</Text>
-          </TouchableOpacity>
-        </View>
-        <Text>TALK TO ME ABOUT...</Text>
+        <View style={styles.wrapper}>
+          <Text style={styles.subheader}>ON A FIRST DATE I'D LIKE TO...</Text>
+          <View style={styles.row}>
+            <TouchableOpacity style={styles.item} onPress={this.toggleCoffee}>
+              <FontAwesome
+                style={
+                  this.state.coffee
+                    ? styles.activeButton
+                    : styles.inactiveButton
+                }
+              >
+                {Icons.coffee}
+              </FontAwesome>
+              <Text style={styles.dateLabel}> GET COFFEE</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.item} onPress={this.toggleDrinks}>
+              <FontAwesome
+                style={
+                  this.state.drinks
+                    ? styles.activeButton
+                    : styles.inactiveButton
+                }
+              >
+                {Icons.glass}
+              </FontAwesome>
+              <Text style={styles.dateLabel}>GET DRINKS</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.item} onPress={this.toggleDinner}>
+              <FontAwesome
+                style={
+                  this.state.dinner
+                    ? styles.activeButton
+                    : styles.inactiveButton
+                }
+              >
+                {Icons.cutlery}{" "}
+              </FontAwesome>
+              <Text style={styles.dateLabel}>GET DINNER</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.row}>
+            <TouchableOpacity style={styles.item} onPress={this.toggleMuseum}>
+              <FontAwesome
+                style={
+                  this.state.museum
+                    ? styles.activeButton
+                    : styles.inactiveButton
+                }
+              >
+                {Icons.university}
+              </FontAwesome>
+              <Text style={styles.dateLabel}>GO TO A MUSEUM</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.item} onPress={this.toggleShow}>
+              <FontAwesome
+                style={
+                  this.state.show ? styles.activeButton : styles.inactiveButton
+                }
+              >
+                {Icons.ticket}
+              </FontAwesome>
+              <Text style={styles.dateLabel}>GO TO A SHOW</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.item} onPress={this.togglePark}>
+              <FontAwesome
+                style={
+                  this.state.park ? styles.activeButton : styles.inactiveButton
+                }
+              >
+                {Icons.tree}
+              </FontAwesome>
+              <Text style={styles.dateLabel}>GO TO A PARK</Text>
+            </TouchableOpacity>
+          </View>
+          <Text style={styles.subheader}> TALK TO ME ABOUT...</Text>
 
-        <View style={styles.row}>
-          <TouchableOpacity onPress={this.toggleAnimals}>
-            <FontAwesome
-              style={
-                this.state.animals ? styles.activeButton : styles.inactiveButton
-              }
-            >
-              {Icons.paw}
-            </FontAwesome>
-            <Text>ANIMALS</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.toggleTravel}>
-            <FontAwesome
-              style={
-                this.state.travel ? styles.activeButton : styles.inactiveButton
-              }
-            >
-              {Icons.plane}
-            </FontAwesome>
-            <Text>TRAVELS</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.toggleFood}>
-            <FontAwesome
-              style={
-                this.state.food ? styles.activeButton : styles.inactiveButton
-              }
-            >
-              {Icons.cutlery}
-            </FontAwesome>
-            <Text>FOOD</Text>
-          </TouchableOpacity>
-        </View>
+          <View style={styles.row}>
+            <TouchableOpacity style={styles.item} onPress={this.toggleAnimals}>
+              <FontAwesome
+                style={
+                  this.state.animals
+                    ? styles.activeButton
+                    : styles.inactiveButton
+                }
+              >
+                {Icons.paw}
+              </FontAwesome>
+              <Text>ANIMALS</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.item} onPress={this.toggleTravel}>
+              <FontAwesome
+                style={
+                  this.state.travel
+                    ? styles.activeButton
+                    : styles.inactiveButton
+                }
+              >
+                {Icons.plane}
+              </FontAwesome>
+              <Text>TRAVELS</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.item} onPress={this.toggleFood}>
+              <FontAwesome
+                style={
+                  this.state.food ? styles.activeButton : styles.inactiveButton
+                }
+              >
+                {Icons.cutlery}
+              </FontAwesome>
+              <Text>FOOD</Text>
+            </TouchableOpacity>
+          </View>
 
-        <View style={styles.row}>
-          <TouchableOpacity onPress={this.toggleMusic}>
-            <FontAwesome
-              style={
-                this.state.music ? styles.activeButton : styles.inactiveButton
-              }
-            >
-              {Icons.music}
-            </FontAwesome>
-            <Text>MUSIC</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.toggleSports}>
-            <FontAwesome
-              style={
-                this.state.sports ? styles.activeButton : styles.inactiveButton
-              }
-            >
-              {Icons.futbolO}
-            </FontAwesome>
-            <Text>SPORTS</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.toggleMovies}>
-            <FontAwesome
-              style={
-                this.state.movies ? styles.activeButton : styles.inactiveButton
-              }
-            >
-              {Icons.film}
-            </FontAwesome>
-            <Text>MOVIES</Text>
-          </TouchableOpacity>
-        </View>
+          <View style={styles.row}>
+            <TouchableOpacity style={styles.item} onPress={this.toggleMusic}>
+              <FontAwesome
+                style={
+                  this.state.music ? styles.activeButton : styles.inactiveButton
+                }
+              >
+                {Icons.music}
+              </FontAwesome>
+              <Text>MUSIC</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.item} onPress={this.toggleSports}>
+              <FontAwesome
+                style={
+                  this.state.sports
+                    ? styles.activeButton
+                    : styles.inactiveButton
+                }
+              >
+                {Icons.futbolO}
+              </FontAwesome>
+              <Text>SPORTS</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.item} onPress={this.toggleMovies}>
+              <FontAwesome
+                style={
+                  this.state.movies
+                    ? styles.activeButton
+                    : styles.inactiveButton
+                }
+              >
+                {Icons.film}
+              </FontAwesome>
+              <Text>MOVIES</Text>
+            </TouchableOpacity>
+          </View>
 
-        <View style={styles.row}>
-          <TouchableOpacity onPress={this.toggleTech}>
-            <FontAwesome
-              style={
-                this.state.tech ? styles.activeButton : styles.inactiveButton
-              }
-            >
-              {Icons.mobile}
-            </FontAwesome>
-            <Text>TECH</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.toggleGaming}>
-            <FontAwesome
-              style={
-                this.state.gaming ? styles.activeButton : styles.inactiveButton
-              }
-            >
-              {Icons.gamepad}
-            </FontAwesome>
-            <Text>SPORTS</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.toggleNature}>
-            <FontAwesome
-              style={
-                this.state.nature ? styles.activeButton : styles.inactiveButton
-              }
-            >
-              {Icons.tree}
-            </FontAwesome>
-            <Text>NATURE</Text>
-          </TouchableOpacity>
+          <View style={styles.row}>
+            <TouchableOpacity style={styles.item} onPress={this.toggleTech}>
+              <FontAwesome
+                style={
+                  this.state.tech ? styles.activeButton : styles.inactiveButton
+                }
+              >
+                {Icons.mobile}
+              </FontAwesome>
+              <Text>TECH</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.item} onPress={this.toggleGaming}>
+              <FontAwesome
+                style={
+                  this.state.gaming
+                    ? styles.activeButton
+                    : styles.inactiveButton
+                }
+              >
+                {Icons.gamepad}
+              </FontAwesome>
+              <Text>SPORTS</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.item} onPress={this.toggleNature}>
+              <FontAwesome
+                style={
+                  this.state.nature
+                    ? styles.activeButton
+                    : styles.inactiveButton
+                }
+              >
+                {Icons.tree}
+              </FontAwesome>
+              <Text>NATURE</Text>
+            </TouchableOpacity>
+          </View>
+          <Button
+            color={"#9BA2FF"}
+            onPress={this.nextStep.bind(this)}
+            title={"NEXT"}
+          />
         </View>
-        <Button onPress={this.nextStep.bind(this)} title={"NEXT"} />
       </View>
     );
   }
@@ -331,16 +359,44 @@ const styles = StyleSheet.create({
   },
   activeButton: {
     color: "#9BA2FF",
-    fontSize: 30
+    fontSize: 30,
+    marginBottom: 5
   },
   inactiveButton: {
-    color: "#C4C4C4",
-    fontSize: 30
+    color: "black",
+    fontSize: 30,
+    marginBottom: 5
   },
   row: {
     flexWrap: "wrap",
     alignItems: "flex-start",
     flexDirection: "row",
     marginLeft: 10
+  },
+  header: {
+    fontSize: 15,
+    marginTop: 5,
+    marginLeft: 30,
+    fontWeight: "bold",
+    marginBottom: 5
+  },
+  wrapper: {
+    // marginLeft: 50,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  subheader: {
+    fontWeight: "bold",
+    marginTop: 20,
+    marginBottom: 5
+  },
+  dateLabel: {
+    width: 70,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  item: {
+    margin: 20,
+    marginBottom: 10
   }
 });
