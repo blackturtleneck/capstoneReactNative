@@ -11,6 +11,9 @@ import {
 } from "react-native"; 
 import List from "react-native-elements";
 import { firestore } from "../FirestoreConfig";
+import  ReceiveDate  from "./ReceiveDate.js";
+import  IncomingRequest  from "./IncomingRequest.js";
+import SentAndPendingDate from "./SentAndPendingDate.js";
 
 export default class Messenger extends React.Component {
   constructor(props, context) {
@@ -60,6 +63,34 @@ export default class Messenger extends React.Component {
         });
         currentComponent.setState({ messages: curMessages });
       });
+
+
+      let currentComponent2 = this;
+      firestore
+        .collection("users")
+        .doc(this.state.userEmail)
+        .collection("messages")
+        .doc(this.state.otherUser)
+        .collection("dates")
+        .onSnapshot(function(querySnapshot) {
+          var currDates = [];
+          querySnapshot.forEach(function(doc) {
+            currDates.push(doc.data());
+            console.log("in dates", doc.data());
+          });
+
+          if (currDates.length != 0){
+            currentComponent2.setState({ 
+              dates: currDates,
+              userSent : currDates[currDates.length-1].sent,
+              userConfirmed : currDates[currDates.length-1].confirm,
+              userResponded : currDates[currDates.length-1].response
+
+            });
+
+          }
+         
+        });
     // }
   }
 
@@ -161,7 +192,7 @@ export default class Messenger extends React.Component {
 
   render() {
     const {navigate } = this.props.navigation
-    console.log("this.state.messages", this.state.messages);
+    console.log("this.state.dates", this.state.dates);
     const currentMessage = this.state.messages.map((message, i) => {
       console.log("message", message);
       return (
@@ -177,6 +208,11 @@ export default class Messenger extends React.Component {
     return (
       <View className="messenger-wrapper">
 
+      {this.state.userConfirmed == true && <View> <ReceiveDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}\      
+      {this.state.userSent == false && <View> <IncomingRequest dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}
+      {this.state.userSent == true && <View> <SentAndPendingDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}
+
+
         <ScrollView
           style={{ height: 500, backgroundColor: "white" }}
           scrollEnabled={true}
@@ -187,6 +223,8 @@ export default class Messenger extends React.Component {
           className="messages"
           id="message-list"
         >
+
+        
           {currentMessage}
 
         <TouchableOpacity style = {styles.button} onPress={() => {
@@ -194,6 +232,7 @@ export default class Messenger extends React.Component {
   }}  >
             <Text>Request a Date</Text>
         </TouchableOpacity>
+
         </ScrollView>
 
         {/* <View className="button-input-wrapper"> */}
