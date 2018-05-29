@@ -27,9 +27,7 @@ export default class MatchProfile extends Component {
     let userDateIcons = [];
     if (userDates) {
       for (let i = 0; i < dates.length; i++) {
-        console.log("topics[i", dates[i]);
         let curDate = dates[i];
-        console.log("usertopics.curtopic", userDates[curDate]);
         if (userDates[curDate] !== null && userDates[curDate] !== false) {
           userDateIcons.push(
             <FontAwesome>{Icons[dateIconsMap[curDate]]}</FontAwesome>
@@ -43,10 +41,7 @@ export default class MatchProfile extends Component {
     let userInterests = [];
     if (userTopics) {
       for (let i = 0; i < topics.length; i++) {
-        console.log("topics[i", topics[i]);
         let curTopic = topics[i];
-        console.log("this.props.match.topics[topics[i]]", userTopics);
-        console.log("usertopics.curtopic", userTopics[curTopic]);
         if (userTopics[curTopic] !== null && userTopics[curTopic] !== false) {
           userInterests.push(
             <FontAwesome>{Icons[topicIconMap[curTopic]]}</FontAwesome>

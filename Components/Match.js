@@ -9,7 +9,11 @@ export default class Match extends Component {
   constructor(props) {
     super(props);
     console.log("this.screenProps", this.screenProps);
-    this.state = { user: this.props.screenProps.user, index: 0 };
+    this.state = {
+      user: this.props.screenProps.user,
+      index: 0,
+      matchesExist: false
+    };
   }
 
   interested() {
@@ -19,7 +23,21 @@ export default class Match extends Component {
     // this.setState(prevState => {
     //   return { index: prevState.index + 1 };
     // });
-    this.scrollToIndex();
+    // let matches = this.state.matches;
+    // matches.splice(1, 1);
+    // console.log("matches", matches);
+    // this.setState({ matches: matches });
+    // this.scrollToIndex();
+    let curMatches = this.state.matches;
+    console.log("matches", curMatches);
+    if (curMatches.length > 1) {
+      curMatches.splice(0, 1);
+      this.setState({ matches: curMatches });
+      this.scrollToIndex();
+    } else {
+      console.log("no");
+      this.setState({ matchesExist: false });
+    }
   }
 
   rejected() {
@@ -29,7 +47,16 @@ export default class Match extends Component {
     // this.setState(prevState => {
     //   return { index: prevState.index + 1 };
     // });
-    this.scrollToIndex();
+    let curMatches = this.state.matches;
+    console.log("matches", curMatches);
+    if (curMatches.length > 1) {
+      curMatches.splice(0, 1);
+      this.setState({ matches: curMatches });
+      this.scrollToIndex();
+    } else {
+      console.log("no");
+      this.setState({ matchesExist: false });
+    }
   }
   getItemLayout = (data, index) => ({
     length: 500,
@@ -39,11 +66,13 @@ export default class Match extends Component {
 
   scrollToIndex = () => {
     this.flatListRef.scrollToIndex({ animated: true, index: this.state.index });
-    this.setState(prevState => {
-      if (prevState.matches && prevState.matches.length > prevState.index) {
-        return { index: prevState.index + 1 };
-      }
-    });
+    this.forceUpdate();
+
+    // this.setState(prevState => {
+    //   if (prevState.matches && prevState.matches.length > prevState.index) {
+    //     return { index: prevState.index + 1 };
+    //   }
+    // });
   };
 
   calculateAge(birthday) {
@@ -116,7 +145,7 @@ export default class Match extends Component {
             }
           }
         });
-        component.setState({ matches: matchList });
+        component.setState({ matches: matchList, matchesExist: true });
         console.log("matchList", matchList);
       })
       .catch(function(error) {
@@ -138,26 +167,30 @@ export default class Match extends Component {
           justifyContent: "center"
         }}
       >
-        <FlatList
-          scrollEnabled={false}
-          ref={ref => {
-            this.flatListRef = ref;
-          }}
-          getItemLayout={this.getItemLayout}
-          keyExtractor={item => item}
-          // initialScrollIndex={this.state.index}
-          initialNumToRender={this.state.index + 1}
-          horizontal={true}
-          data={this.state.matches}
-          onScrollToIndexFailed={() => {}}
-          renderItem={({ item }) => (
-            <MatchProfile
-              interested={this.interested.bind(this)}
-              rejected={this.rejected.bind(this)}
-              match={item}
-            />
-          )}
-        />
+        {this.state.matchesExist ? (
+          <FlatList
+            scrollEnabled={false}
+            ref={ref => {
+              this.flatListRef = ref;
+            }}
+            getItemLayout={this.getItemLayout}
+            keyExtractor={item => item}
+            // initialScrollIndex={this.state.index}
+            initialNumToRender={this.state.index}
+            horizontal={true}
+            data={this.state.matches ? this.state.matches : []}
+            onScrollToIndexFailed={() => {}}
+            renderItem={({ item }) => (
+              <MatchProfile
+                interested={this.interested.bind(this)}
+                rejected={this.rejected.bind(this)}
+                match={item}
+              />
+            )}
+          />
+        ) : (
+          <NoMatches />
+        )}
       </View>
     );
   }
