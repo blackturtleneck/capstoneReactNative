@@ -19,11 +19,11 @@ export default class ReceiveDate extends Component {
 }
 
 componentWillReceiveProps(){
-  console.log("DATES", this.state.dates[0].location)
+  console.log("DATES", this.state.dates[0].confirm)
 }
 
 componentDidMount(){
-  console.log("DATES", this.state.dates[0].location)
+  console.log("DATES", this.state.dates[0])
 }
 
   render() {

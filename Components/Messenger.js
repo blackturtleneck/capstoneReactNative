@@ -85,7 +85,6 @@ export default class Messenger extends React.Component {
               userSent : currDates[currDates.length-1].sent,
               userConfirmed : currDates[currDates.length-1].confirm,
               userResponded : currDates[currDates.length-1].response
-
             });
 
           }
@@ -208,9 +207,9 @@ export default class Messenger extends React.Component {
     return (
       <View className="messenger-wrapper">
 
-      {this.state.userConfirmed == true && <View> <ReceiveDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}\      
+      {this.state.userConfirmed == true && <View> <ReceiveDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} confirm = {this.state.userConfirmed} /> </View>}\      
       {this.state.userSent == false && this.state.userConfirmed == false  && <View> <IncomingRequest dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}
-      {this.state.userSent == true && this.state.userConfirmed == false && this.state.userResponded == false && <View> <SentAndPendingDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}
+      {this.state.userSent == true && <View> <SentAndPendingDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}
 
       {this.state.userSent == true && this.state.userResponded == true && <View>  </View>}
 

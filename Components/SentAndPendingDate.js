@@ -27,6 +27,6 @@ componentDidMount(){
 }
 
   render() {
-    return <Text> You have an upcoming date at {this.state.dates[0].location} at {this.props.otherUserName} </Text>;
+    return <Text> You sent a date request to {this.props.otherUserName} for {this.state.dates[0].location}, we will let you know when they respond! </Text>;
   }
 }

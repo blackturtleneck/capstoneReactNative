@@ -100,35 +100,40 @@ export default class Dates extends Component {
         this.setState({
             array : selectedFruits
         })
+
+        var times = ["1900", "2000"]
+        let startTime = [];
+        let dayAv = '';
+        let start = '';
+        var thingtoAdd = {};
+        var timeToAdd = {};
+        var finalArr = {};
+        var i=0;
+        for (var key in times) {
+                 start = times[key].value;
+                 end = String(parseInt(times[key].value) + 100);
+ 
+                 startTime.dayAv = "wed";
+     
+                 timeToAdd.start = start;
+                 timeToAdd.end = end;
+     
+                 startTime.times = timeToAdd;
+        console.log("startTImefor", startTime)
+        }
+        this.setState({
+            array : startTime 
+        });
+    
+ 
       }
       
     onSubmit(event){
         this.setState({
             submitted : true
         });
-       let startTime = [];
-       var times = ["1900", "2000"];
-       let dayAv = '';
-       let start = '';
-       var thingtoAdd = {};
-       var timeToAdd = {};
-       for (var key in times) {
-         console.log("KEY", times[key])
-                start = times[key].value;
-                end = String(parseInt(times[key].value) + 100);
 
-                startTime.dayAv = "wed";
-    
-                timeToAdd.start = start;
-                timeToAdd.end = end;
-    
-                startTime.times = timeToAdd;
-    }
 
-    console.log(this.state.userEmail, "this is me")
-    console.log(this.state.otherUser, "this is them")
-
- 
     const time = new Date();
     let month = time.getMonth();
     let formattedMonth = "";
@@ -191,7 +196,7 @@ export default class Dates extends Component {
       sent: true,
       response: false,
       confirm: false,
-      startTime: startTime
+      startTime: this.state.array
     };
     const getDate = {
         id: time,
@@ -199,7 +204,7 @@ export default class Dates extends Component {
         sent: false,
         response: false,
         confirm: false,
-        startTime : startTime
+        startTime : this.state.array
       };
     firestore
       .collection("users")
@@ -216,7 +221,7 @@ export default class Dates extends Component {
       .doc(this.state.userEmail)
       .collection("dates")
       .doc(timeStamp)
-      .set(getDate); 
+      .set(getDate);  
 
     }
 
