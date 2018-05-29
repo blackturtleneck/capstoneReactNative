@@ -29,7 +29,8 @@ export default class PageContent extends Component {
             matchAgeMin: doc.get("matchAgeMin"),
             matchAgeMax: doc.get("matchAgeMax"),
             matchDistance: doc.get("matchDistance"),
-            birthday: doc.get("birthday")
+            birthday: doc.get("birthday"),
+            email: doc.id
           });
         }
       });
@@ -79,10 +80,11 @@ export default class PageContent extends Component {
       gender: this.state.gender,
       matchAgeMin: this.state.matchAgeMin,
       matchAgeMax: this.state.matchAgeMax,
-      matchDistance: this.state.matchDistance
+      matchDistance: this.state.matchDistance,
+      email: this.state.email
     };
     if (this.state.onBoarding) {
-      return <Tabs screenProps={{ user: this.props.user }} />;
+      return <Tabs screenProps={{ user: user }} />;
     } else {
       return (
         <SignUpController
