@@ -10,8 +10,17 @@ import {
   Slider,
   TouchableHighlight
 } from "react-native";
-import DropdownMenu from "react-native-dropdown-menu";
+import ModalDropdown from "react-native-modal-dropdown";
 import MultiSlider from "@ptomasroos/react-native-multi-slider";
+import { Modal } from "react-native-router-flux";
+
+class CustomMarker extends React.Component {
+  render() {
+    return (
+      <Image source={require("../img/thumbImage.png")} resizeMode="contain" />
+    );
+  }
+}
 
 export default class SignUp2 extends Component {
   constructor(props) {
@@ -19,79 +28,101 @@ export default class SignUp2 extends Component {
     super(props);
     this.state = {
       matchGender: this.props.fieldValues.matchGender,
-      matchAge: [18, 25],
+      matchAgeMin: this.props.fieldValues.matchAgeMin,
+      matchAgeMax: this.props.fieldValues.matchAgeMax,
       matchDistance: this.props.fieldValues.matchDistance
     };
   }
   render() {
-    var genderData = [["MALE", "FEMALE", "BOTH"]];
+    var genderData = ["MALE", "FEMALE", "BOTH"];
 
     return (
       <View style={styles.view}>
-        <TouchableHighlight onPress={this.props.previousStep}>
-          <Image source={require("../img/back-arrow.png")} />
-        </TouchableHighlight>
-        <Text>TELL US WHO YOU'RE LOOKING FOR</Text>
+        <View style={styles.row}>
+          <TouchableHighlight onPress={this.props.previousStep}>
+            <Image source={require("../img/back-arrow.png")} />
+          </TouchableHighlight>
+          <Text style={styles.header}>TELL US WHO YOU'RE LOOKING FOR</Text>
+        </View>
         <Text style={styles.label}>I'M LOOKING FOR...</Text>
-        <DropdownMenu
-          style={{ flex: 1, backgroundColor: "#F2F2F2" }}
-          bgColor={"#F2F2F2"}
-          tintColor={"#666666"}
-          activityTintColor={"green"}
-          // arrowImg={}
-          // checkImage={}
-          // optionTextStyle={{color: '#333333'}}
-          // titleStyle={{color: '#333333'}}
-          // maxHeight={300}
-          handler={(selection, row) =>
-            this.setState({ birthday: genderData[selection][row] })
+        <ModalDropdown
+          style={styles.textInput}
+          options={genderData}
+          defaultValue={
+            this.state.matchGender !== null ? this.state.matchGender : ""
           }
-          data={genderData}
-        >
-          <View style={{ flex: 1 }}>
-            <Text>{this.state.gender} is the best language in the world</Text>
-          </View>
-        </DropdownMenu>
+          onSelect={value => this.setState({ matchGender: genderData[value] })}
+        />
         <Text style={styles.label}>AGE</Text>
 
-        <MultiSlider
-          values={[21, 26]}
-          sliderLength={280}
-          onValuesChange={value =>
-            this.setState({
-              matchAge: value
-            })
-          }
-          min={18}
-          max={55}
-          step={1}
-          snapped
-        />
-
-        <Text>
-          Value: {this.state.matchAge[0]} - {this.state.matchAge[1]}
-        </Text>
+        <View style={styles.slider}>
+          <Text style={styles.distance}>
+            {this.state.matchAgeMin ? this.state.matchAgeMin : 21} -{" "}
+            {this.state.matchAgeMax ? this.state.matchAgeMax : 26}
+          </Text>
+          <MultiSlider
+            values={
+              this.state.matchAgeMax && this.state.matchAgeMin
+                ? [this.state.matchAgeMin, this.state.matchAgeMax]
+                : [21, 26]
+            }
+            sliderLength={270}
+            onValuesChange={value =>
+              this.setState({
+                matchAgeMin: value[0],
+                matchAgeMax: value[1]
+              })
+            }
+            customMarker={CustomMarker}
+            selectedStyle={{
+              backgroundColor: "#828282"
+            }}
+            unselectedStyle={{
+              backgroundColor: "#828282"
+            }}
+            min={18}
+            max={55}
+            step={1}
+            snapped
+          />
+        </View>
 
         <Text style={styles.label}>DISTANCE</Text>
-        <Slider
-          minimumValue={0}
-          maximumValue={30}
-          step={1}
-          value={this.state.matchDistance}
-          onValueChange={matchDistance => this.setState({ matchDistance })}
-        />
-
-        <Text>Value: {this.state.matchDistance}</Text>
-        <Button onPress={this.nextStep.bind(this)} title={"NEXT"} />
+        <View style={styles.slider}>
+          <Text>
+            {this.state.matchDistance !== null ? this.state.matchDistance : 0}{" "}
+            mi
+          </Text>
+          <Slider
+            minimumTrackTintColor={"#828282"}
+            maximumTrackTintColor={"#828282"}
+            minimumValue={0}
+            maximumValue={30}
+            thumbImage={require("../img/thumbImage.png")}
+            step={1}
+            value={this.state.matchDistance}
+            onValueChange={matchDistance => this.setState({ matchDistance })}
+          />
+        </View>
+        <View style={styles.nextButton}>
+          <Button
+            color={"#9BA2FF"}
+            onPress={this.nextStep.bind(this)}
+            title={"NEXT"}
+          />
+        </View>
       </View>
     );
   }
 
   nextStep(e) {
-    // e.preventDefault();
+    if (!this.state.matchAgeMax) {
+      this.setState({ matchAgeMax: 26, matchAgeMin: 21 });
+    }
     let data = {
       matchGender: this.state.matchGender,
-      matchAge: this.state.matchAge,
+      matchAgeMin: this.state.matchAgeMin,
+      matchAgeMax: this.state.matchAgeMax,
       matchDistance: this.state.matchDistance
     };
 
@@ -101,13 +132,43 @@ export default class SignUp2 extends Component {
 }
 const styles = StyleSheet.create({
   view: {
-    marginTop: 40
+    marginTop: 40,
+    marginLeft: 25
   },
   label: {
-    marginTop: 40,
-    fontWeight: "bold"
+    marginTop: 40
   },
   textInput: {
-    backgroundColor: "#F2F2F2"
+    backgroundColor: "#F2F2F2",
+    width: 300,
+    marginTop: 5,
+    marginRight: 5,
+    padding: 5,
+    borderRadius: 5
+  },
+  row: {
+    flexWrap: "wrap",
+    alignItems: "flex-start",
+    flexDirection: "row"
+  },
+  slider: {
+    backgroundColor: "#F2F2F2",
+    width: 300,
+    marginTop: 5,
+    padding: 15,
+    borderRadius: 5,
+    marginBottom: 0
+  },
+  distance: {
+    marginBottom: 20
+  },
+  header: {
+    marginTop: 5,
+    marginLeft: 10,
+    fontWeight: "bold"
+  },
+  nextButton: {
+    marginTop: 190,
+    bottom: "10%"
   }
 });
