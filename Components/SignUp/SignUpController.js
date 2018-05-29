@@ -171,11 +171,23 @@ export default class SignUpController extends Component {
     this.previousStep = this.previousStep.bind(this);
     this.submitRegistration = this.submitRegistration.bind(this);
   }
+
   saveValues(fields) {
-    this.setState({
-      fieldValues: Object.assign({}, this.state.fieldValues, fields)
-    });
+    let component = this;
+    let fieldValues = this.state.fieldValues;
+    return (function() {
+      fieldValues = Object.assign({}, fieldValues, fields);
+      component.setState({ fieldValues: fieldValues });
+    })();
   }
+
+  // saveValues(fields) {
+  //   console.log("save values");
+  //   this.setState({
+  //     fieldValues: Object.assign({}, this.state.fieldValues, fields)
+  //   });
+  //   console.log("fieldValues", this.state.fieldValues);
+  // }
 
   nextStep() {
     this.setState(prevState => {

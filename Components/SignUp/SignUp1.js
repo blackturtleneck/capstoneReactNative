@@ -8,7 +8,7 @@ import {
   Item,
   Button
 } from "react-native";
-import DropdownMenu from "react-native-dropdown-menu";
+import ModalDropdown from "react-native-modal-dropdown";
 
 export default class SignUp1 extends Component {
   constructor(props) {
@@ -18,14 +18,30 @@ export default class SignUp1 extends Component {
       name: this.props.fieldValues.name,
       gender: this.props.fieldValues.gender,
       birthday: this.props.fieldValues.birthday,
-      location: this.props.fieldValues.location
+      location: this.props.fieldValues.location,
+      education: this.props.fieldValues.education,
+      occupation: this.props.fieldValues.occupation,
+      religion: this.props.fieldValues.religion
     };
   }
   render() {
-    var genderData = [["MALE", "FEMALE"]];
-    var birthdayData = [
-      [
-        "",
+    var genderData = ["MALE", "FEMALE"];
+    var birthdayData = {
+      month: [
+        "JANUARY",
+        "FEBRUARY",
+        "MARCH",
+        "APRIL",
+        "MAY",
+        "JUNE",
+        "JULY",
+        "AUGUST",
+        "SEPTEMEBER",
+        "OCTOBER",
+        "NOVEMBER",
+        "DECEMEBER"
+      ],
+      day: [
         "1",
         "2",
         "3",
@@ -58,23 +74,7 @@ export default class SignUp1 extends Component {
         "30",
         "31"
       ],
-      [
-        "",
-        "JANUARY",
-        "FEBRUARY",
-        "MARCH",
-        "APRIL",
-        "MAY",
-        "JUNE",
-        "JULY",
-        "AUGUST",
-        "SEPTEMEBER",
-        "OCTOBER",
-        "NOVEMBER",
-        "DECEMEBER"
-      ],
-      [
-        "",
+      year: [
         "1963",
         "1964",
         "1965",
@@ -114,62 +114,127 @@ export default class SignUp1 extends Component {
         "1999",
         "2000"
       ]
-    ];
+    };
     return (
       <View style={styles.view}>
-        <Image source={require("../img/signup-header.png")} />
+        <View style={styles.img}>
+          <Image source={require("../img/signup-header.png")} />
+        </View>
         <Text style={styles.label}>NAME</Text>
-        <TextInput value={this.state.name} />
+        <TextInput
+          style={styles.textInput}
+          value={this.state.name}
+          onChangeText={name => this.setState({ name })}
+        />
         <Text style={styles.label}>GENDER</Text>
-        <DropdownMenu
-          style={{ flex: 1, backgroundColor: "#F2F2F2" }}
-          bgColor={"#F2F2F2"}
-          tintColor={"#666666"}
-          activityTintColor={"green"}
-          // arrowImg={}
-          // checkImage={}
-          // optionTextStyle={{color: '#333333'}}
-          // titleStyle={{color: '#333333'}}
-          // maxHeight={300}
-          handler={(selection, row) =>
-            this.setState({ birthday: genderData[selection][row] })
-          }
-          data={genderData}
-        >
-          <View style={{ flex: 1 }}>
-            <Text>{this.state.gender} is the best language in the world</Text>
-          </View>
-        </DropdownMenu>
-
+        <ModalDropdown
+          style={styles.textInput}
+          options={genderData}
+          defaultValue={this.state.gender !== null ? this.state.gender : ""}
+          onSelect={value => this.setState({ gender: genderData[value] })}
+        />
         <Text style={styles.label}>BIRTHDAY</Text>
-        <DropdownMenu
-          style={{ flex: 1, backgroundColor: "white" }}
-          bgColor={"#F2F2F2"}
-          tintColor={"#666666"}
-          activityTintColor={"green"}
-          // arrowImg={}
-          // checkImage={}
-          // optionTextStyle={{color: '#333333'}}
-          // titleStyle={{color: '#333333'}}
-          maxHeight={200}
-          handler={(selection, row) =>
-            this.setState({ birthday: birthdayData[selection][row] })
-          }
-          data={birthdayData}
-        >
-          <View style={{ flex: 1 }}>
-            <Text>{this.state.birthday} is the best language in the world</Text>
-          </View>
-        </DropdownMenu>
+        <View style={styles.row}>
+          <ModalDropdown
+            style={styles.birthday}
+            options={birthdayData.month}
+            defaultValue={
+              this.state.birthday && this.state.birthday.month
+                ? this.state.birthday.month
+                : ""
+            }
+            onSelect={value => {
+              this.state.birthday
+                ? (this.state.birthday = {
+                    month: birthdayData.month[value],
+                    day: this.state.birthday.day,
+                    year: this.state.birthday.year
+                  })
+                : (this.state.birthday = {
+                    month: birthdayData.month[value],
+                    day: "",
+                    year: ""
+                  });
+            }}
+          />
+          <ModalDropdown
+            style={styles.birthday}
+            options={birthdayData.day}
+            defaultValue={
+              this.state.birthday && this.state.birthday.day
+                ? this.state.birthday.day
+                : ""
+            }
+            onSelect={value => {
+              {
+                this.state.birthday
+                  ? (this.state.birthday = {
+                      day: birthdayData.day[value],
+                      month: this.state.birthday.month,
+                      year: this.state.birthday.year
+                    })
+                  : (this.state.birthday = {
+                      day: birthdayData.day[value],
+                      month: "",
+                      year: ""
+                    });
+              }
+              this.forceUpdate();
+            }}
+          />
+          <ModalDropdown
+            style={styles.birthday}
+            options={birthdayData.year}
+            defaultValue={
+              this.state.birthday && this.state.birthday.year
+                ? this.state.birthday.year
+                : ""
+            }
+            onSelect={value => {
+              this.state.birthday
+                ? (this.state.birthday = {
+                    year: birthdayData.year[value],
+                    day: this.state.birthday.day,
+                    month: this.state.birthday.month
+                  })
+                : (this.state.birthday = {
+                    year: birthdayData.year[value],
+                    month: "",
+                    year: ""
+                  });
+            }}
+          />
+        </View>
+
         <Text style={styles.label}>EDUCATION</Text>
-        <TextInput style={styles.textInput} value={this.state.education} />
+        <TextInput
+          style={styles.textInput}
+          value={this.state.education}
+          onChangeText={education => this.setState({ education })}
+        />
         <Text style={styles.label}>RELIGION</Text>
-        <TextInput style={styles.textInput} value={this.state.religion} />
+        <TextInput
+          style={styles.textInput}
+          value={this.state.religion}
+          onChangeText={religion => this.setState({ religion })}
+        />
         <Text style={styles.label}>OCCUPATION</Text>
-        <TextInput style={styles.textInput} value={this.state.occupation} />
+        <TextInput
+          style={styles.textInput}
+          value={this.state.occupation}
+          onChangeText={occupation => this.setState({ occupation })}
+        />
         <Text style={styles.label}>LOCATION</Text>
-        <TextInput style={styles.textInput} value={this.state.location} />
-        <Button onPress={this.nextStep.bind(this)} title="NEXT" />
+        <TextInput
+          style={styles.textInput}
+          value={this.state.location}
+          onChangeText={location => this.setState({ location })}
+        />
+        <Button
+          color={"#9BA2FF"}
+          onPress={this.nextStep.bind(this)}
+          title="NEXT"
+        />
       </View>
     );
   }
@@ -184,6 +249,7 @@ export default class SignUp1 extends Component {
       location: this.state.location,
       birthday: this.state.birthday
     };
+    console.log("data", data);
 
     this.props.saveValues(data);
     this.props.nextStep();
@@ -191,16 +257,38 @@ export default class SignUp1 extends Component {
 }
 const styles = StyleSheet.create({
   view: {
-    alignContent: "center",
-    alignItems: "center",
-    justifyContent: "center",
+    marginLeft: 25,
     marginTop: 40
   },
   label: {
-    marginTop: 40,
-    fontWeight: "bold"
+    marginTop: 20,
+    fontWeight: "bold",
+    marginLeft: 5
   },
   textInput: {
-    backgroundColor: "#F2F2F2"
+    backgroundColor: "#F2F2F2",
+    width: 300,
+    marginTop: 5,
+    marginLeft: 5,
+    marginRight: 5,
+    padding: 5
+  },
+  birthday: {
+    backgroundColor: "#F2F2F2",
+    width: 95,
+    marginTop: 5,
+    marginLeft: 5,
+    marginRight: 5,
+    padding: 5
+  },
+  row: {
+    flexWrap: "wrap",
+    alignItems: "flex-start",
+    flexDirection: "row"
+  },
+  img: {
+    alignContent: "center",
+    alignItems: "center",
+    justifyContent: "center"
   }
 });
