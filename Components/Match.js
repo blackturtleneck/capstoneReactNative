@@ -1,14 +1,47 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ListView, FlatList } from "react-native";
 import { firestore } from "../FirestoreConfig";
 import MatchProfile from "./MatchProfile";
+import MatchListController from "./MatchListController";
 
 export default class Match extends Component {
   constructor(props) {
     super(props);
     console.log("this.screenProps", this.screenProps);
-    this.state = { user: this.props.screenProps.user };
+    this.state = { user: this.props.screenProps.user, index: 0 };
   }
+
+  interested() {
+    console.log("interested");
+    // this.setState({ index: this.state.index + 1 });
+
+    // this.setState(prevState => {
+    //   return { index: prevState.index + 1 };
+    // });
+    this.scrollToIndex();
+  }
+
+  rejected() {
+    console.log("rejected");
+    // this.setState({ index: this.state.index + 1 });
+
+    // this.setState(prevState => {
+    //   return { index: prevState.index + 1 };
+    // });
+    this.scrollToIndex();
+  }
+  getItemLayout = (data, index) => ({
+    length: 500,
+    offset: 400,
+    index
+  });
+
+  scrollToIndex = () => {
+    this.flatListRef.scrollToIndex({ animated: true, index: this.state.index });
+    this.setState(prevState => {
+      return { index: prevState.index + 1 };
+    });
+  };
 
   calculateAge(birthday) {
     console.log("birthday", birthday);
@@ -49,6 +82,7 @@ export default class Match extends Component {
       .get()
       .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
+          console.log("doc.id", doc.id);
           // if not self
           if (doc.id !== component.state.user.email) {
             // check age
@@ -65,7 +99,15 @@ export default class Match extends Component {
                 email: doc.id,
                 name: doc.get("name"),
                 photoURL: doc.get("photoURL"),
-                dates: doc.get("dates")
+                dates: doc.get("dates"),
+                topics: doc.get("topics"),
+                age: matchAge,
+                location: doc.get("location"),
+                photos: doc.get("imgProfile"),
+                occupation: doc.get("occupation"),
+                education: doc.get("education"),
+                religion: doc.get("religion"),
+                bio: doc.get("bio")
               });
               console.log("matchList", matchList);
             }
@@ -79,14 +121,12 @@ export default class Match extends Component {
       });
   }
   render() {
-    let matches = [];
     {
       this.state.matches &&
         (matches = this.state.matches.map(match => (
           <MatchProfile match={match} />
         )));
     }
-    console.log("matches =", this.state.matches);
     return (
       <View
         style={{
@@ -95,8 +135,24 @@ export default class Match extends Component {
           justifyContent: "center"
         }}
       >
-        <Text>Match</Text>
-        {matches}
+        <FlatList
+          scrollEnabled={false}
+          ref={ref => {
+            this.flatListRef = ref;
+          }}
+          getItemLayout={this.getItemLayout}
+          keyExtractor={item => item}
+          initialScrollIndex={0}
+          horizontal={true}
+          data={this.state.matches}
+          renderItem={({ item }) => (
+            <MatchProfile
+              interested={this.interested.bind(this)}
+              rejected={this.rejected.bind(this)}
+              match={item}
+            />
+          )}
+        />
       </View>
     );
   }
