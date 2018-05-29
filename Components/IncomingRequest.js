@@ -26,8 +26,12 @@ componentWillReceiveProps(){
 componentDidMount(){
 }
 
+
   render() {
-    var finalDateButton = [{}];
+    let finalDateButton = [{
+
+
+    }];
     startTimeArr = this.props.dates[0].startTime;
     startTimeArr.map(function(a) {
         let dayName = '';
@@ -143,20 +147,21 @@ componentDidMount(){
 
      });
      console.log("Date Times", finalDateButton);
-    
-     const buttons = [
-        {
-            text: 'button one',
-            action: () => console.log('pressed button one')
-        },
-        {
-            text: 'button two',
-            action: () => console.log('pressed button two')
-        }
-     ];
 
-     const renderedButtons = buttons.map(b => {
-        return <TouchableOpacity onPress={b.action}> <Text> {b.text} </Text> </TouchableOpacity>;
+     let newThing = [];
+     for (let i = 1; i < finalDateButton.length; i++) {
+         var thingtoAdd = {};
+
+         thingtoAdd.key = finalDateButton[i];
+         thingtoAdd.value = finalDateButton[i];
+         thingtoAdd.selected = "true";
+         newThing.push(thingtoAdd);
+     }
+     console.log(newThing, "object test")
+    
+
+     const renderedButtons = newThing.map(b => {
+        return <TouchableOpacity onPress={b.action}> <Text> {b.value} </Text> </TouchableOpacity>;
      });
 
     return(

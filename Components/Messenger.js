@@ -209,7 +209,7 @@ export default class Messenger extends React.Component {
       <View className="messenger-wrapper">
 
       {this.state.userConfirmed == true && <View> <ReceiveDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}\      
-      {this.state.userSent == false && <View> <IncomingRequest dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}
+      {this.state.userSent == false && this.state.userConfirmed == false  && <View> <IncomingRequest dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}
       {this.state.userSent == true && <View> <SentAndPendingDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}
 
 
