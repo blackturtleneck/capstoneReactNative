@@ -10,15 +10,16 @@ import {
     Image
   } from "react-native"; 
   import DateMap from './DateMap';
-  import SelectMultiple from 'react-native-select-multiple'
+  import SelectMultiple from 'react-native-select-multiple';
+  import { firestore } from "../FirestoreConfig";
 
-const sun = ['6', '7', '8', '9', '10'] ;
-const mon = ['6', '7', '8', '9', '10'] ;
-const tue = ['6', '7', '8', '9', '10'] ;
-const wed = ['6', '7', '8', '9', '10'] ;
-const thu = ['6', '7', '8', '9', '10'] ;
-const fri = ['6', '7', '8', '9', '10'] ;
-const sat = ['6', '7', '8', '9', '10'] ;
+const sun = ['1800','1900','2000','2100','2200'] ;
+const mon = ['m6', 'm7', '   m8', '   m9', '   m10'] ;
+const tue = ['    t6', '   t7', '   t8', '   t9', '   t10'] ;
+const wed = ['    w6', '   w7', '   w8', '   w9', '   w10'] ;
+const thu = ['    th6','   th7','   th8','   th9','   th10'] ;
+const fri = ['    f6', '   f7', '   f8', '   f9', '   f10'] ;
+const sat = ['    st6','   st7','   st8','   st9','   st10'] ;
 
 
 export default class Dates extends Component {
@@ -26,7 +27,7 @@ export default class Dates extends Component {
         super(props, context);
         this.state = {
             userEmail : this.props.navigation.state.params.userEmail,
-            otherUser : this.props.navigation.state.params.userEmail,
+            otherUser : this.props.navigation.state.params.otherUser,
             location : '',
             printText1 : false,
             printText2 : false,
@@ -34,16 +35,12 @@ export default class Dates extends Component {
             printText4 : false,
             showMap : false,
             dateNames : true,
-            selectedFruits: [],
+            array: [],
             scheduler : false
         }
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onSelectionsChange = (selectedFruits) => {
-        console.log("selection Test" , selectedFruits)
-        this.setState({ selectedFruits })
-      }
-      
     onButtonPress = (location) => {
         console.log(location)
         this.setState({
@@ -56,6 +53,7 @@ export default class Dates extends Component {
             printText1: !prevState.printText1,
             location: "Fremont Brewery"  
         }));
+        console.log(this.state.location, "Loc test")
     }
 
     renderMoreInformation2 = () => {
@@ -63,6 +61,7 @@ export default class Dates extends Component {
             printText2: !prevState.printText2,
             location: "Schilling Cider"  
         }));
+        console.log(this.state.location, "Loc test")
     }
 
     renderMoreInformation3 = () => {
@@ -70,6 +69,7 @@ export default class Dates extends Component {
             printText3:!prevState.printText3,
             location: "The Backdoor"  
         }));
+        console.log(this.state.location, "Loc test")
     }
 
     renderMoreInformation4 = () => {
@@ -77,6 +77,7 @@ export default class Dates extends Component {
             printText4:!prevState.printText4,
             location: "The Barrel Thief"  
         }));
+        console.log(this.state.location, "Loc test")
     }
 
     _renderMap = () => {
@@ -86,11 +87,137 @@ export default class Dates extends Component {
     }
 
     nextAvailability = () => {
-        this.setState({
+        this.setState(prevState =>({
             scheduler : true,
-            dateNames : false
+            dateNames : false,
+            location: prevState.location
+        }));
+    }
 
+    onSelectionsChange = (selectedFruits) => {
+        console.log("selection Test" , selectedFruits)
+        this.setState({ selectedFruits })
+        this.setState({
+            array : selectedFruits
+        })
+      }
+      
+    onSubmit(event){
+        this.setState({
+            submitted : true
         });
+       let startTime = [];
+       var times = ["1900", "2000"];
+       let dayAv = '';
+       let start = '';
+       var thingtoAdd = {};
+       var timeToAdd = {};
+       for (var key in times) {
+         console.log("KEY", times[key])
+                start = times[key].value;
+                end = String(parseInt(times[key].value) + 100);
+
+                startTime.dayAv = "wed";
+    
+                timeToAdd.start = start;
+                timeToAdd.end = end;
+    
+                startTime.times = timeToAdd;
+    }
+
+    console.log(this.state.userEmail, "this is me")
+    console.log(this.state.otherUser, "this is them")
+
+ 
+    const time = new Date();
+    let month = time.getMonth();
+    let formattedMonth = "";
+    if (month < 10) {
+      formattedMonth = "0" + (month + 1);
+    } else {
+      formattedMonth = month + 1 + "";
+    }
+
+    let day = time.getDate();
+    let formattedDay = "";
+    if (day < 10) {
+      formattedDay = "0" + day;
+    } else {
+      formattedDay = day + "";
+    }
+
+    let hours = time.getHours();
+    let formattedHours = "";
+    if (hours < 10) {
+      formattedHours = "0" + hours;
+    } else {
+      formattedHours = hours + "";
+    }
+
+    let minutes = time.getMinutes();
+    let formattedMinutes = "";
+    if (minutes < 10) {
+      formattedMinutes = "0" + minutes;
+    } else {
+      formattedMinutes = minutes + "";
+    }
+
+    let seconds = time.getSeconds();
+    let formattedSeconds = "";
+    if (seconds < 10) {
+      formattedSeconds = "0" + seconds;
+    } else {
+      formattedSeconds = seconds + "";
+    }
+
+    const timeStamp =
+      time.getFullYear() +
+      ":" +
+      formattedMonth +
+      ":" +
+      formattedDay +
+      ":" +
+      formattedHours +
+      ":" +
+      formattedMinutes +
+      ":" +
+      formattedSeconds +
+      ":" +
+      time.getMilliseconds();
+
+    const sentDate = {
+      id: time,
+      location:  this.state.location,
+      sent: true,
+      response: false,
+      confirm: false,
+      startTime: startTime
+    };
+    const getDate = {
+        id: time,
+        location: this.state.location,
+        sent: false,
+        response: false,
+        confirm: false,
+        startTime : startTime
+      };
+    firestore
+      .collection("users")
+      .doc(this.state.userEmail)
+      .collection("messages")
+      .doc(this.state.otherUser)
+      .collection("dates")
+      .doc(timeStamp)
+      .set(sentDate);
+    firestore
+      .collection("users")
+      .doc(this.state.otherUser)
+      .collection("messages")
+      .doc(this.state.userEmail)
+      .collection("dates")
+      .doc(timeStamp)
+      .set(getDate); 
+
     }
 
   render() {
@@ -109,7 +236,7 @@ export default class Dates extends Component {
                 </TouchableOpacity>
 
                 <View>
-                {this.state.printText1 && <Text> This kid- and dog-friendly beer hall with bench tables serves up seasonal ales and free pretzels.</Text>}
+                {this.state.printText1 && <View> <Text> This kid- and dog-friendly beer hall with bench tables serves up seasonal ales and free pretzels.</Text> <TouchableOpacity  onPress = {this.renderMoreInformation1}> <Text> Select This Spot </Text> </TouchableOpacity> </View>}
                 </View>   
 
                 <TouchableOpacity style = {styles.button} onPress = {this.renderMoreInformation2}  >
@@ -118,7 +245,7 @@ export default class Dates extends Component {
                 </TouchableOpacity> 
 
                 <View> 
-                {this.state.printText2 && <Text> A great tasting bar with 30+ craft ciders, on tap and in bottles (food can be ordered for delivery).</Text>}
+                {this.state.printText2 && <View> <Text> A great tasting bar with 30+ craft ciders, on tap and in bottles (food can be ordered for delivery).</Text> <TouchableOpacity onPress = {this.renderMoreInformation2}> <Text> Select This Spot </Text> </TouchableOpacity> </View>}
                 </View>   
 
                 <TouchableOpacity style = {styles.button} onPress = {this.renderMoreInformation3} >
@@ -127,7 +254,7 @@ export default class Dates extends Component {
                 </TouchableOpacity>
 
                 <View> 
-                {this.state.printText3 && <Text> Speakeasy-style lounge behind Roxy's Diner, for cocktails, small plates and occasional live music.</Text>}
+                {this.state.printText3 && <View> <Text> Speakeasy-style lounge behind Roxy's Diner, for cocktails, small plates and occasional live music.</Text> <TouchableOpacity onPress = {this.renderMoreInformation3}> <Text> Select This Spot </Text> </TouchableOpacity> </View>}
                 </View>   
 
                 <TouchableOpacity style = {styles.button} onPress = {this.renderMoreInformation4} >
@@ -136,7 +263,7 @@ export default class Dates extends Component {
                 </TouchableOpacity>   
 
                <View>               
-                {this.state.printText4 && <Text>Inventive cocktails and small plates in a warm, eco-friendly setting with regular tastings and classes.</Text>}                                
+                {this.state.printText4 && <View> <Text>Inventive cocktails and small plates in a warm, eco-friendly setting with regular tastings and classes.</Text> <TouchableOpacity onPress = {this.renderMoreInformation4}> <Text> Select This Spot </Text> </TouchableOpacity> </View>}                                
                 </View>   
 
                 <TouchableOpacity style = {styles.button} onPress = {this._renderMap} >
@@ -151,7 +278,7 @@ export default class Dates extends Component {
             </View>  
         }  
 
-        {this.state.scheduler &&
+        {this.state.scheduler && this.state.submitted != true &&
 
         <View>
 
@@ -214,12 +341,14 @@ export default class Dates extends Component {
         </View>
 
 
-                <TouchableOpacity style = {styles.button}>
+                <TouchableOpacity style = {styles.button} onPress = {this.onSubmit} >
                     <Text>Send Date Request</Text>
                 </TouchableOpacity>   
 
         </View>
+
         }
+                {this.state.submitted == true && <Text> You've submitted a date request! </Text> }
         </ScrollView>
     );
   }
@@ -241,7 +370,7 @@ const styles = StyleSheet.create({
 
     },
     checkbox: {
-        padding: 10
+        padding: 7
     },
     scheduler: {
         width: 50,
