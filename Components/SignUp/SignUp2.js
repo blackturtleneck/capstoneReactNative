@@ -42,7 +42,7 @@ export default class SignUp2 extends Component {
           <TouchableHighlight onPress={this.props.previousStep}>
             <Image source={require("../img/back-arrow.png")} />
           </TouchableHighlight>
-          <Text>TELL US WHO YOU'RE LOOKING FOR</Text>
+          <Text style={styles.header}>TELL US WHO YOU'RE LOOKING FOR</Text>
         </View>
         <Text style={styles.label}>I'M LOOKING FOR...</Text>
         <ModalDropdown
@@ -66,7 +66,7 @@ export default class SignUp2 extends Component {
                 ? [this.state.matchAgeMin, this.state.matchAgeMax]
                 : [21, 26]
             }
-            sliderLength={280}
+            sliderLength={270}
             onValuesChange={value =>
               this.setState({
                 matchAgeMin: value[0],
@@ -104,11 +104,13 @@ export default class SignUp2 extends Component {
             onValueChange={matchDistance => this.setState({ matchDistance })}
           />
         </View>
-        <Button
-          color={"#9BA2FF"}
-          onPress={this.nextStep.bind(this)}
-          title={"NEXT"}
-        />
+        <View style={styles.nextButton}>
+          <Button
+            color={"#9BA2FF"}
+            onPress={this.nextStep.bind(this)}
+            title={"NEXT"}
+          />
+        </View>
       </View>
     );
   }
@@ -132,8 +134,7 @@ const styles = StyleSheet.create({
     marginLeft: 25
   },
   label: {
-    marginTop: 40,
-    fontWeight: "bold"
+    marginTop: 40
   },
   textInput: {
     backgroundColor: "#F2F2F2",
@@ -153,9 +154,19 @@ const styles = StyleSheet.create({
     width: 300,
     marginTop: 5,
     padding: 15,
-    borderRadius: 5
+    borderRadius: 5,
+    marginBottom: 0
   },
   distance: {
     marginBottom: 20
+  },
+  header: {
+    marginTop: 5,
+    marginLeft: 10,
+    fontWeight: "bold"
+  },
+  nextButton: {
+    marginTop: 190,
+    bottom: "10%"
   }
 });
