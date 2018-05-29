@@ -230,7 +230,11 @@ export default class SignUp1 extends Component {
           value={this.state.location}
           onChangeText={location => this.setState({ location })}
         />
-        <Button onPress={this.nextStep.bind(this)} title="NEXT" />
+        <Button
+          color={"#9BA2FF"}
+          onPress={this.nextStep.bind(this)}
+          title="NEXT"
+        />
       </View>
     );
   }
