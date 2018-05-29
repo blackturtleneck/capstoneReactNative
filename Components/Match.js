@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
 import { firestore } from "../FirestoreConfig";
+import MatchProfile from "./MatchProfile";
 
 export default class Match extends Component {
   constructor(props) {
@@ -78,6 +79,13 @@ export default class Match extends Component {
       });
   }
   render() {
+    let matches = [];
+    {
+      this.state.matches &&
+        (matches = this.state.matches.map(match => (
+          <MatchProfile match={match} />
+        )));
+    }
     console.log("matches =", this.state.matches);
     return (
       <View
@@ -88,6 +96,7 @@ export default class Match extends Component {
         }}
       >
         <Text>Match</Text>
+        {matches}
       </View>
     );
   }
