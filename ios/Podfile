@@ -1,0 +1,24 @@
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '8.0'
+
+target ‘capstoneReactNative’ do
+  react_native_path = "../node_modules/react-native"
+  pod "Yoga", :path => "#{react_native_path}/ReactCommon/Yoga"
+  pod "React", :path => react_native_path, :subspecs => [
+    'Core',
+    'RCTActionSheet',
+    'RCTAnimation',
+    'RCTGeolocation',
+    'RCTImage',
+    'RCTLinkingIOS',
+    'RCTNetwork',
+    'RCTSettings',
+    'RCTText',
+    'RCTVibration',
+    'RCTWebSocket'
+  ]
+
+  pod 'GoogleMaps' 
+end
