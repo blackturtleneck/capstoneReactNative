@@ -1405,6 +1405,7 @@ export default class SignUp5 extends Component {
     };
 
     this.props.saveValues(data);
+    console.log("this.props.fieldvalues", this.props.fieldValues);
     this.props.submitRegistration();
   }
 }

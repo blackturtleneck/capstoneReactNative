@@ -405,9 +405,7 @@ export default class SignUp3 extends Component {
   nextStep(e) {
     // e.preventDefault();
     let data = {
-      matchGender: this.state.matchGender,
-      matchAge: this.state.matchAge,
-      matchDistance: this.state.matchDistance
+      availability: this.state.availability
     };
 
     this.props.saveValues(data);
