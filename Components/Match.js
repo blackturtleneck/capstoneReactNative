@@ -98,7 +98,6 @@ export default class Match extends Component {
               },
               { merge: true }
             );
-
           // add them to your messenger list
           firestore
             .collection("users")
@@ -113,6 +112,8 @@ export default class Match extends Component {
             .collection("messages")
             .doc(component.state.user.email)
             .collection("messages");
+          components.setState({ index: 1 });
+          component.forceUpdate();
         } else if (component.state.match === 0) {
           console.log("hell yes here we are state 0");
           firestore
@@ -283,31 +284,29 @@ export default class Match extends Component {
           justifyContent: "center"
         }}
       >
-        {this.state.matchesExist ? (
-          this.state.match === 1 ? (
-            <MatchScreen close={this.close} />
-          ) : (
-            <FlatList
-              scrollEnabled={false}
-              ref={ref => {
-                this.flatListRef = ref;
-              }}
-              getItemLayout={this.getItemLayout}
-              keyExtractor={item => item}
-              // initialScrollIndex={this.state.index}
-              initialNumToRender={this.state.index}
-              horizontal={true}
-              data={this.state.matches ? this.state.matches : []}
-              onScrollToIndexFailed={() => {}}
-              renderItem={({ item }) => (
-                <MatchProfile
-                  interested={() => this.interested(item)}
-                  rejected={this.rejected.bind(this)}
-                  match={item}
-                />
-              )}
-            />
-          )
+        {this.state.match === 1 ? (
+          <MatchScreen close={this.close.bind(this)} />
+        ) : this.state.matchesExist ? (
+          <FlatList
+            scrollEnabled={false}
+            ref={ref => {
+              this.flatListRef = ref;
+            }}
+            getItemLayout={this.getItemLayout}
+            keyExtractor={item => item}
+            // initialScrollIndex={this.state.index}
+            initialNumToRender={this.state.index}
+            horizontal={true}
+            data={this.state.matches ? this.state.matches : []}
+            onScrollToIndexFailed={() => {}}
+            renderItem={({ item }) => (
+              <MatchProfile
+                interested={() => this.interested(item)}
+                rejected={this.rejected.bind(this)}
+                match={item}
+              />
+            )}
+          />
         ) : (
           <NoMatches />
         )}
