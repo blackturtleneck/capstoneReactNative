@@ -15,9 +15,13 @@ export default class Logout extends Component {
           backgoundColor: "rgb(73,104,173)"
         }}
         color={"white"}
-        style={{ fontSize: 18, color: "white" }}
+        style={{
+          fontSize: 18,
+          color: "white",
+          fontFamily: "Avenir-Black"
+        }}
         onPress={this._logout}
-        title="Logout"
+        title="LOG OUT"
       />
     );
   }
