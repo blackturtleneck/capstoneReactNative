@@ -12,7 +12,7 @@ export default class SignUpController extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 5,
+      step: 1,
       fieldValues: {
         name: this.props.user.displayName,
         gender: null, //this.props.user.gender,
