@@ -163,7 +163,8 @@ export default class SignUpController extends Component {
           reggae: null,
           soul: null,
           punk: null
-        }
+        },
+        bio: null
       }
     };
     this.saveValues = this.saveValues.bind(this);

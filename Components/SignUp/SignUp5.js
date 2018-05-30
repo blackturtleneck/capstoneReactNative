@@ -23,7 +23,8 @@ export default class SignUp5 extends Component {
       neighborhoodPreferences: this.props.fieldValues.neighborhoodPreferences,
       cuisinePreferences: this.props.fieldValues.cuisinePreferences,
       cuisineDislikes: this.props.fieldValues.cuisineDislikes,
-      musicPreferences: this.props.fieldValues.musicPreferences
+      musicPreferences: this.props.fieldValues.musicPreferences,bio:
+      this.props.fieldValues.bio
     };
   }
   render() {
@@ -1536,6 +1537,10 @@ export default class SignUp5 extends Component {
             </TouchableOpacity>
           </View>
         </View>
+        <View style={styles.neighbordhoodWrapper}>
+          <Text style={styles.subheader} value={this.state.bio}>BIO</Text>
+          <TextInput multiline={true} style={styles.textInput}         onChangeText={bio => this.setState({ bio })}/>
+        </View>
         <View style={{ marginBottom: 20 }}>
           <Button
             color={"#9BA2FF"}
@@ -1555,7 +1560,8 @@ export default class SignUp5 extends Component {
       cuisinePreferences: this.state.cuisinePreferences,
       cuisineDislikes: this.state.cuisineDislikes,
       neighborhoodPreferences: this.state.neighborhoodPreferences,
-      musicPreferences: this.state.musicPreferences
+      musicPreferences: this.state.musicPreferences,
+      bio: this.state.bio
     };
 
     this.props.saveValues(data);
@@ -1630,7 +1636,7 @@ const styles = StyleSheet.create({
   },
   subheader: {
     fontWeight: "bold",
-    marginTop: 20,
+    marginTop: 10,
     marginBottom: 5,
     marginBottom: 10,
     marginLeft: 5
@@ -1641,7 +1647,8 @@ const styles = StyleSheet.create({
   sliderWrapper: {
     margin: 20,
     padding: 5,
-    borderRadius: 3
+    borderRadius: 3,
+    marginBottom: 10
   },
   buttonText: {
     flex: 1,
@@ -1650,5 +1657,13 @@ const styles = StyleSheet.create({
   },
   neighbordhoodWrapper: {
     margin: 20
+  },
+  textInput: {
+    backgroundColor: "#F2F2F2",
+    width: 300,
+    marginTop: 5,
+    marginLeft: 5,
+    marginRight: 5,
+    padding: 5
   }
 });
