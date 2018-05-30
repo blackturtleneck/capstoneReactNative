@@ -189,12 +189,6 @@ export default class Match extends Component {
   scrollToIndex = () => {
     this.flatListRef.scrollToIndex({ animated: true, index: this.state.index });
     this.forceUpdate();
-
-    // this.setState(prevState => {
-    //   if (prevState.matches && prevState.matches.length > prevState.index) {
-    //     return { index: prevState.index + 1 };
-    //   }
-    // });
   };
 
   calculateAge(birthday) {

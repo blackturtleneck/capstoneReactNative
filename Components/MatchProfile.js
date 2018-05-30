@@ -139,7 +139,8 @@ const dateIconsMap = {
 const styles = StyleSheet.create({
   view: {
     margin: 30,
-    marginLeft: 30
+    marginLeft: 30,
+    marginTop: 5
   },
   center: {
     justifyContent: "center",
@@ -152,6 +153,7 @@ const styles = StyleSheet.create({
   },
 
   matchName: {
+    marginTop: 5,
     fontSize: 30,
     fontFamily: "Avenir-Heavy"
   },

@@ -32,7 +32,8 @@ export default class PageContent extends Component {
             birthday: doc.get("birthday"),
             email: doc.id,
             photos: doc.get("imgProfile"),
-            name: doc.get("name")
+            name: doc.get("name"),
+            location: doc.get("location")
           });
         }
       });
@@ -85,7 +86,8 @@ export default class PageContent extends Component {
       matchDistance: this.state.matchDistance,
       email: this.state.email,
       photos: this.state.photos,
-      name: this.state.name
+      name: this.state.name,
+      location: this.state.location
     };
     if (this.state.onBoarding) {
       return <Tabs screenProps={{ user: user }} />;
