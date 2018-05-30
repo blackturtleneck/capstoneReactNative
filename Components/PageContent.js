@@ -17,7 +17,7 @@ export default class PageContent extends Component {
       .get()
       .then(function(doc) {
         console.log("doc", doc.data());
-        if (!doc.data().onBoarding) {
+        if (!doc.get("onBoarding")) {
           component.setState({
             onBoarding: false
           });
@@ -30,7 +30,9 @@ export default class PageContent extends Component {
             matchAgeMax: doc.get("matchAgeMax"),
             matchDistance: doc.get("matchDistance"),
             birthday: doc.get("birthday"),
-            email: doc.id
+            email: doc.id,
+            photos: doc.get("imgProfile"),
+            name: doc.get("name")
           });
         }
       });
@@ -81,7 +83,9 @@ export default class PageContent extends Component {
       matchAgeMin: this.state.matchAgeMin,
       matchAgeMax: this.state.matchAgeMax,
       matchDistance: this.state.matchDistance,
-      email: this.state.email
+      email: this.state.email,
+      photos: this.state.photos,
+      name: this.state.name
     };
     if (this.state.onBoarding) {
       return <Tabs screenProps={{ user: user }} />;

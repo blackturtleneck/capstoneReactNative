@@ -28,7 +28,6 @@ export default class CapstoneReactNative extends Component {
         user
       });
     });
-    console.log("authSub", this.authSubscription);
   }
 
   componentWillUnmount() {

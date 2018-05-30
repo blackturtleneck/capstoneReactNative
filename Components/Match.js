@@ -48,11 +48,13 @@ export default class Match extends Component {
       .then(function(doc) {
         console.log("doc", doc);
         if (doc.exists) {
-          console.log("doc exists");
           let interested = doc.get("interest");
           if (interested) {
             console.log("exists and is interested");
-            component.setState({ match: 1 });
+            component.setState({
+              match: 1,
+              curMatch: otherUser
+            });
             matchState = 1;
           } else {
             component.setState({ match: 2 });
@@ -112,7 +114,7 @@ export default class Match extends Component {
             .collection("messages")
             .doc(component.state.user.email)
             .collection("messages");
-          components.setState({ index: 1 });
+          components.setState({ index: 1, curMatch: otherUser });
           component.forceUpdate();
         } else if (component.state.match === 0) {
           console.log("hell yes here we are state 0");
@@ -285,7 +287,11 @@ export default class Match extends Component {
         }}
       >
         {this.state.match === 1 ? (
-          <MatchScreen close={this.close.bind(this)} />
+          <MatchScreen
+            close={this.close.bind(this)}
+            match={this.state.curMatch}
+            user={this.state.user}
+          />
         ) : this.state.matchesExist ? (
           <FlatList
             scrollEnabled={false}
