@@ -8,11 +8,11 @@ import {
   Button,
   StyleSheet,
   TouchableOpacity
-} from "react-native"; 
+} from "react-native";
 import List from "react-native-elements";
 import { firestore } from "../FirestoreConfig";
-import  ReceiveDate  from "./ReceiveDate.js";
-import  IncomingRequest  from "./IncomingRequest.js";
+import ReceiveDate from "./ReceiveDate.js";
+import IncomingRequest from "./IncomingRequest.js";
 import SentAndPendingDate from "./SentAndPendingDate.js";
 
 export default class Messenger extends React.Component {
@@ -64,32 +64,30 @@ export default class Messenger extends React.Component {
         currentComponent.setState({ messages: curMessages });
       });
 
-
-      let currentComponent2 = this;
-      firestore
-        .collection("users")
-        .doc(this.state.userEmail)
-        .collection("messages")
-        .doc(this.state.otherUser)
-        .collection("dates")
-        .onSnapshot(function(querySnapshot) {
-          var currDates = [];
-          querySnapshot.forEach(function(doc) {
-            currDates.push(doc.data());
-            console.log("in dates", doc.data());
-          });
-
-          if (currDates.length != 0){
-            currentComponent2.setState({ 
-              dates: currDates,
-              userSent : currDates[currDates.length-1].sent,
-              userConfirmed : currDates[currDates.length-1].confirm,
-              userResponded : currDates[currDates.length-1].response,
-              timeID : currDates[currDates.length-1].timestampid
-            });
-
-          }        
+    let currentComponent2 = this;
+    firestore
+      .collection("users")
+      .doc(this.state.userEmail)
+      .collection("messages")
+      .doc(this.state.otherUser)
+      .collection("dates")
+      .onSnapshot(function(querySnapshot) {
+        var currDates = [];
+        querySnapshot.forEach(function(doc) {
+          currDates.push(doc.data());
+          console.log("in dates", doc.data());
         });
+
+        if (currDates.length != 0) {
+          currentComponent2.setState({
+            dates: currDates,
+            userSent: currDates[currDates.length - 1].sent,
+            userConfirmed: currDates[currDates.length - 1].confirm,
+            userResponded: currDates[currDates.length - 1].response,
+            timeID: currDates[currDates.length - 1].timestampid
+          });
+        }
+      });
     // }
   }
 
@@ -99,7 +97,8 @@ export default class Messenger extends React.Component {
   //   });
   // }
 
-  submitMessage(event) {
+  submitMessage() {
+    console.log("event");
     const time = new Date();
     let month = time.getMonth();
     let formattedMonth = "";
@@ -110,7 +109,7 @@ export default class Messenger extends React.Component {
     }
 
     let day = time.getDate();
-    let formattedDay = ""; 
+    let formattedDay = "";
     if (day < 10) {
       formattedDay = "0" + day;
     } else {
@@ -158,7 +157,7 @@ export default class Messenger extends React.Component {
     const nextMessage = {
       id: time,
       text: this.state.message,
-      from: this.state.user
+      from: this.state.userEmail
     };
     firestore
       .collection("users")
@@ -183,19 +182,21 @@ export default class Messenger extends React.Component {
   }
 
   onPress = () => {
-    console.log("requestDatePress", this.state.userEmail)
-    console.log("requestDatePress", this.state.otherUser)
-    navigate('Dates', {userEmail : this.state.userEmail})
-  }
+    console.log("requestDatePress", this.state.userEmail);
+    console.log("requestDatePress", this.state.otherUser);
+    navigate("Dates", { userEmail: this.state.userEmail });
+  };
 
   render() {
-    const {navigate } = this.props.navigation
+    const { navigate } = this.props.navigation;
     console.log("timeStamp ID", this.state.timeID);
     const currentMessage = this.state.messages.map((message, i) => {
       console.log("message", message);
       return (
         <Text
-          style={this.state.user === message.from ? styles.me : styles.them}
+          style={
+            this.state.userEmail === message.from ? styles.me : styles.them
+          }
           key={message.id}
         >
           {message.text}
@@ -205,7 +206,6 @@ export default class Messenger extends React.Component {
 
     return (
       <View className="messenger-wrapper">
-
         <ScrollView
           style={{ height: 500, backgroundColor: "white" }}
           scrollEnabled={true}
@@ -216,20 +216,52 @@ export default class Messenger extends React.Component {
           className="messages"
           id="message-list"
         >
-
-      {this.state.userConfirmed == true && <View> <ReceiveDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} confirm = {this.state.userConfirmed} /> </View>}\      
-      {this.state.userSent == false && this.state.userConfirmed == false  && <View> <IncomingRequest dates = {this.state.dates} userEmail = {this.state.userEmail} otherUser = {this.state.otherUser} otherUserName = {this.state.otherUserName} /> </View>}
-      {this.state.userSent == true && <View> <SentAndPendingDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}
-
-      {this.state.userSent == true && this.state.userResponded == true && <View>  </View>}
+          {this.state.userConfirmed == true && (
+            <View>
+              {" "}
+              <ReceiveDate
+                dates={this.state.dates}
+                otherUserName={this.state.otherUserName}
+                confirm={this.state.userConfirmed}
+              />{" "}
+            </View>
+          )}\
+          {this.state.userSent == false &&
+            this.state.userConfirmed == false && (
+              <View>
+                {" "}
+                <IncomingRequest
+                  dates={this.state.dates}
+                  userEmail={this.state.userEmail}
+                  otherUser={this.state.otherUser}
+                  otherUserName={this.state.otherUserName}
+                />{" "}
+              </View>
+            )}
+          {this.state.userSent == true && (
+            <View>
+              {" "}
+              <SentAndPendingDate
+                dates={this.state.dates}
+                otherUserName={this.state.otherUserName}
+              />{" "}
+            </View>
+          )}
+          {this.state.userSent == true &&
+            this.state.userResponded == true && <View> </View>}
           {currentMessage}
-
-        <TouchableOpacity style = {styles.datebutton} onPress={() => {
-          navigate('Dates', {userEmail : this.state.userEmail, otherUser : this.state.otherUser, otherUserName : this.state.otherUserName})
-  }}  >
+          <TouchableOpacity
+            style={styles.datebutton}
+            onPress={() => {
+              navigate("Dates", {
+                userEmail: this.state.userEmail,
+                otherUser: this.state.otherUser,
+                otherUserName: this.state.otherUserName
+              });
+            }}
+          >
             <Text style={styles.whiteText}>Request a Date</Text>
-        </TouchableOpacity>
-
+          </TouchableOpacity>
         </ScrollView>
 
         <TextInput
@@ -248,10 +280,7 @@ export default class Messenger extends React.Component {
           onSubmitEditing={this.submitMessage}
         />
 
-
         {/* <View className="button-input-wrapper"> */}
-
-
       </View>
     );
   }
@@ -284,20 +313,20 @@ const styles = StyleSheet.create({
     overflow: "hidden"
   },
   button: {
-    alignItems: 'center',
+    alignItems: "center",
     backgroundColor: "#DDDDDD",
     padding: 10
   },
   datebutton: {
-    backgroundColor: '#9ba2ff',
-    alignItems : 'center',
+    backgroundColor: "#9ba2ff",
+    alignItems: "center",
     padding: 10,
     width: 150,
     marginLeft: 115,
     borderRadius: 10,
     marginTop: 10
   },
-  whiteText : {
+  whiteText: {
     color: "#ffffff",
     fontSize: 12,
     fontFamily: "Avenir-Light"
