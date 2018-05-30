@@ -22,49 +22,80 @@ export default class Match extends Component {
     };
   }
 
+  close() {
+    this.setState({ match: -1 });
+  }
+
   interested(otherUser) {
+    let matchState = -1;
+
     console.log("otherUser", otherUser);
-    let component = this;
+    console.log("user: ", this.state.user.email);
+    console.log(
+      "looing for user/",
+      this.state.user.email,
+      "/matches/",
+      otherUser.email
+    );
     firestore
       .collection("user")
-      .doc(component.state.user.email)
+      .doc(this.state.user.email)
       .collection("matches")
       .doc(otherUser.email)
       .get()
-      .then(doc => {
+      .then(function(doc) {
+        console.log("doc", doc);
         if (doc.exists) {
           console.log("doc exists");
           let interested = doc.get("interested");
           if (interested) {
-            component.setState({ match: 1 });
+            console.log("exists and is interested");
+            this.setState({ match: 1 });
+            matchState = 1;
           } else {
-            component.setState({ match: 2 });
+            this.setState({ match: 2 });
+            console.log("exists and is not interested :/");
+            matchState = 2;
           }
         } else {
           console.log("doc doesn't exist");
-          component.setState({ match: 0 });
+          this.setState({ match: 0 });
+          matchState = 0;
         }
+        this.forceUpdate();
       });
-
-    if (component.state.match === 1) {
+    // .catch(function(err) {
+    //   console.log("error", err);
+    //   alert("Match not added");
+    // });
+    console.log("this.state aftr check", this.state);
+    console.log("matchState", matchState);
+    if (this.state.match === 1) {
+      console.log("");
       // set match to be true for you
       firestore
         .collection("user")
-        .doc(component.state.user.email)
+        .doc(this.state.user.email)
         .collection("matches")
         .doc(otherUser.email)
-        .set({
-          match: true
-        });
+        .set(
+          {
+            match: true
+          },
+          { merge: true }
+        );
       // set match to be true for them
       firestore
         .collection("user")
         .doc(otherUser.email)
         .collection("matches")
-        .doc(component.state.user.email)
-        .set({
-          match: true
-        });
+        .doc(this.state.user.email)
+        .set(
+          {
+            match: true
+          },
+          { merge: true }
+        );
 
       // add them to your messenger list
       firestore
@@ -78,62 +109,65 @@ export default class Match extends Component {
         .collection("user")
         .doc(otherUser.email)
         .collection("messages")
-        .doc(component.state.user.email)
+        .doc(this.state.user.email)
         .collection("messages");
-    } else if (component.state.match === 0) {
+    } else if (this.state.match === 0) {
+      console.log("hell yes here we are state 0");
       firestore
         .collection("users")
         .doc(otherUser.email)
         .collection("matches")
-        .doc(component.state.user.email)
+        .doc(this.state.user.email)
         .set({
           swipe: true,
           interest: true
         });
-      firestore
-        .collection("users")
-        .doc(component.state.user.email)
-        .collection("matches")
-        .doc(otherUser.email)
-        .set({
-          swipe: true,
-          interest: true
-        });
-    } else {
+    } else if (this.state.match === 2) {
       firestore
         .collection("users")
         .doc(otherUser.email)
         .collection("matches")
-        .doc(component.state.user.email)
+        .doc(this.state.user.email)
         .set({
           swipe: true,
           interest: true,
           match: false
         });
+      firestore
+        .collection("users")
+        .doc(this.state.user.email)
+        .collection("matches")
+        .doc(otherUser.email)
+        .set(
+          {
+            match: false
+          },
+          { merge: true }
+        );
+    } else {
+      console.log("apparently match state does not equal 0 1 2", matchState);
     }
 
     console.log("interested");
-    let curMatches = component.state.matches;
-    console.log("matches", curMatches);
+    let curMatches = this.state.matches;
     if (curMatches.length > 1) {
       curMatches.splice(0, 1);
-      component.setState({ matches: curMatches });
-      component.scrollToIndex();
+      this.setState({ matches: curMatches });
+      this.scrollToIndex();
     } else {
       console.log("no");
-      component.setState({ matchesExist: false });
+      this.setState({ matchesExist: false });
     }
-    this.setState({ match: -1 });
   }
 
   rejected() {
     console.log("rejected");
-    let curMatches = component.state.matches;
+    let curMatches = this.state.matches;
     console.log("matches", curMatches);
     if (curMatches.length > 1) {
       curMatches.splice(0, 1);
-      component.setState({ matches: curMatches });
-      component.scrollToIndex();
+      this.setState({ matches: curMatches });
+      this.scrollToIndex();
     } else {
       console.log("no");
       this.setState({ matchesExist: false });
@@ -234,12 +268,7 @@ export default class Match extends Component {
       });
   }
   render() {
-    {
-      this.state.matches &&
-        (matches = this.state.matches.map(match => (
-          <MatchProfile match={match} />
-        )));
-    }
+    console.log("state", this.state);
     return (
       <View
         style={{
