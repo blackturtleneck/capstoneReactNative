@@ -23,7 +23,8 @@ export default class SignUp5 extends Component {
       neighborhoodPreferences: this.props.fieldValues.neighborhoodPreferences,
       cuisinePreferences: this.props.fieldValues.cuisinePreferences,
       cuisineDislikes: this.props.fieldValues.cuisineDislikes,
-      musicPreferences: this.props.fieldValues.musicPreferences
+      musicPreferences: this.props.fieldValues.musicPreferences,bio:
+      this.props.fieldValues.bio
     };
   }
   render() {
@@ -314,7 +315,7 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>CAPITOL HILL</Text>
+                <Text style={{ fontSize: 12 }}>CAPITOL HILL</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -424,7 +425,7 @@ export default class SignUp5 extends Component {
             >
               {" "}
               <View style={styles.buttonText}>
-                <Text>GEORGETOWN</Text>
+                <Text style={{ fontSize: 12 }}>GEORGETOWN</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -550,7 +551,7 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>WALLINGFORD</Text>
+                <Text style={{ fontSize: 12 }}>WALLINGFORD</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -570,7 +571,15 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>WEST SEATTLE</Text>
+                <Text
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center"
+                  }}
+                >
+                  WEST SEATTLE
+                </Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -804,7 +813,7 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>MEDITERRANEAN</Text>
+                <Text style={{ fontSize: 10 }}>MEDITERRANEAN</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -847,7 +856,7 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>MIDDLE EASTERN</Text>
+                <Text style={{ textAlign: "center" }}>MIDDLE EASTERN</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -1122,7 +1131,7 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>MEDITERRANEAN</Text>
+                <Text style={{ fontSize: 10 }}>MEDITERRANEAN</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -1165,7 +1174,7 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>MIDDLE EASTERN</Text>
+                <Text style={{ textAlign: "center" }}>MIDDLE EASTERN</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -1313,7 +1322,7 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>ALTERNATIVE</Text>
+                <Text style={{ fontSize: 12 }}>ALTERNATIVE</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -1528,6 +1537,10 @@ export default class SignUp5 extends Component {
             </TouchableOpacity>
           </View>
         </View>
+        <View style={styles.neighbordhoodWrapper}>
+          <Text style={styles.subheader} value={this.state.bio}>BIO</Text>
+          <TextInput multiline={true} style={styles.textInput}         onChangeText={bio => this.setState({ bio })}/>
+        </View>
         <View style={{ marginBottom: 20 }}>
           <Button
             color={"#9BA2FF"}
@@ -1547,7 +1560,8 @@ export default class SignUp5 extends Component {
       cuisinePreferences: this.state.cuisinePreferences,
       cuisineDislikes: this.state.cuisineDislikes,
       neighborhoodPreferences: this.state.neighborhoodPreferences,
-      musicPreferences: this.state.musicPreferences
+      musicPreferences: this.state.musicPreferences,
+      bio: this.state.bio
     };
 
     this.props.saveValues(data);
@@ -1622,9 +1636,10 @@ const styles = StyleSheet.create({
   },
   subheader: {
     fontWeight: "bold",
-    marginTop: 20,
+    marginTop: 10,
     marginBottom: 5,
-    marginBottom: 20
+    marginBottom: 10,
+    marginLeft: 5
   },
   foodPref: {
     marginLeft: 50
@@ -1632,7 +1647,8 @@ const styles = StyleSheet.create({
   sliderWrapper: {
     margin: 20,
     padding: 5,
-    borderRadius: 3
+    borderRadius: 3,
+    marginBottom: 10
   },
   buttonText: {
     flex: 1,
@@ -1641,5 +1657,13 @@ const styles = StyleSheet.create({
   },
   neighbordhoodWrapper: {
     margin: 20
+  },
+  textInput: {
+    backgroundColor: "#F2F2F2",
+    width: 300,
+    marginTop: 5,
+    marginLeft: 5,
+    marginRight: 5,
+    padding: 5
   }
 });
