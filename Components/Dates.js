@@ -389,7 +389,7 @@ export default class Dates extends Component {
                 </TouchableOpacity>
 
                 <View>
-                {this.state.printText1 && <View> <Text> This kid- and dog-friendly beer hall with bench tables serves up seasonal ales and free pretzels.</Text> <TouchableOpacity style = {styles.nextbutton}  onPress = {this.renderMoreInformation1}> <Text style = {styles.whiteText}> SELECT THIS SPOT </Text> </TouchableOpacity> </View>}
+                {this.state.printText1 && <View> <Text style={styles.dateinfo}> This kid- and dog-friendly beer hall with bench tables serves up seasonal ales and free pretzels.</Text> <TouchableOpacity style = {styles.nextbutton}  onPress = {this.renderMoreInformation1}> <Text style = {styles.whiteText}> SELECT THIS SPOT </Text> </TouchableOpacity> </View>}
                 </View>   
 
                 <TouchableOpacity style = {styles.button} onPress = {this.renderMoreInformation2}  >
@@ -398,7 +398,7 @@ export default class Dates extends Component {
                 </TouchableOpacity> 
 
                 <View> 
-                {this.state.printText2 && <View> <Text> A great tasting bar with 30+ craft ciders, on tap and in bottles (food can be ordered for delivery).</Text> <TouchableOpacity style = {styles.nextbutton}  onPress = {this.renderMoreInformation2}> <Text style = {styles.whiteText}> SELECT THIS SPOT </Text> </TouchableOpacity> </View>}
+                {this.state.printText2 && <View> <Text style={styles.dateinfo}> A great tasting bar with 30+ craft ciders, on tap and in bottles (food can be ordered for delivery).</Text> <TouchableOpacity style = {styles.nextbutton}  onPress = {this.renderMoreInformation2}> <Text style = {styles.whiteText}> SELECT THIS SPOT </Text> </TouchableOpacity> </View>}
                 </View>   
 
                 <TouchableOpacity style = {styles.button} onPress = {this.renderMoreInformation3} >
@@ -407,7 +407,7 @@ export default class Dates extends Component {
                 </TouchableOpacity>
 
                 <View> 
-                {this.state.printText3 && <View> <Text> Speakeasy-style lounge behind Roxy's Diner, for cocktails, small plates and occasional live music.</Text> <TouchableOpacity style = {styles.nextbutton}  onPress = {this.renderMoreInformation3}> <Text style = {styles.whiteText} > SELECT THIS SPOT </Text> </TouchableOpacity> </View>}
+                {this.state.printText3 && <View> <Text style={styles.dateinfo}> Speakeasy-style lounge behind Roxy's Diner, for cocktails, small plates and occasional live music.</Text> <TouchableOpacity style = {styles.nextbutton}  onPress = {this.renderMoreInformation3}> <Text style = {styles.whiteText} > SELECT THIS SPOT </Text> </TouchableOpacity> </View>}
                 </View>   
 
                 <TouchableOpacity style = {styles.button} onPress = {this.renderMoreInformation4} >
@@ -416,7 +416,7 @@ export default class Dates extends Component {
                 </TouchableOpacity>   
 
                <View>               
-                {this.state.printText4 && <View> <Text>Inventive cocktails and small plates in a warm, eco-friendly setting with regular tastings and classes.</Text> <TouchableOpacity style = {styles.nextbutton}  onPress = {this.renderMoreInformation4}> <Text style = {styles.whiteText}> SELECT THIS SPOT </Text> </TouchableOpacity> </View>}                                
+                {this.state.printText4 && <View> <Text style={styles.dateinfo}>Inventive cocktails and small plates in a warm, eco-friendly setting with regular tastings and classes.</Text> <TouchableOpacity style = {styles.nextbutton}  onPress = {this.renderMoreInformation4}> <Text style = {styles.whiteText}> SELECT THIS SPOT </Text> </TouchableOpacity> </View>}                                
                 </View>   
 
                 <TouchableOpacity style = {styles.mapbutton} onPress = {this._renderMap} >
@@ -443,11 +443,10 @@ export default class Dates extends Component {
 
             <Text style = {styles.daysTime}> Pick some days and times that work for you! </Text>
     
-
-            <Text style={styles.purpleText}>S    M   T    W     TH   F    SA</Text>
+            <View style={styles.purpleTextLabel}> 
+            <Text style={styles.purpleText}> S          M          T          W         TH         F         SA</Text> </View>
         <View style={{flexDirection : 'row'}}>
-        <Text style={styles.purpleText}> {"\n"} 6PM{"\n"} 7PM{"\n"}{"\n"}8PM{"\n"}{"\n"}
-            9PM{"\n"}  {"\n"}  {"\n"} 10PM{"\n"}</Text>
+      <View style={styles.timestyle}>  <Text style={styles.purpleText}> {"\n"} 6PM {"\n"}{"\n"} 7PM{"\n"}{"\n"} 8PM{"\n"}{"\n"}{"\n"} 9PM{"\n"} {"\n"} 10PM{"\n"}</Text></View>
 
             <SelectMultiple style = {styles.scheduler}
                     items={sun}
@@ -591,6 +590,10 @@ const styles = StyleSheet.create({
       purpleText : {
           color: "#9ba2ff"
       },
+      purpleTextLabel : {
+        marginLeft: 25,
+        marginTop:5
+    },
       whiteText : {
         color: "#ffffff",
         fontSize: 12,
@@ -614,5 +617,12 @@ const styles = StyleSheet.create({
         fontFamily: "Avenir-Light",
         backgroundColor: "#ffffff",
         textAlign: "center"
+    },
+    infodate: {
+        fontSize : 13,
+        fontFamily: "Avenir-Light"
+    },
+    timestyle: {
+        marginTop: 3
     }
 });
