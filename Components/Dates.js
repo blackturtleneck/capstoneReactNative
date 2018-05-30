@@ -337,6 +337,7 @@ export default class Dates extends Component {
 
     const sentDate = {
       id: time,
+      timestampid: timeStamp,
       location:  this.state.location,
       sent: true,
       response: false,
@@ -345,6 +346,7 @@ export default class Dates extends Component {
     };
     const getDate = {
         id: time,
+        timestampid: timeStamp,
         location: this.state.location,
         sent: false,
         response: false,

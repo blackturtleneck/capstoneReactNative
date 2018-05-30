@@ -84,11 +84,11 @@ export default class Messenger extends React.Component {
               dates: currDates,
               userSent : currDates[currDates.length-1].sent,
               userConfirmed : currDates[currDates.length-1].confirm,
-              userResponded : currDates[currDates.length-1].response
+              userResponded : currDates[currDates.length-1].response,
+              timeID : currDates[currDates.length-1].timestampid
             });
 
-          }
-         
+          }        
         });
     // }
   }
@@ -101,7 +101,6 @@ export default class Messenger extends React.Component {
 
   submitMessage(event) {
     const time = new Date();
-
     let month = time.getMonth();
     let formattedMonth = "";
     if (month < 10) {
@@ -111,7 +110,7 @@ export default class Messenger extends React.Component {
     }
 
     let day = time.getDate();
-    let formattedDay = "";
+    let formattedDay = ""; 
     if (day < 10) {
       formattedDay = "0" + day;
     } else {
@@ -191,7 +190,7 @@ export default class Messenger extends React.Component {
 
   render() {
     const {navigate } = this.props.navigation
-    console.log("this.state.dates", this.state.dates);
+    console.log("timeStamp ID", this.state.timeID);
     const currentMessage = this.state.messages.map((message, i) => {
       console.log("message", message);
       return (
@@ -208,7 +207,7 @@ export default class Messenger extends React.Component {
       <View className="messenger-wrapper">
 
       {this.state.userConfirmed == true && <View> <ReceiveDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} confirm = {this.state.userConfirmed} /> </View>}\      
-      {this.state.userSent == false && this.state.userConfirmed == false  && <View> <IncomingRequest dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}
+      {this.state.userSent == false && this.state.userConfirmed == false  && <View> <IncomingRequest dates = {this.state.dates} userEmail = {this.state.userEmail} otherUser = {this.state.otherUser} otherUserName = {this.state.otherUserName} /> </View>}
       {this.state.userSent == true && <View> <SentAndPendingDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}
 
       {this.state.userSent == true && this.state.userResponded == true && <View>  </View>}
@@ -227,7 +226,7 @@ export default class Messenger extends React.Component {
         
           {currentMessage}
 
-        <TouchableOpacity style = {styles.button} onPress={() => {
+        <TouchableOpacity style = {styles.datebutton} onPress={() => {
           navigate('Dates', {userEmail : this.state.userEmail, otherUser : this.state.otherUser})
   }}  >
             <Text>Request a Date</Text>
@@ -288,5 +287,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: "#DDDDDD",
     padding: 10
+  },
+  datebutton: {
+    backgroundColor: '#9ba2ff',
+    alignItems : 'center',
+    padding: 10,
+    width: 150,
+    marginLeft: 115,
+    borderRadius: 10,
+    marginTop: 10
+  },
+  whiteText : {
+    color: "#ffffff",
+    fontSize: 12,
+    fontFamily: "Avenir-Light"
   }
 });

@@ -19,14 +19,31 @@ export default class ReceiveDate extends Component {
 }
 
 componentWillReceiveProps(){
-  console.log("DATES", this.state.dates[0].confirm)
+  console.log("DATES", this.state.dates[this.state.dates.length-1].confirm)
 }
 
 componentDidMount(){
-  console.log("DATES", this.state.dates[0])
+  console.log("DATES", this.state.dates)
 }
 
   render() {
-    return <Text> You have an upcoming date at {this.state.dates[0].location} at {this.props.otherUserName} </Text>;
+    return(
+    <View style={styles.container}>
+     <Text style={styles.letsdate}> You have an upcoming date at {this.state.dates[this.state.dates.length-1].location} at  {this.state.dates[this.state.dates.length-1].timeConfirmed}!</Text>
+     </View>
+    );
   }
 }
+
+const styles = StyleSheet.create({
+    letsdate: {
+      fontSize : 20,
+      fontFamily: "Avenir-Light",
+      backgroundColor: "#ffffff",
+      textAlign: "center"
+  },
+  container: {
+      backgroundColor: "#ffffff"
+  }
+
+  });

@@ -8,6 +8,7 @@ import {
     StyleSheet,
     TouchableOpacity
   } from "react-native"; 
+  import { firestore } from "../FirestoreConfig";
 
 
 export default class IncomingRequest extends Component {
@@ -15,15 +16,99 @@ export default class IncomingRequest extends Component {
     super(props, context);
     this.state = {
         dates : this.props.dates,
-        startTime : this.props.dates[0].startTime
+        startTime : this.props.dates[this.props.dates.length-1].startTime,
+        timeSelected : null,
+        timeStamp : this.props.dates[this.props.dates.length-1].timestampid
+        }
+
+        this.confirmDate = this.confirmDate.bind(this)
     }
-}
 
 componentWillReceiveProps(){
-  console.log("DATES", this.state.dates[0].location)
+   console.log("DATES", this.props.dates)
+   console.log("TIME", this.state.timeStamp.seconds)
+
+   this.setState({
+        dates : this.props.dates,
+        startTime : this.props.dates[this.props.dates.length-1].startTime,
+        timeSelected : null,
+        timeStamp : this.props.dates[this.props.dates.length-1].timestampid
+   });
+   
 }
 
+
+
 componentDidMount(){
+    console.log("DATES", this.props.dates)
+    console.log("TIME", this.state.timeStamp.seconds)
+
+    this.setState({
+        dates : this.props.dates,
+        startTime : this.props.dates[this.props.dates.length-1].startTime,
+        timeSelected : null,
+        timeStamp : this.props.dates[this.props.dates.length-1].timestampid
+   });
+}
+
+
+timePressed = b => {
+    console.log("it me", b)
+    console.log("it me again", b.key)
+    this.setState({
+        timeSelected : b.key
+    })
+};
+
+confirmDate(){
+    console.log("FINAL TIME SELECTED", this.state.timeSelected)
+
+    if (this.state.timeSelected != null){
+        this.setState({
+            dateConfirmed : true
+        });
+
+        var dateInfo = firestore
+        .collection('users')
+        .doc(this.props.userEmail)
+        .collection('messages')
+        .doc(this.props.otherUser)
+        .collection('dates').doc(String(this.state.timeStamp))
+
+        return dateInfo.update({
+           confirm: true,
+           timeConfirmed : this.state.timeSelected,
+        })
+        .then(function() {
+            console.log("Document successfully updated!");
+        })
+        .catch(function(error) {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+
+        var dateInfo2 = firestore
+        .collection('users')
+        .doc(this.props.otherUser)
+        .collection('messages')
+        .doc(this.props.userEmail)
+        .collection('dates').doc(String(this.state.timeStamp))
+    
+        return dateInfo2.update({
+           confirm: true,
+           timeConfirmed : this.state.timeSelected,
+        })
+        .then(function() {
+            console.log("Document successfully updated!");
+        })
+        .catch(function(error) {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+    
+
+    } 
+  
 }
 
 
@@ -161,23 +246,25 @@ componentDidMount(){
     
 
      const renderedButtons = newThing.map(b => {
-        return <TouchableOpacity onPress={b.action}> <Text> {b.value} </Text> </TouchableOpacity>;
+        return <TouchableOpacity style={styles.timebutton} onPress={() =>this.timePressed(b)}> id={b.value} <Text style={styles.whiteText}> {b.value} </Text> </TouchableOpacity>;
      });
 
     return(
-    <View>
-            <Text> Hey, want to go to {this.state.dates[0].location} at </Text>
+    <View style= {styles.container}>
+            <Text style = {styles.letsdate}> Hey! {"\n"} Want to go to {this.state.dates[0].location}? </Text>
             <View>
             {renderedButtons}
 
-            <TouchableOpacity>
+        <View style={{flexDirection : 'row'}}>
+            <TouchableOpacity style = {styles.confirmdate} onPress={this.confirmDate}>
             <Text>Confirm</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity style = {styles.confirmdate}>
             <Text>Another Time</Text>
             </TouchableOpacity>
 
+        </View>
 
             </View>
 
@@ -186,3 +273,39 @@ componentDidMount(){
     );
   }
 }
+
+const styles = StyleSheet.create({
+    timebutton: {
+        backgroundColor: '#9ba2ff',
+        alignItems : 'center',
+        padding: 10,
+        width: 150,
+        marginLeft: 115,
+        borderRadius: 10,
+        marginTop: 10
+      },
+      letsdate: {
+        fontSize : 20,
+        fontFamily: "Avenir-Light",
+        backgroundColor: "#ffffff",
+        textAlign: "center"
+    },
+    container: {
+        backgroundColor: "#ffffff"
+      },
+      confirmdate: {
+        backgroundColor: '#9ba2ff',
+        alignItems : 'center',
+        padding: 10,
+        width: 150,
+        borderRadius: 10,
+        marginTop: 10,
+        marginLeft: 20,
+        marginRight: 15
+      },
+      whiteText : {
+        color: "#ffffff",
+        fontSize: 15,
+        fontFamily: "Avenir-Light"
+      }
+});
