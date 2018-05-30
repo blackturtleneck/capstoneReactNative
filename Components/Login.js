@@ -18,7 +18,8 @@ export default class Login extends Component {
         style={{
           alignContent: "center",
           alignItems: "center",
-          justifyContent: "center"
+          justifyContent: "center",
+          marginTop: 180
         }}
       >
         <Image
@@ -40,6 +41,7 @@ export default class Login extends Component {
             borderRadius: 4,
             backgoundColor: "rgb(73,104,173)"
           }}
+          color="rgb(73,104,173)"
           style={{ fontSize: 18, color: "white" }}
           onPress={this._onLoginFacebook}
           title="Login with Facebook"
