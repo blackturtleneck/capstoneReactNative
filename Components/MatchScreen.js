@@ -22,7 +22,7 @@ export default class MatchScreen extends Component {
           alignContent: "center",
           alignItems: "center",
           justifyContent: "center",
-          marginTop: 40
+          marginTop: 140
         }}
       >
         <Text style={styles.matchName}>{matchName}</Text>
