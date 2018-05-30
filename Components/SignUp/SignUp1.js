@@ -132,12 +132,14 @@ export default class SignUp1 extends Component {
           options={genderData}
           defaultValue={this.state.gender !== null ? this.state.gender : ""}
           onSelect={value => this.setState({ gender: genderData[value] })}
+          dropdownStyle={{ width: 300, height: 70 }}
         />
         <Text style={styles.label}>BIRTHDAY</Text>
         <View style={styles.row}>
           <ModalDropdown
             style={styles.birthday}
             options={birthdayData.month}
+            dropdownStyle={{ width: 95, height: 150 }}
             defaultValue={
               this.state.birthday && this.state.birthday.month
                 ? this.state.birthday.month
@@ -160,6 +162,7 @@ export default class SignUp1 extends Component {
           <ModalDropdown
             style={styles.birthday}
             options={birthdayData.day}
+            dropdownStyle={{ width: 95, height: 150 }}
             defaultValue={
               this.state.birthday && this.state.birthday.day
                 ? this.state.birthday.day
@@ -184,6 +187,7 @@ export default class SignUp1 extends Component {
           />
           <ModalDropdown
             style={styles.birthday}
+            dropdownStyle={{ width: 95, height: 150 }}
             options={birthdayData.year}
             defaultValue={
               this.state.birthday && this.state.birthday.year

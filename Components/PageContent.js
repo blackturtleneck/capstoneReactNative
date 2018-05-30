@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Tabs } from "./router";
-// import SignUp from "./SignUp";
+import LoadingScreen from "./LoadingScreen";
 import { firestore } from "../FirestoreConfig";
 import SignUpController from "./SignUp/SignUpController";
 
 export default class PageContent extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { componentDidMount: false };
   }
   componentDidMount() {
     let component = this;
@@ -19,10 +19,13 @@ export default class PageContent extends Component {
         console.log("doc", doc.data());
         if (!doc.get("onBoarding")) {
           component.setState({
-            onBoarding: false
+            onBoarding: false,
+            componentDidMount: true
           });
         } else {
           component.setState({
+            componentDidMount: true,
+
             onBoarding: true,
             matchGender: doc.get("matchGender"),
             gender: doc.get("gender"),
@@ -89,15 +92,19 @@ export default class PageContent extends Component {
       name: this.state.name,
       location: this.state.location
     };
-    if (this.state.onBoarding) {
-      return <Tabs screenProps={{ user: user }} />;
+    if (this.state.componentDidMount) {
+      if (!this.state.onBoarding) {
+        return (
+          <SignUpController
+            user={this.props.user}
+            signupComplete={this.signupComplete.bind(this)}
+          />
+        );
+      } else {
+        return <Tabs screenProps={{ user: user }} />;
+      }
     } else {
-      return (
-        <SignUpController
-          user={this.props.user}
-          signupComplete={this.signupComplete.bind(this)}
-        />
-      );
+      return <LoadingScreen />;
     }
   }
 }

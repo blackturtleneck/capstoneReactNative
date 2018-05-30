@@ -1,23 +1,11 @@
 import React from "react";
-import {
-  Image,
-  View,
-  TextInput,
-  Text,
-  StyleSheet,
-  Item,
-  Button,
-  Slider,
-  TouchableHighlight,
-  TouchableOpacity
-} from "react-native";
-import FontAwesome, { Icons } from "react-native-fontawesome";
+import { Image, View, StyleSheet } from "react-native";
 
 export default class LoadingScreen extends React.Component {
   render() {
     return (
       <View style={styles.view}>
-        <FontAwesome>{Icons.spinner}</FontAwesome>
+        <Image source={require("./img/loading.gif")} />
       </View>
     );
   }
@@ -25,20 +13,9 @@ export default class LoadingScreen extends React.Component {
 
 const styles = StyleSheet.create({
   view: {
-    marginTop: 40
-  },
-  activeButton: {
-    color: "#9BA2FF",
-    fontSize: 30
-  },
-  inactiveButton: {
-    color: "#C4C4C4",
-    fontSize: 30
-  },
-  row: {
-    flexWrap: "wrap",
-    alignItems: "flex-start",
-    flexDirection: "row",
-    marginLeft: 10
+    marginTop: 200,
+    alignContent: "center",
+    alignItems: "center",
+    justifyContent: "center"
   }
 });

@@ -23,7 +23,8 @@ export default class SignUp5 extends Component {
       neighborhoodPreferences: this.props.fieldValues.neighborhoodPreferences,
       cuisinePreferences: this.props.fieldValues.cuisinePreferences,
       cuisineDislikes: this.props.fieldValues.cuisineDislikes,
-      musicPreferences: this.props.fieldValues.musicPreferences
+      musicPreferences: this.props.fieldValues.musicPreferences,bio:
+      this.props.fieldValues.bio
     };
   }
   render() {
@@ -45,193 +46,213 @@ export default class SignUp5 extends Component {
           <Text style={styles.subheader}>FOOD PREFERENCES / ALLERGIES</Text>
           <View style={styles.row}>
             <Text style={styles.foodLabel}>VEGETARIAN</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.vegetarian
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.vegetarian === null) {
-                  this.state.foodPreferences.vegetarian = true;
-                } else {
-                  this.state.foodPreferences.vegetarian = !this.state
-                    .foodPreferences.vegetarian;
+            <View style={{ marginLeft: 47 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.vegetarian
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>VEGETARIAN</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.vegetarian === null) {
+                    this.state.foodPreferences.vegetarian = true;
+                  } else {
+                    this.state.foodPreferences.vegetarian = !this.state
+                      .foodPreferences.vegetarian;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text> </Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={styles.row}>
             <Text style={styles.foodLabel}>GLUTEN FREE</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.glutenFree
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.glutenFree === null) {
-                  this.state.foodPreferences.glutenFree = true;
-                } else {
-                  this.state.foodPreferences.glutenFree = !this.state
-                    .foodPreferences.glutenFree;
+            <View style={{ marginLeft: 40 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.glutenFree
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>GLUTEN FREE</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.glutenFree === null) {
+                    this.state.foodPreferences.glutenFree = true;
+                  } else {
+                    this.state.foodPreferences.glutenFree = !this.state
+                      .foodPreferences.glutenFree;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text style={styles.foodLabel}>GLUTEN FREE</Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={styles.row}>
             <Text style={styles.foodLabel}>VEGAN</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.vegan
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.vegan === null) {
-                  this.state.foodPreferences.vegan = true;
-                } else {
-                  this.state.foodPreferences.vegan = !this.state.foodPreferences
-                    .vegan;
+            <View style={{ marginLeft: 85 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.vegan
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>VEGAN</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.vegan === null) {
+                    this.state.foodPreferences.vegan = true;
+                  } else {
+                    this.state.foodPreferences.vegan = !this.state
+                      .foodPreferences.vegan;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text style={styles.foodLabel}>VEGAN</Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={styles.row}>
             <Text style={styles.foodLabel}>DAIRY-FREE</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.dairyFree
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.dairyFree === null) {
-                  this.state.foodPreferences.dairyFree = true;
-                } else {
-                  this.state.foodPreferences.dairyFree = !this.state
-                    .foodPreferences.dairyFree;
+            <View style={{ marginLeft: 53 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.dairyFree
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>dairy free</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.dairyFree === null) {
+                    this.state.foodPreferences.dairyFree = true;
+                  } else {
+                    this.state.foodPreferences.dairyFree = !this.state
+                      .foodPreferences.dairyFree;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text style={styles.foodLabel}>dairy free</Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={styles.row}>
             <Text style={styles.foodLabel}>NO RED MEAT</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.noRedMeat
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.noRedMeat === null) {
-                  this.state.foodPreferences.noRedMeat = true;
-                } else {
-                  this.state.foodPreferences.noRedMeat = !this.state
-                    .foodPreferences.noRedMeat;
+            <View style={{ marginLeft: 40 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.noRedMeat
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>NO RED MEAT</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.noRedMeat === null) {
+                    this.state.foodPreferences.noRedMeat = true;
+                  } else {
+                    this.state.foodPreferences.noRedMeat = !this.state
+                      .foodPreferences.noRedMeat;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text style={styles.foodLabel}>NO RED MEAT</Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={styles.row}>
             <Text style={styles.foodLabel}>KOSHER</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.kosher
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.kosher === null) {
-                  this.state.foodPreferences.kosher = true;
-                } else {
-                  this.state.foodPreferences.kosher = !this.state
-                    .foodPreferences.kosher;
+            <View style={{ marginLeft: 77 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.kosher
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>KOSHER</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.kosher === null) {
+                    this.state.foodPreferences.kosher = true;
+                  } else {
+                    this.state.foodPreferences.kosher = !this.state
+                      .foodPreferences.kosher;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text style={styles.foodLabel}>KOSHER</Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={styles.row}>
             <Text style={styles.foodLabel}>PALEO</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.paleo
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.paleo === null) {
-                  this.state.foodPreferences.paleo = true;
-                } else {
-                  this.state.foodPreferences.paleo = !this.state.foodPreferences
-                    .paleo;
+            <View style={{ marginLeft: 87 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.paleo
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>PALEO</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.paleo === null) {
+                    this.state.foodPreferences.paleo = true;
+                  } else {
+                    this.state.foodPreferences.paleo = !this.state
+                      .foodPreferences.paleo;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text style={styles.foodLabel}>PALEO</Text>
+              </TouchableHighlight>
+            </View>
           </View>
 
           <View style={styles.row}>
             <Text style={styles.foodLabel}>RAW</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.raw
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.raw === null) {
-                  this.state.foodPreferences.raw = true;
-                } else {
-                  this.state.foodPreferences.raw = !this.state.foodPreferences
-                    .raw;
+            <View style={{ marginLeft: 100 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.raw
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>RAW</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.raw === null) {
+                    this.state.foodPreferences.raw = true;
+                  } else {
+                    this.state.foodPreferences.raw = !this.state.foodPreferences
+                      .raw;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text style={styles.foodLabel}>RAW</Text>
+              </TouchableHighlight>
+            </View>
           </View>
         </View>
-        <View>
-          <Text>DATE PRICE PREFERENCE</Text>
+        <View style={styles.sliderWrapper}>
+          <Text style={styles.subheader}>DATE PRICE PREFERENCE</Text>
           <View style={{ backgroundColor: "#F2F2F2" }}>
             <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-              <Text style={{ marginRight: 50 }}>$ </Text>
-              <Text style={{ marginRight: 50 }}>$$ </Text>
-              <Text style={{ marginRight: 50 }}>$$$ </Text>
+              <Text style={{ marginLeft: 5, marginRight: 130 }}>$ </Text>
+              <Text style={{ marginRight: 120 }}>$$ </Text>
+              <Text>$$$ </Text>
             </View>
             <Slider
+              style={{ margin: 10, marginBottom: 3, marginTop: 3 }}
               step={1}
               maximumValue={3}
               minimumValue={1}
               value={this.state.datePrice ? this.state.datePrice : 1}
               onValueChange={datePrice => this.setState({ datePrice })}
+              minimumTrackTintColor={"#828282"}
+              maximumTrackTintColor={"#828282"}
+              thumbImage={require("../img/thumbImage.png")}
             />
           </View>
         </View>
-        <View>
-          <Text>NEIGHBORHOODS I LIKE</Text>
+        <View style={styles.neighbordhoodWrapper}>
+          <Text style={styles.subheader}>NEIGHBORHOODS I LIKE</Text>
           <View style={styles.row}>
             <TouchableOpacity
               style={
@@ -253,7 +274,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>BALLARD</Text>
+              <View style={styles.buttonText}>
+                <Text>BALLARD</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -271,7 +294,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>BELLTOWN</Text>
+              <View style={styles.buttonText}>
+                <Text>BELLTOWN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -289,7 +314,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>CAPITOL HILL</Text>
+              <View style={styles.buttonText}>
+                <Text style={{ fontSize: 12 }}>CAPITOL HILL</Text>
+              </View>
             </TouchableOpacity>
           </View>
 
@@ -314,7 +341,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>DOWNTOWN</Text>
+              <View style={styles.buttonText}>
+                <Text>DOWNTOWN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -332,7 +361,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>EASTSIDE</Text>
+              <View style={styles.buttonText}>
+                <Text>EASTSIDE</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -350,7 +381,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>FIRST HILL</Text>
+              <View style={styles.buttonText}>
+                <Text>FIRST HILL</Text>
+              </View>
             </TouchableOpacity>
           </View>
           <View style={styles.row}>
@@ -370,7 +403,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>FREMONT</Text>
+              <View style={styles.buttonText}>
+                <Text>FREMONT</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -388,7 +423,10 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>GEORGETOWN</Text>
+              {" "}
+              <View style={styles.buttonText}>
+                <Text style={{ fontSize: 12 }}>GEORGETOWN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -406,7 +444,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>PIONEER SQUARE</Text>
+              <View style={styles.buttonText}>
+                <Text>PIONEER SQUARE</Text>
+              </View>
             </TouchableOpacity>
           </View>
 
@@ -427,7 +467,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>QUEEN ANNE</Text>
+              <View style={styles.buttonText}>
+                <Text>QUEEN ANNE</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -445,7 +487,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>SODO</Text>
+              <View style={styles.buttonText}>
+                <Text>SODO</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -463,7 +507,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>SLU</Text>
+              <View style={styles.buttonText}>
+                <Text>SLU</Text>
+              </View>
             </TouchableOpacity>
           </View>
 
@@ -484,7 +530,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>UDISTRICT</Text>
+              <View style={styles.buttonText}>
+                <Text>UDISTRICT</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -502,7 +550,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>WALLINGFORD</Text>
+              <View style={styles.buttonText}>
+                <Text style={{ fontSize: 12 }}>WALLINGFORD</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -520,12 +570,22 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>WEST SEATTLE</Text>
+              <View style={styles.buttonText}>
+                <Text
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center"
+                  }}
+                >
+                  WEST SEATTLE
+                </Text>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
-        <View>
-          <Text>CUISINES I LIKE</Text>
+        <View style={styles.neighbordhoodWrapper}>
+          <Text style={styles.subheader}>CUISINES I LIKE</Text>
           <View style={styles.row}>
             <TouchableOpacity
               style={
@@ -543,7 +603,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>AMERICAN</Text>
+              <View style={styles.buttonText}>
+                <Text>AMERICAN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -561,7 +623,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>FRENCH</Text>
+              <View style={styles.buttonText}>
+                <Text>FRENCH</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -579,7 +643,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>CHINESE</Text>
+              <View style={styles.buttonText}>
+                <Text>CHINESE</Text>
+              </View>
             </TouchableOpacity>
           </View>
           <View style={styles.row}>
@@ -599,7 +665,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>DESSERT</Text>
+              <View style={styles.buttonText}>
+                <Text>DESSERT</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -617,7 +685,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>GREEK</Text>
+              <View style={styles.buttonText}>
+                <Text>GREEK</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -635,7 +705,10 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>HALAL</Text>
+              {" "}
+              <View style={styles.buttonText}>
+                <Text>HALAL</Text>
+              </View>
             </TouchableOpacity>
           </View>
 
@@ -656,7 +729,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>INDIAN</Text>
+              <View style={styles.buttonText}>
+                <Text>INDIAN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -674,7 +749,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>ITALIAN</Text>
+              <View style={styles.buttonText}>
+                <Text>ITALIAN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -692,7 +769,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>JAPANESE</Text>
+              <View style={styles.buttonText}>
+                <Text>JAPANESE</Text>
+              </View>
             </TouchableOpacity>
           </View>
 
@@ -713,7 +792,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>KOREAN</Text>
+              <View style={styles.buttonText}>
+                <Text>KOREAN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -731,7 +812,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>MEDITERRANEAN</Text>
+              <View style={styles.buttonText}>
+                <Text style={{ fontSize: 10 }}>MEDITERRANEAN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -749,7 +832,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>MEXICAN</Text>
+              <View style={styles.buttonText}>
+                <Text>MEXICAN</Text>
+              </View>
             </TouchableOpacity>
           </View>
 
@@ -770,7 +855,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>MIDDLE EASTERN</Text>
+              <View style={styles.buttonText}>
+                <Text style={{ textAlign: "center" }}>MIDDLE EASTERN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -788,7 +875,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>PIZZA</Text>
+              <View style={styles.buttonText}>
+                <Text>PIZZA</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -806,13 +895,15 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>THAI</Text>
+              <View style={styles.buttonText}>
+                <Text>THAI</Text>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
 
-        <View>
-          <Text>CUISINES I HATE</Text>
+        <View style={styles.neighbordhoodWrapper}>
+          <Text style={styles.subheader}>CUISINES I HATE</Text>
           <View style={styles.row}>
             <TouchableOpacity
               style={
@@ -830,7 +921,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>AMERICAN</Text>
+              <View style={styles.buttonText}>
+                <Text>AMERICAN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -848,7 +941,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>FRENCH</Text>
+              <View style={styles.buttonText}>
+                <Text>FRENCH</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -866,7 +961,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>CHINESE</Text>
+              <View style={styles.buttonText}>
+                <Text>CHINESE</Text>
+              </View>
             </TouchableOpacity>
           </View>
           <View style={styles.row}>
@@ -886,7 +983,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>DESSERT</Text>
+              <View style={styles.buttonText}>
+                <Text>DESSERT</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -904,7 +1003,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>GREEK</Text>
+              <View style={styles.buttonText}>
+                <Text>GREEK</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -922,7 +1023,10 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>HALAL</Text>
+              {" "}
+              <View style={styles.buttonText}>
+                <Text>HALAL</Text>
+              </View>
             </TouchableOpacity>
           </View>
 
@@ -943,7 +1047,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>INDIAN</Text>
+              <View style={styles.buttonText}>
+                <Text>INDIAN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -961,7 +1067,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>ITALIAN</Text>
+              <View style={styles.buttonText}>
+                <Text>ITALIAN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -979,7 +1087,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>JAPANESE</Text>
+              <View style={styles.buttonText}>
+                <Text>JAPANESE</Text>
+              </View>
             </TouchableOpacity>
           </View>
 
@@ -1000,7 +1110,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>KOREAN</Text>
+              <View style={styles.buttonText}>
+                <Text>KOREAN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -1018,7 +1130,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>MEDITERRANEAN</Text>
+              <View style={styles.buttonText}>
+                <Text style={{ fontSize: 10 }}>MEDITERRANEAN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -1036,7 +1150,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>MEXICAN</Text>
+              <View style={styles.buttonText}>
+                <Text>MEXICAN</Text>
+              </View>
             </TouchableOpacity>
           </View>
 
@@ -1057,7 +1173,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>MIDDLE EASTERN</Text>
+              <View style={styles.buttonText}>
+                <Text style={{ textAlign: "center" }}>MIDDLE EASTERN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -1075,7 +1193,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>PIZZA</Text>
+              <View style={styles.buttonText}>
+                <Text>PIZZA</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -1093,13 +1213,15 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>THAI</Text>
+              <View style={styles.buttonText}>
+                <Text>THAI</Text>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
 
-        <View>
-          <Text>MUSIC PREFERENCES</Text>
+        <View style={styles.neighbordhoodWrapper}>
+          <Text style={styles.subheader}>MUSIC PREFERENCES</Text>
           <View style={styles.row}>
             <TouchableOpacity
               style={
@@ -1117,7 +1239,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>HIP HOP</Text>
+              <View style={styles.buttonText}>
+                <Text>HIP HOP</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -1135,7 +1259,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>POP</Text>
+              <View style={styles.buttonText}>
+                <Text>POP</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -1153,7 +1279,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>COUNTRY</Text>
+              <View style={styles.buttonText}>
+                <Text>COUNTRY</Text>
+              </View>
             </TouchableOpacity>
           </View>
           <View style={styles.row}>
@@ -1173,7 +1301,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>LATIN</Text>
+              <View style={styles.buttonText}>
+                <Text>LATIN</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -1191,7 +1321,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>ALTERNATIVE</Text>
+              <View style={styles.buttonText}>
+                <Text style={{ fontSize: 12 }}>ALTERNATIVE</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -1209,7 +1341,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>R&B</Text>
+              <View style={styles.buttonText}>
+                <Text>R&B</Text>
+              </View>
             </TouchableOpacity>
           </View>
 
@@ -1230,7 +1364,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>ROCK</Text>
+              <View style={styles.buttonText}>
+                <Text>ROCK</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -1248,7 +1384,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>EDM</Text>
+              <View style={styles.buttonText}>
+                <Text>EDM</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -1266,7 +1404,10 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>CLASSICAL</Text>
+              {" "}
+              <View style={styles.buttonText}>
+                <Text>CLASSICAL</Text>
+              </View>
             </TouchableOpacity>
           </View>
 
@@ -1287,7 +1428,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>JAZZ</Text>
+              <View style={styles.buttonText}>
+                <Text>JAZZ</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -1305,7 +1448,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>indie</Text>
+              <View style={styles.buttonText}>
+                <Text>INDIE</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -1323,7 +1468,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>FOLK</Text>
+              <View style={styles.buttonText}>
+                <Text>FOLK</Text>
+              </View>
             </TouchableOpacity>
           </View>
 
@@ -1344,7 +1491,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>REGGAE</Text>
+              <View style={styles.buttonText}>
+                <Text>REGGAE</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -1362,7 +1511,9 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>SOUL</Text>
+              <View style={styles.buttonText}>
+                <Text>SOUL</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={
@@ -1380,15 +1531,23 @@ export default class SignUp5 extends Component {
                 this.forceUpdate();
               }}
             >
-              <Text>PUNK</Text>
+              <View style={styles.buttonText}>
+                <Text>PUNK</Text>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
-        <Button
-          color={"#9BA2FF"}
-          onPress={this.nextStep.bind(this)}
-          title={"FINISH"}
-        />
+        <View style={styles.neighbordhoodWrapper}>
+          <Text style={styles.subheader} value={this.state.bio}>BIO</Text>
+          <TextInput multiline={true} style={styles.textInput}         onChangeText={bio => this.setState({ bio })}/>
+        </View>
+        <View style={{ marginBottom: 20 }}>
+          <Button
+            color={"#9BA2FF"}
+            onPress={this.nextStep.bind(this)}
+            title={"FINISH"}
+          />
+        </View>
       </ScrollView>
     );
   }
@@ -1401,7 +1560,8 @@ export default class SignUp5 extends Component {
       cuisinePreferences: this.state.cuisinePreferences,
       cuisineDislikes: this.state.cuisineDislikes,
       neighborhoodPreferences: this.state.neighborhoodPreferences,
-      musicPreferences: this.state.musicPreferences
+      musicPreferences: this.state.musicPreferences,
+      bio: this.state.bio
     };
 
     this.props.saveValues(data);
@@ -1442,39 +1602,68 @@ const styles = StyleSheet.create({
     backgroundColor: "#9BA2FF",
     borderColor: "#9BA2FF",
     borderWidth: 1,
-    borderRadius: 6,
+    borderRadius: 10,
     padding: 5,
     width: 100,
+    height: 50,
+    marginRight: 5,
+    marginLeft: 5,
     marginTop: 20
   },
   buttonInactive: {
     backgroundColor: "white",
     borderColor: "black",
     borderWidth: 1,
-    borderRadius: 6,
+    borderRadius: 10,
     padding: 5,
     width: 100,
+    height: 50,
+    marginRight: 5,
+    marginLeft: 5,
     marginTop: 20
   },
   row: {
     flexWrap: "wrap",
     alignItems: "flex-start",
-    flexDirection: "row",
-    marginLeft: 10
+    flexDirection: "row"
   },
   header: {
     fontSize: 15,
-    marginTop: 20,
+    marginTop: 10,
     marginLeft: 15,
     fontWeight: "bold",
     marginBottom: 5
   },
   subheader: {
     fontWeight: "bold",
-    marginTop: 20,
-    marginBottom: 5
+    marginTop: 10,
+    marginBottom: 5,
+    marginBottom: 10,
+    marginLeft: 5
   },
   foodPref: {
     marginLeft: 50
+  },
+  sliderWrapper: {
+    margin: 20,
+    padding: 5,
+    borderRadius: 3,
+    marginBottom: 10
+  },
+  buttonText: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  neighbordhoodWrapper: {
+    margin: 20
+  },
+  textInput: {
+    backgroundColor: "#F2F2F2",
+    width: 300,
+    marginTop: 5,
+    marginLeft: 5,
+    marginRight: 5,
+    padding: 5
   }
 });
