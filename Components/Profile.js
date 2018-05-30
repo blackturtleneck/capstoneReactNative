@@ -90,10 +90,7 @@ export default class Profile extends Component {
           <Image source={{ uri: img4Path }} style={styles.img} />
           <Text style={styles.bio}>{this.state.user.bio}</Text>
 
-          <TouchableOpacity
-            style={styles.interested}
-            onPress={this.state.Logout}
-          >
+          <TouchableOpacity style={styles.logout}>
             <Logout />
           </TouchableOpacity>
         </View>
@@ -181,35 +178,15 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 15
   },
-  reject: {
+
+  logout: {
     justifyContent: "center",
     alignItems: "center",
-    padding: 10,
-    borderRadius: 8,
-    borderWidth: 1.5,
-    borderColor: "#333333",
-    width: 100,
-    margin: 20
-  },
-  rejectText: {
-    fontFamily: "Avenir-Black",
-    fontSize: 12,
-    color: "#333333"
-  },
-  interested: {
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 10,
+    padding: 5,
     borderRadius: 8,
     borderWidth: 1.5,
     borderColor: "#9BA2FF",
     width: 110,
-    margin: 20,
     backgroundColor: "#9BA2FF"
-  },
-  interestedText: {
-    fontFamily: "Avenir-Black",
-    fontSize: 12,
-    color: "#4F4F4F"
   }
 });

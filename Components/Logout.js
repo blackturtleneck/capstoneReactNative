@@ -8,12 +8,13 @@ export default class Logout extends Component {
     return (
       <Button
         containerStyle={{
-          padding: 10,
+          padding: 5,
           width: 150,
           margin: 20,
           borderRadius: 4,
           backgoundColor: "rgb(73,104,173)"
         }}
+        color={"white"}
         style={{ fontSize: 18, color: "white" }}
         onPress={this._logout}
         title="Logout"
