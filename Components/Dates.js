@@ -40,6 +40,7 @@ export default class Dates extends Component {
         this.state = {
             userEmail : this.props.navigation.state.params.userEmail,
             otherUser : this.props.navigation.state.params.otherUser,
+            otherUserName : this.props.navigation.state.params.otherUserName,
             location : '',
             printText1 : false,
             printText2 : false,
@@ -516,7 +517,7 @@ export default class Dates extends Component {
         </View>
 
         }
-                {this.state.submitted == true && <Text> You've submitted a date request! </Text> }
+                {this.state.submitted == true && <View style={styles.container}> <Text style={styles.letsdate}> You've sent a date request to {this.state.otherUserName}! We will let you know when they respond! </Text> </View> }
         </ScrollView>
     );
   }
@@ -607,5 +608,11 @@ const styles = StyleSheet.create({
         textAlign: "center",
         marginLeft: 10,
         marginRight: 10
-      }
+      },
+      letsdate: {
+        fontSize : 20,
+        fontFamily: "Avenir-Light",
+        backgroundColor: "#ffffff",
+        textAlign: "center"
+    }
 });

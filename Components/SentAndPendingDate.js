@@ -27,6 +27,28 @@ componentDidMount(){
 }
 
   render() {
-    return <Text> You sent a date request to {this.props.otherUserName} for {this.state.dates[0].location}, we will let you know when they respond! </Text>;
+    return(
+
+    <View style={styles.container}>
+
+    <Text style={styles.letsdate}> You sent a date request to {this.props.otherUserName} for {this.state.dates[0].location}, we will let you know when they respond! </Text>
+
+    </View>
+    );
   }
 }
+
+
+
+const styles = StyleSheet.create({
+  letsdate: {
+    fontSize : 20,
+    fontFamily: "Avenir-Light",
+    backgroundColor: "#ffffff",
+    textAlign: "center"
+},
+container: {
+    backgroundColor: "#ffffff"
+}
+
+});

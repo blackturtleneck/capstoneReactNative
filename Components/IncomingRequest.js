@@ -26,7 +26,7 @@ export default class IncomingRequest extends Component {
 
 componentWillReceiveProps(){
    console.log("DATES", this.props.dates)
-   console.log("TIME", this.state.timeStamp.seconds)
+   console.log("TIME", this.state.timeStamp)
 
    this.setState({
         dates : this.props.dates,
@@ -41,8 +41,7 @@ componentWillReceiveProps(){
 
 componentDidMount(){
     console.log("DATES", this.props.dates)
-    console.log("TIME", this.state.timeStamp.seconds)
-
+    console.log("TIME", this.props.dates[this.props.dates.length-1].timestampid)
     this.setState({
         dates : this.props.dates,
         startTime : this.props.dates[this.props.dates.length-1].startTime,
@@ -63,7 +62,7 @@ timePressed = b => {
 confirmDate(){
     console.log("FINAL TIME SELECTED", this.state.timeSelected)
 
-    if (this.state.timeSelected != null){
+    if (this.state.timeSelected != null ){
         this.setState({
             dateConfirmed : true
         });
@@ -73,7 +72,7 @@ confirmDate(){
         .doc(this.props.userEmail)
         .collection('messages')
         .doc(this.props.otherUser)
-        .collection('dates').doc(String(this.state.timeStamp))
+        .collection('dates').doc(String(this.props.dates[this.props.dates.length-1].timestampid))
 
         return dateInfo.update({
            confirm: true,
@@ -92,7 +91,7 @@ confirmDate(){
         .doc(this.props.otherUser)
         .collection('messages')
         .doc(this.props.userEmail)
-        .collection('dates').doc(String(this.state.timeStamp))
+        .collection('dates').doc(String(this.props.dates[this.props.dates.length-1].timestampid))
     
         return dateInfo2.update({
            confirm: true,
@@ -257,11 +256,11 @@ confirmDate(){
 
         <View style={{flexDirection : 'row'}}>
             <TouchableOpacity style = {styles.confirmdate} onPress={this.confirmDate}>
-            <Text>Confirm</Text>
+            <Text style={styles.purpleText}>Confirm</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style = {styles.confirmdate}>
-            <Text>Another Time</Text>
+            <Text style={styles.purpleText}>Decline</Text>
             </TouchableOpacity>
 
         </View>
@@ -291,10 +290,11 @@ const styles = StyleSheet.create({
         textAlign: "center"
     },
     container: {
-        backgroundColor: "#ffffff"
+        backgroundColor: "#ffffff",
+        paddingBottom: 20
       },
       confirmdate: {
-        backgroundColor: '#9ba2ff',
+        backgroundColor: '#ededed',
         alignItems : 'center',
         padding: 10,
         width: 150,
@@ -307,5 +307,10 @@ const styles = StyleSheet.create({
         color: "#ffffff",
         fontSize: 15,
         fontFamily: "Avenir-Light"
-      }
+      },
+      purpleText : {
+        color: "#9ba2ff",
+        fontSize: 15,
+        fontFamily: "Avenir-Heavy"
+    }
 });

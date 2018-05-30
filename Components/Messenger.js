@@ -227,9 +227,9 @@ export default class Messenger extends React.Component {
           {currentMessage}
 
         <TouchableOpacity style = {styles.datebutton} onPress={() => {
-          navigate('Dates', {userEmail : this.state.userEmail, otherUser : this.state.otherUser})
+          navigate('Dates', {userEmail : this.state.userEmail, otherUser : this.state.otherUser, otherUserName : this.state.otherUserName})
   }}  >
-            <Text>Request a Date</Text>
+            <Text style={styles.whiteText}>Request a Date</Text>
         </TouchableOpacity>
 
         </ScrollView>
