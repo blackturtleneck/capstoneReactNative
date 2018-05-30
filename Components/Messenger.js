@@ -206,12 +206,6 @@ export default class Messenger extends React.Component {
     return (
       <View className="messenger-wrapper">
 
-      {this.state.userConfirmed == true && <View> <ReceiveDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} confirm = {this.state.userConfirmed} /> </View>}\      
-      {this.state.userSent == false && this.state.userConfirmed == false  && <View> <IncomingRequest dates = {this.state.dates} userEmail = {this.state.userEmail} otherUser = {this.state.otherUser} otherUserName = {this.state.otherUserName} /> </View>}
-      {this.state.userSent == true && <View> <SentAndPendingDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}
-
-      {this.state.userSent == true && this.state.userResponded == true && <View>  </View>}
-
         <ScrollView
           style={{ height: 500, backgroundColor: "white" }}
           scrollEnabled={true}
@@ -223,7 +217,11 @@ export default class Messenger extends React.Component {
           id="message-list"
         >
 
-        
+      {this.state.userConfirmed == true && <View> <ReceiveDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} confirm = {this.state.userConfirmed} /> </View>}\      
+      {this.state.userSent == false && this.state.userConfirmed == false  && <View> <IncomingRequest dates = {this.state.dates} userEmail = {this.state.userEmail} otherUser = {this.state.otherUser} otherUserName = {this.state.otherUserName} /> </View>}
+      {this.state.userSent == true && <View> <SentAndPendingDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}
+
+      {this.state.userSent == true && this.state.userResponded == true && <View>  </View>}
           {currentMessage}
 
         <TouchableOpacity style = {styles.datebutton} onPress={() => {
@@ -233,8 +231,6 @@ export default class Messenger extends React.Component {
         </TouchableOpacity>
 
         </ScrollView>
-
-        {/* <View className="button-input-wrapper"> */}
 
         <TextInput
           style={{
@@ -251,6 +247,10 @@ export default class Messenger extends React.Component {
           value={this.state.message}
           onSubmitEditing={this.submitMessage}
         />
+
+
+        {/* <View className="button-input-wrapper"> */}
+
 
       </View>
     );
