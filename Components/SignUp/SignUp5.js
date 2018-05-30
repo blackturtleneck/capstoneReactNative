@@ -314,7 +314,7 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>CAPITOL HILL</Text>
+                <Text style={{ fontSize: 12 }}>CAPITOL HILL</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -424,7 +424,7 @@ export default class SignUp5 extends Component {
             >
               {" "}
               <View style={styles.buttonText}>
-                <Text>GEORGETOWN</Text>
+                <Text style={{ fontSize: 12 }}>GEORGETOWN</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -550,7 +550,7 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>WALLINGFORD</Text>
+                <Text style={{ fontSize: 12 }}>WALLINGFORD</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -570,7 +570,15 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>WEST SEATTLE</Text>
+                <Text
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center"
+                  }}
+                >
+                  WEST SEATTLE
+                </Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -804,7 +812,7 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>MEDITERRANEAN</Text>
+                <Text style={{ fontSize: 10 }}>MEDITERRANEAN</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -847,7 +855,7 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>MIDDLE EASTERN</Text>
+                <Text style={{ textAlign: "center" }}>MIDDLE EASTERN</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -1122,7 +1130,7 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>MEDITERRANEAN</Text>
+                <Text style={{ fontSize: 10 }}>MEDITERRANEAN</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -1165,7 +1173,7 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>MIDDLE EASTERN</Text>
+                <Text style={{ textAlign: "center" }}>MIDDLE EASTERN</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -1313,7 +1321,7 @@ export default class SignUp5 extends Component {
               }}
             >
               <View style={styles.buttonText}>
-                <Text>ALTERNATIVE</Text>
+                <Text style={{ fontSize: 12 }}>ALTERNATIVE</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -1624,7 +1632,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 20,
     marginBottom: 5,
-    marginBottom: 20
+    marginBottom: 10,
+    marginLeft: 5
   },
   foodPref: {
     marginLeft: 50
