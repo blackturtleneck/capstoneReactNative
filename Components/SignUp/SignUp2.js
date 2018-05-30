@@ -48,6 +48,7 @@ export default class SignUp2 extends Component {
         <ModalDropdown
           style={styles.textInput}
           options={genderData}
+          dropdownStyle={{ width: 290, height: 70 }}
           defaultValue={
             this.state.matchGender !== null ? this.state.matchGender : ""
           }

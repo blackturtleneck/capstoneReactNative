@@ -45,172 +45,188 @@ export default class SignUp5 extends Component {
           <Text style={styles.subheader}>FOOD PREFERENCES / ALLERGIES</Text>
           <View style={styles.row}>
             <Text style={styles.foodLabel}>VEGETARIAN</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.vegetarian
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.vegetarian === null) {
-                  this.state.foodPreferences.vegetarian = true;
-                } else {
-                  this.state.foodPreferences.vegetarian = !this.state
-                    .foodPreferences.vegetarian;
+            <View style={{ marginLeft: 47 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.vegetarian
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>VEGETARIAN</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.vegetarian === null) {
+                    this.state.foodPreferences.vegetarian = true;
+                  } else {
+                    this.state.foodPreferences.vegetarian = !this.state
+                      .foodPreferences.vegetarian;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text> </Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={styles.row}>
             <Text style={styles.foodLabel}>GLUTEN FREE</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.glutenFree
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.glutenFree === null) {
-                  this.state.foodPreferences.glutenFree = true;
-                } else {
-                  this.state.foodPreferences.glutenFree = !this.state
-                    .foodPreferences.glutenFree;
+            <View style={{ marginLeft: 40 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.glutenFree
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>GLUTEN FREE</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.glutenFree === null) {
+                    this.state.foodPreferences.glutenFree = true;
+                  } else {
+                    this.state.foodPreferences.glutenFree = !this.state
+                      .foodPreferences.glutenFree;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text style={styles.foodLabel}>GLUTEN FREE</Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={styles.row}>
             <Text style={styles.foodLabel}>VEGAN</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.vegan
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.vegan === null) {
-                  this.state.foodPreferences.vegan = true;
-                } else {
-                  this.state.foodPreferences.vegan = !this.state.foodPreferences
-                    .vegan;
+            <View style={{ marginLeft: 85 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.vegan
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>VEGAN</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.vegan === null) {
+                    this.state.foodPreferences.vegan = true;
+                  } else {
+                    this.state.foodPreferences.vegan = !this.state
+                      .foodPreferences.vegan;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text style={styles.foodLabel}>VEGAN</Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={styles.row}>
             <Text style={styles.foodLabel}>DAIRY-FREE</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.dairyFree
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.dairyFree === null) {
-                  this.state.foodPreferences.dairyFree = true;
-                } else {
-                  this.state.foodPreferences.dairyFree = !this.state
-                    .foodPreferences.dairyFree;
+            <View style={{ marginLeft: 53 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.dairyFree
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>dairy free</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.dairyFree === null) {
+                    this.state.foodPreferences.dairyFree = true;
+                  } else {
+                    this.state.foodPreferences.dairyFree = !this.state
+                      .foodPreferences.dairyFree;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text style={styles.foodLabel}>dairy free</Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={styles.row}>
             <Text style={styles.foodLabel}>NO RED MEAT</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.noRedMeat
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.noRedMeat === null) {
-                  this.state.foodPreferences.noRedMeat = true;
-                } else {
-                  this.state.foodPreferences.noRedMeat = !this.state
-                    .foodPreferences.noRedMeat;
+            <View style={{ marginLeft: 40 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.noRedMeat
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>NO RED MEAT</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.noRedMeat === null) {
+                    this.state.foodPreferences.noRedMeat = true;
+                  } else {
+                    this.state.foodPreferences.noRedMeat = !this.state
+                      .foodPreferences.noRedMeat;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text style={styles.foodLabel}>NO RED MEAT</Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={styles.row}>
             <Text style={styles.foodLabel}>KOSHER</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.kosher
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.kosher === null) {
-                  this.state.foodPreferences.kosher = true;
-                } else {
-                  this.state.foodPreferences.kosher = !this.state
-                    .foodPreferences.kosher;
+            <View style={{ marginLeft: 77 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.kosher
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>KOSHER</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.kosher === null) {
+                    this.state.foodPreferences.kosher = true;
+                  } else {
+                    this.state.foodPreferences.kosher = !this.state
+                      .foodPreferences.kosher;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text style={styles.foodLabel}>KOSHER</Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={styles.row}>
             <Text style={styles.foodLabel}>PALEO</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.paleo
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.paleo === null) {
-                  this.state.foodPreferences.paleo = true;
-                } else {
-                  this.state.foodPreferences.paleo = !this.state.foodPreferences
-                    .paleo;
+            <View style={{ marginLeft: 87 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.paleo
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>PALEO</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.paleo === null) {
+                    this.state.foodPreferences.paleo = true;
+                  } else {
+                    this.state.foodPreferences.paleo = !this.state
+                      .foodPreferences.paleo;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text style={styles.foodLabel}>PALEO</Text>
+              </TouchableHighlight>
+            </View>
           </View>
 
           <View style={styles.row}>
             <Text style={styles.foodLabel}>RAW</Text>
-            <TouchableHighlight
-              style={
-                this.state.foodPreferences.raw
-                  ? styles.radioButtonActive
-                  : styles.radioButtonInactive
-              }
-              onPress={() => {
-                if (this.state.foodPreferences.raw === null) {
-                  this.state.foodPreferences.raw = true;
-                } else {
-                  this.state.foodPreferences.raw = !this.state.foodPreferences
-                    .raw;
+            <View style={{ marginLeft: 100 }}>
+              <TouchableHighlight
+                style={
+                  this.state.foodPreferences.raw
+                    ? styles.radioButtonActive
+                    : styles.radioButtonInactive
                 }
-                this.forceUpdate();
-              }}
-            >
-              <Text style={styles.foodLabel}>RAW</Text>
-            </TouchableHighlight>
+                onPress={() => {
+                  if (this.state.foodPreferences.raw === null) {
+                    this.state.foodPreferences.raw = true;
+                  } else {
+                    this.state.foodPreferences.raw = !this.state.foodPreferences
+                      .raw;
+                  }
+                  this.forceUpdate();
+                }}
+              >
+                <Text style={styles.foodLabel}>RAW</Text>
+              </TouchableHighlight>
+            </View>
           </View>
         </View>
         <View>
@@ -1463,8 +1479,8 @@ const styles = StyleSheet.create({
     marginLeft: 10
   },
   header: {
-    fontSize: 15,
-    marginTop: 20,
+    fontSize: 12,
+    marginTop: 10,
     marginLeft: 15,
     fontWeight: "bold",
     marginBottom: 5
@@ -1472,7 +1488,8 @@ const styles = StyleSheet.create({
   subheader: {
     fontWeight: "bold",
     marginTop: 20,
-    marginBottom: 5
+    marginBottom: 5,
+    marginBottom: 20
   },
   foodPref: {
     marginLeft: 50
