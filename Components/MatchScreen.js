@@ -44,8 +44,7 @@ const styles = StyleSheet.create({
   row: {
     flexWrap: "wrap",
     alignItems: "flex-start",
-    flexDirection: "row",
-    marginLeft: 10
+    flexDirection: "row"
   },
   matchName: {
     fontSize: 50,
@@ -65,6 +64,6 @@ const styles = StyleSheet.create({
     color: "#9ba2ff",
     fontFamily: "Avenir-Heavy",
     fontSize: 25,
-    paddingTop: 20
+    paddingTop: 80
   }
 });
