@@ -4,11 +4,17 @@ import { firestore } from "../FirestoreConfig";
 import MatchProfile from "./MatchProfile";
 import MatchListController from "./MatchListController";
 import NoMatches from "./NoMatches";
+import MatchScreen from "./MatchScreen";
 
 export default class Match extends Component {
   constructor(props) {
     super(props);
     console.log("this.screenProps", this.screenProps);
+
+    // match states:
+    // 0 no match yet
+    // 1 match
+    // 2 reject
     this.state = {
       user: this.props.screenProps.user,
       index: 0,
@@ -16,43 +22,118 @@ export default class Match extends Component {
     };
   }
 
-  interested() {
-    console.log("interested");
-    // this.setState({ index: this.state.index + 1 });
+  interested(otherUser) {
+    console.log("otherUser", otherUser);
+    let component = this;
+    firestore
+      .collection("user")
+      .doc(component.state.user.email)
+      .collection("matches")
+      .doc(otherUser.email)
+      .get()
+      .then(doc => {
+        if (doc.exists) {
+          console.log("doc exists");
+          let interested = doc.get("interested");
+          if (interested) {
+            component.setState({ match: 1 });
+          } else {
+            component.setState({ match: 2 });
+          }
+        } else {
+          console.log("doc doesn't exist");
+          component.setState({ match: 0 });
+        }
+      });
 
-    // this.setState(prevState => {
-    //   return { index: prevState.index + 1 };
-    // });
-    // let matches = this.state.matches;
-    // matches.splice(1, 1);
-    // console.log("matches", matches);
-    // this.setState({ matches: matches });
-    // this.scrollToIndex();
-    let curMatches = this.state.matches;
+    if (component.state.match === 1) {
+      // set match to be true for you
+      firestore
+        .collection("user")
+        .doc(component.state.user.email)
+        .collection("matches")
+        .doc(otherUser.email)
+        .set({
+          match: true
+        });
+      // set match to be true for them
+      firestore
+        .collection("user")
+        .doc(otherUser.email)
+        .collection("matches")
+        .doc(component.state.user.email)
+        .set({
+          match: true
+        });
+
+      // add them to your messenger list
+      firestore
+        .collection("user")
+        .doc(this.state.user.email)
+        .collection("messages")
+        .doc(otherUser.email)
+        .collection("messages");
+      // add you to their messenger list
+      firestore
+        .collection("user")
+        .doc(otherUser.email)
+        .collection("messages")
+        .doc(component.state.user.email)
+        .collection("messages");
+    } else if (component.state.match === 0) {
+      firestore
+        .collection("users")
+        .doc(otherUser.email)
+        .collection("matches")
+        .doc(component.state.user.email)
+        .set({
+          swipe: true,
+          interest: true
+        });
+      firestore
+        .collection("users")
+        .doc(component.state.user.email)
+        .collection("matches")
+        .doc(otherUser.email)
+        .set({
+          swipe: true,
+          interest: true
+        });
+    } else {
+      firestore
+        .collection("users")
+        .doc(otherUser.email)
+        .collection("matches")
+        .doc(component.state.user.email)
+        .set({
+          swipe: true,
+          interest: true,
+          match: false
+        });
+    }
+
+    console.log("interested");
+    let curMatches = component.state.matches;
     console.log("matches", curMatches);
     if (curMatches.length > 1) {
       curMatches.splice(0, 1);
-      this.setState({ matches: curMatches });
-      this.scrollToIndex();
+      component.setState({ matches: curMatches });
+      component.scrollToIndex();
     } else {
       console.log("no");
-      this.setState({ matchesExist: false });
+      component.setState({ matchesExist: false });
     }
+    this.setState({ match: -1 });
   }
 
   rejected() {
     console.log("rejected");
-    // this.setState({ index: this.state.index + 1 });
-
-    // this.setState(prevState => {
-    //   return { index: prevState.index + 1 };
-    // });
-    let curMatches = this.state.matches;
+    let curMatches = component.state.matches;
     console.log("matches", curMatches);
     if (curMatches.length > 1) {
       curMatches.splice(0, 1);
-      this.setState({ matches: curMatches });
-      this.scrollToIndex();
+      component.setState({ matches: curMatches });
+      component.scrollToIndex();
     } else {
       console.log("no");
       this.setState({ matchesExist: false });
@@ -168,26 +249,30 @@ export default class Match extends Component {
         }}
       >
         {this.state.matchesExist ? (
-          <FlatList
-            scrollEnabled={false}
-            ref={ref => {
-              this.flatListRef = ref;
-            }}
-            getItemLayout={this.getItemLayout}
-            keyExtractor={item => item}
-            // initialScrollIndex={this.state.index}
-            initialNumToRender={this.state.index}
-            horizontal={true}
-            data={this.state.matches ? this.state.matches : []}
-            onScrollToIndexFailed={() => {}}
-            renderItem={({ item }) => (
-              <MatchProfile
-                interested={this.interested.bind(this)}
-                rejected={this.rejected.bind(this)}
-                match={item}
-              />
-            )}
-          />
+          this.state.match === 1 ? (
+            <MatchScreen close={this.close} />
+          ) : (
+            <FlatList
+              scrollEnabled={false}
+              ref={ref => {
+                this.flatListRef = ref;
+              }}
+              getItemLayout={this.getItemLayout}
+              keyExtractor={item => item}
+              // initialScrollIndex={this.state.index}
+              initialNumToRender={this.state.index}
+              horizontal={true}
+              data={this.state.matches ? this.state.matches : []}
+              onScrollToIndexFailed={() => {}}
+              renderItem={({ item }) => (
+                <MatchProfile
+                  interested={() => this.interested(item)}
+                  rejected={this.rejected.bind(this)}
+                  match={item}
+                />
+              )}
+            />
+          )
         ) : (
           <NoMatches />
         )}
