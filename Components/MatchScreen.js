@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, View, Text, Button } from "react-native";
+import { Image, View, Text, Button, StyleSheet } from "react-native";
 import Logout from "./Logout";
 
 export default class MatchScreen extends Component {
@@ -13,27 +13,58 @@ export default class MatchScreen extends Component {
     let user = this.props.user.name;
     console.log("user", user);
 
-    let matchName = match.split(" ")[0];
-    let userName = user.split(" ")[0];
+    let matchName = match.split(" ")[0].toUpperCase();
+    let userName = user.split(" ")[0].toUpperCase();
 
     return (
       <View
         style={{
           alignContent: "center",
           alignItems: "center",
-          justifyContent: "center"
+          justifyContent: "center",
+          marginTop: 40
         }}
       >
-        <Text>{this.props.user.name}</Text>
-        <Image source={{ uri: matchImg }} style={{ height: 50, width: 50 }} />
-        <Text>&</Text>
-        <Image source={{ uri: userImg }} style={{ height: 50, width: 50 }} />
-        <Text>{matchName}</Text>
-        <Text>{userName}</Text>
+        <Text style={styles.matchName}>{matchName}</Text>
+        <View style={styles.row}>
+          <Image source={{ uri: matchImg }} style={styles.img} />
+          <Text style={styles.ampr}>&</Text>
+          <Image source={{ uri: userImg }} style={styles.img} />
+        </View>
+        <Text style={styles.matchName}>{userName}</Text>
 
-        <Text>It's a match!</Text>
-        <Button title={"OK"} onPress={this.props.close} />
+        <Text style={styles.subHeader}>IT'S A MATCH!</Text>
+        <Button color={"#9ba2ff"} title={"OK"} onPress={this.props.close} />
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  row: {
+    flexWrap: "wrap",
+    alignItems: "flex-start",
+    flexDirection: "row",
+    marginLeft: 10
+  },
+  matchName: {
+    fontSize: 50,
+    fontFamily: "Avenir-Heavy"
+  },
+  subHeader: {
+    fontFamily: "Avenir-Heavy",
+    fontSize: 25
+  },
+  img: {
+    borderRadius: 75,
+    height: 150,
+    width: 150,
+    margin: 10
+  },
+  ampr: {
+    color: "#9ba2ff",
+    fontFamily: "Avenir-Heavy",
+    fontSize: 25,
+    paddingTop: 20
+  }
+});

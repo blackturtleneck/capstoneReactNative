@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { View, Text, ListView, FlatList } from "react-native";
 import { firestore } from "../FirestoreConfig";
 import MatchProfile from "./MatchProfile";
-import MatchListController from "./MatchListController";
 import NoMatches from "./NoMatches";
 import MatchScreen from "./MatchScreen";
 
