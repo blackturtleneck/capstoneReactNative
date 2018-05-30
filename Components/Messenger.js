@@ -6,10 +6,14 @@ import {
   Text,
   TextInput,
   Button,
-  StyleSheet
-} from "react-native";
+  StyleSheet,
+  TouchableOpacity
+} from "react-native"; 
 import List from "react-native-elements";
 import { firestore } from "../FirestoreConfig";
+import  ReceiveDate  from "./ReceiveDate.js";
+import  IncomingRequest  from "./IncomingRequest.js";
+import SentAndPendingDate from "./SentAndPendingDate.js";
 
 export default class Messenger extends React.Component {
   constructor(props, context) {
@@ -59,6 +63,33 @@ export default class Messenger extends React.Component {
         });
         currentComponent.setState({ messages: curMessages });
       });
+
+
+      let currentComponent2 = this;
+      firestore
+        .collection("users")
+        .doc(this.state.userEmail)
+        .collection("messages")
+        .doc(this.state.otherUser)
+        .collection("dates")
+        .onSnapshot(function(querySnapshot) {
+          var currDates = [];
+          querySnapshot.forEach(function(doc) {
+            currDates.push(doc.data());
+            console.log("in dates", doc.data());
+          });
+
+          if (currDates.length != 0){
+            currentComponent2.setState({ 
+              dates: currDates,
+              userSent : currDates[currDates.length-1].sent,
+              userConfirmed : currDates[currDates.length-1].confirm,
+              userResponded : currDates[currDates.length-1].response,
+              timeID : currDates[currDates.length-1].timestampid
+            });
+
+          }        
+        });
     // }
   }
 
@@ -70,7 +101,6 @@ export default class Messenger extends React.Component {
 
   submitMessage(event) {
     const time = new Date();
-
     let month = time.getMonth();
     let formattedMonth = "";
     if (month < 10) {
@@ -80,7 +110,7 @@ export default class Messenger extends React.Component {
     }
 
     let day = time.getDate();
-    let formattedDay = "";
+    let formattedDay = ""; 
     if (day < 10) {
       formattedDay = "0" + day;
     } else {
@@ -152,8 +182,15 @@ export default class Messenger extends React.Component {
     });
   }
 
+  onPress = () => {
+    console.log("requestDatePress", this.state.userEmail)
+    console.log("requestDatePress", this.state.otherUser)
+    navigate('Dates', {userEmail : this.state.userEmail})
+  }
+
   render() {
-    console.log("this.state.messages", this.state.messages);
+    const {navigate } = this.props.navigation
+    console.log("timeStamp ID", this.state.timeID);
     const currentMessage = this.state.messages.map((message, i) => {
       console.log("message", message);
       return (
@@ -168,6 +205,13 @@ export default class Messenger extends React.Component {
 
     return (
       <View className="messenger-wrapper">
+
+      {this.state.userConfirmed == true && <View> <ReceiveDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} confirm = {this.state.userConfirmed} /> </View>}\      
+      {this.state.userSent == false && this.state.userConfirmed == false  && <View> <IncomingRequest dates = {this.state.dates} userEmail = {this.state.userEmail} otherUser = {this.state.otherUser} otherUserName = {this.state.otherUserName} /> </View>}
+      {this.state.userSent == true && <View> <SentAndPendingDate dates = {this.state.dates} otherUserName = {this.state.otherUserName} /> </View>}
+
+      {this.state.userSent == true && this.state.userResponded == true && <View>  </View>}
+
         <ScrollView
           style={{ height: 500, backgroundColor: "white" }}
           scrollEnabled={true}
@@ -178,10 +222,20 @@ export default class Messenger extends React.Component {
           className="messages"
           id="message-list"
         >
+
+        
           {currentMessage}
+
+        <TouchableOpacity style = {styles.datebutton} onPress={() => {
+          navigate('Dates', {userEmail : this.state.userEmail, otherUser : this.state.otherUser, otherUserName : this.state.otherUserName})
+  }}  >
+            <Text style={styles.whiteText}>Request a Date</Text>
+        </TouchableOpacity>
+
         </ScrollView>
 
         {/* <View className="button-input-wrapper"> */}
+
         <TextInput
           style={{
             paddingLeft: 10,
@@ -197,6 +251,7 @@ export default class Messenger extends React.Component {
           value={this.state.message}
           onSubmitEditing={this.submitMessage}
         />
+
       </View>
     );
   }
@@ -227,5 +282,24 @@ const styles = StyleSheet.create({
     borderColor: "#9ba2ff",
     padding: 5,
     overflow: "hidden"
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: "#DDDDDD",
+    padding: 10
+  },
+  datebutton: {
+    backgroundColor: '#9ba2ff',
+    alignItems : 'center',
+    padding: 10,
+    width: 150,
+    marginLeft: 115,
+    borderRadius: 10,
+    marginTop: 10
+  },
+  whiteText : {
+    color: "#ffffff",
+    fontSize: 12,
+    fontFamily: "Avenir-Light"
   }
 });
