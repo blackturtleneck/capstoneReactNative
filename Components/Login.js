@@ -9,7 +9,7 @@ import {
 import { firestore, auth } from "../FirestoreConfig";
 import logo from "./img/ampr-logo.png";
 import { firebase } from "@firebase/app";
-import LoadingScreen from './LoadingScreen'
+import LoadingScreen from "./LoadingScreen";
 
 export default class Login extends Component {
   render() {

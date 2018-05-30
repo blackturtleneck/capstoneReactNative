@@ -10,27 +10,20 @@ import {
 import Logout from "./Logout";
 import FontAwesome, { Icons } from "react-native-fontawesome";
 
-export default class Profile extends Component {
-  constructor(props) {
-    super(props);
-    console.log("props", props);
-    this.state = {
-      user: this.props.screenProps.user
-    };
-  }
+export default class MatchProfile extends Component {
   render() {
     let img1Path = "";
     let img2Path = "";
     let img3Path = "";
     let img4Path = "";
     {
-      this.state.user.photos && (img1Path = this.state.user.photos[0]);
-      this.state.user.photos && (img2Path = this.state.user.photos[1]);
-      this.state.user.photos && (img3Path = this.state.user.photos[2]);
-      this.state.user.photos && (img4Path = this.state.user.photos[3]);
+      this.props.match.photos && (img1Path = this.props.match.photos[0]);
+      this.props.match.photos && (img2Path = this.props.match.photos[1]);
+      this.props.match.photos && (img3Path = this.props.match.photos[2]);
+      this.props.match.photos && (img4Path = this.props.match.photos[3]);
     }
     // Dates
-    let userDates = this.state.user.dates;
+    let userDates = this.props.match.dates;
     let userDateIcons = [];
     if (userDates) {
       for (let i = 0; i < dates.length; i++) {
@@ -46,7 +39,7 @@ export default class Profile extends Component {
     }
 
     // Topics
-    let userTopics = this.state.user.topics;
+    let userTopics = this.props.match.topics;
     let userInterests = [];
     if (userTopics) {
       for (let i = 0; i < topics.length; i++) {
@@ -61,24 +54,24 @@ export default class Profile extends Component {
       }
     }
 
-    let name = this.state.user.name.split(" ")[0].toUpperCase();
-    let location = this.state.user.location.toUpperCase();
+    let name = this.props.match.name.split(" ")[0].toUpperCase();
+    let location = this.props.match.location.toUpperCase();
     return (
       <ScrollView style={styles.view}>
         <View style={styles.center}>
-          <Text style={styles.userName}>
-            {name}, {this.state.user.age}
+          <Text style={styles.matchName}>
+            {name}, {this.props.match.age}
           </Text>
           <Text style={styles.subHeader}>{location}</Text>
           <Image source={{ uri: img1Path }} style={styles.img} />
           <Text style={styles.subHeader}>OCCUPATION</Text>
-          <Text>{this.state.user.occupation}</Text>
+          <Text>{this.props.match.occupation}</Text>
           <Text style={styles.subHeader}>EDUCATION</Text>
-          <Text>{this.state.user.education}</Text>
-          {this.state.user.religion && (
+          <Text>{this.props.match.education}</Text>
+          {this.props.match.religion && (
             <View style={styles.center}>
               <Text style={styles.subHeader}>RELGION</Text>
-              <Text>{this.state.user.religion}</Text>
+              <Text>{this.props.match.religion}</Text>
             </View>
           )}
           <Image source={{ uri: img2Path }} style={styles.img} />
@@ -88,11 +81,21 @@ export default class Profile extends Component {
           <Text style={styles.subHeader}>MY INTERESTS</Text>
           <View style={styles.row}>{userInterests}</View>
           <Image source={{ uri: img4Path }} style={styles.img} />
-          <Text style={styles.bio}>{this.state.user.bio}</Text>
-
-          <TouchableOpacity style={styles.logout}>
-            <Logout />
-          </TouchableOpacity>
+          <Text style={styles.bio}>{this.props.match.bio}</Text>
+          <View style={styles.row}>
+            <TouchableOpacity
+              style={styles.reject}
+              onPress={this.props.rejected}
+            >
+              <Text style={styles.rejectText}>NOT TODAY</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.interested}
+              onPress={this.props.interested}
+            >
+              <Text style={styles.interestedText}>INTERESTED</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     );
@@ -149,7 +152,7 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
 
-  userName: {
+  matchName: {
     marginTop: 5,
     fontSize: 30,
     fontFamily: "Avenir-Heavy"
@@ -178,15 +181,35 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 15
   },
-
-  logout: {
+  reject: {
     justifyContent: "center",
     alignItems: "center",
-    padding: 5,
+    padding: 10,
+    borderRadius: 8,
+    borderWidth: 1.5,
+    borderColor: "#333333",
+    width: 100,
+    margin: 20
+  },
+  rejectText: {
+    fontFamily: "Avenir-Black",
+    fontSize: 12,
+    color: "#333333"
+  },
+  interested: {
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
     borderRadius: 8,
     borderWidth: 1.5,
     borderColor: "#9BA2FF",
     width: 110,
+    margin: 20,
     backgroundColor: "#9BA2FF"
+  },
+  interestedText: {
+    fontFamily: "Avenir-Black",
+    fontSize: 12,
+    color: "#4F4F4F"
   }
 });
